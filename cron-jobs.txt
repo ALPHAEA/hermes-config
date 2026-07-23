@@ -1,1 +1,3 @@
-无系统 crontab
+Hermes Agent Config Sync - Cron Jobs
+Generated: 2026-07-24 06:00:00 CST
+(No system crontab - uses internal ~/.hermes/cron/jobs.json)

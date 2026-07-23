@@ -1,2 +1,12 @@
-jobs.json
-output
+Hermes Agent Cron Config
+Generated: 2026-07-24 06:00:00 CST
+
+Files in ~/.hermes/cron/:
+- jobs.json (3 cron jobs)
+- output/ (cron job run output directory)
+- .tick.lock (tick lock file)
+
+Active jobs:
+1. 上海松江每日天气 (3e33eb3dff29) - "0 6 * * *" - 已执行89次 - 状态: ok
+2. 每日AI科技早报 (8f7ff97d834a) - "0 8 * * *" - 已执行90次 - 状态: ok
+3. daily-hermes-config-sync (615d91e235a8) - "0 6 * * *" - 首次运行 - 状态: 进行中
