@@ -9,8 +9,8 @@
 - 系统: Linux, ~1.2GB RAM (容器: nikolaik/python-nodejs:python3.11-nodejs20)
 - GitHub: 使用 PAT 认证，仓库 ALPHAEA/hermes-config
 - 飞书: 平台接入正常，chat_id: oc_cfbb42b598bc6b266c24bfc3b601b89e
-- Skills 总数: 81 SKILL.md (20 分类), 含 linked files 共 365 个文件
-- Config: ~/.hermes/config.yaml (392 行), last modified 2026-07-23
+- Skills 总数: 96 SKILL.md (22 分类)
+- Config: ~/.hermes/config.yaml (393 行), 更新于 2026-07-27
 - Cron: 3 个定时任务（上海松江天气、每日AI科技早报、daily-hermes-config-sync）
 
 ## 用户画像

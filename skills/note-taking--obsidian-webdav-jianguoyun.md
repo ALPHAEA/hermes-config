@@ -64,6 +64,85 @@ python3 url-to-note.py <URL> [自定义标题]
 export OBSIDIAN_VAULT_PATH="$HOME/Documents/Obsidian Vault"
 ```
 
+## 笔记目录整理
+
+NOTE 目录下的组织规范：
+
+```
+NOTE/
+├── Java/               ← 按技术/主题分目录
+│   └── idea-jboss-war-deploy.md
+├── Network/
+│   ├── socks5-proxy-server.md
+│   └── wifi6-wifi7-router-guide.md
+├── ...
+```
+
+**规则：**
+1. **文件名**：英文简短描述，全小写连字符（如 `idea-jboss-war-deploy.md`）
+2. **frontmatter**：每篇笔记顶部统一格式：
+   ```yaml
+   ---
+   title: 笔记标题
+   source: 来源网站名     # 如：CSDN、知乎、微信公众号、OSChina
+   source_url: 原文链接
+   author: 原作者名
+   created: YYYY-MM-DD
+   tags: [标签1, 标签2]
+   ---
+   ```
+3. **来源标记**：通过 frontmatter `source:` 字段 + `tags:` 标记，不做来源目录
+4. **_assets 文件夹**：与笔记文件同名（去掉 `.md`），如 `idea-jboss-war-deploy.md` → `_assets/idea-jboss-war-deploy/`
+5. **改名联动**：笔记改名时，对应的 _assets 文件夹和笔记内的 `![[_assets/...]]` 引用路径必须同步更新
+
+## 远程旧文件清理（WebDAV DELETE）
+
+坚果云同步脚本只会上传/下载新文件，不会删除远程旧文件。改名或删除笔记后，远程残留需要手动清理。
+
+**列出远程目录：**
+```bash
+printf '<?xml version="1.0"?><d:propfind xmlns:d="DAV:"><d:prop><d:displayname/><d:getlastmodified/><d:resourcetype/></d:prop></d:propfind>' | \
+  curl -s -u '邮箱:应用密码' -X PROPFIND -H "Depth: 1" -d @- \
+  "https://dav.jianguoyun.com/dav/obsidian/NOTE/" | \
+  python3 -c "
+import sys, xml.etree.ElementTree as ET
+from urllib.parse import unquote
+data = sys.stdin.read()
+root = ET.fromstring(data.encode())
+NS = {'d': 'DAV:'}
+for resp in root.findall('d:response', NS):
+    href = resp.find('d:href', NS).text
+    rel = href
+    for prefix in ['/dav/obsidian', '/dav']:
+        if rel.startswith(prefix):
+            rel = rel[len(prefix):]
+            break
+    rel = unquote(rel).rstrip('/')
+    if not rel:
+        continue
+    is_coll = resp.find('d:propstat/d:prop/d:resourcetype/d:collection', NS) is not None
+    tag = '📁' if is_coll else '📄'
+    print(f'{tag} /{rel}')
+"
+```
+
+**删除远程文件/目录：**
+```bash
+# 删除文件
+curl -s -u '邮箱:应用密码' -X DELETE \
+  "https://dav.jianguoyun.com/dav/obsidian/NOTE/旧文件名.md" -w "HTTP %{http_code}\n"
+
+# 删除目录（含子内容）
+curl -s -u '邮箱:应用密码' -X DELETE \
+  "https://dav.jianguoyun.com/dav/obsidian/_assets/旧文件夹名/" -w "HTTP %{http_code}\n"
+```
+
+**注意：**
+- 中文路径在 URL 中会自动编码，curl 会处理
+- 但如果有特殊字符（空格、# 等），需要手动 URL 编码
+- DELETE 目录时末尾必须带 `/`
+- 成功返回 204，不存在返回 404
+
 ## 已知问题 / Pitfalls
 
 1. **不要用 davfs2 挂载坚果云** — 坚果云服务器不符合标准 WebDAV 规范，mount 会失败（"server does not support WebDAV"）

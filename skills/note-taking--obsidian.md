@@ -67,6 +67,58 @@ python3 .obsidian/sync-nutstore.py push <file>  # push single file (auto-creates
 
 IMPORTANT: `sync` now uploads ALL files (not just `.md`), and `push` auto-creates remote parent directories via MKCOL.
 
+## NOTE 目录规范
+
+NOTE 目录下的笔记按以下规则组织：
+
+```
+NOTE/
+├── Java/                    ← 分类目录（按技术/主题）
+│   └── idea-jboss-war-deploy.md
+├── Network/
+│   ├── socks5-proxy-server.md
+│   └── wifi6-wifi7-router-guide.md
+├── SmartHome/
+│   └── smart-home-renovation.md
+├── IDE/
+│   └── intellij-idea-plugins.md
+└── ...                       ← 按需新增
+```
+
+**规则：**
+1. **文件名**：英文简短描述，全小写连字符，如 `idea-jboss-war-deploy.md`
+2. **frontmatter**：每篇笔记顶部统一格式：
+   ```yaml
+   ---
+   title: 笔记标题
+   source: 来源网站名     # 如：CSDN、知乎、微信公众号、OSChina
+   source_url: 原文链接
+   author: 原作者名
+   created: YYYY-MM-DD
+   tags: [标签1, 标签2]
+   ---
+   ```
+3. **来源标记**：通过 `source:` + `tags:` 标记，不做来源目录
+4. **_assets 文件夹**：与笔记文件同名（去掉 `.md`）：
+   - `idea-jboss-war-deploy.md` → `_assets/idea-jboss-war-deploy/`
+   - 笔记内引用：`![[_assets/note-name/img.png]]`
+5. **改名联动**：改名时同步更新 _assets 文件夹名和笔记内所有 `![[_assets/...]]` 引用
+
+## 笔记整理（批量操作）
+
+当需要整理 NOTE 目录时，按此流程：
+
+1. 列出 vault 所有 .md 和 _assets 目录，确认全貌
+2. 确定分类目录（按技术/主题，不用来源维度）
+3. 对每篇笔记：
+   - 添加统一 frontmatter
+   - 重命名文件为英文短描述
+   - 重命名对应 _assets 文件夹
+   - 替换笔记内所有 `![[_assets/旧路径/...]]` 为 `![[_assets/新路径/...]]`
+4. 删除旧文件（原位置残留）
+5. `sync-nutstore.py up` 上传到坚果云
+6. 远程清理旧文件（见 obsidian-webdav-jianguoyun skill）
+
 ## File Structure
 
 ```

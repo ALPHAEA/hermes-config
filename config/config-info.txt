@@ -1,9 +1,4 @@
-=== Hermes Agent Config Info ===
-Generated: 2026-07-24 06:00:00 CST
-
-Config File: config.yaml
-  Lines: 392
-  Last Modified: 2026-07-23 16:44:31
-  Path: ~/.hermes/config.yaml
-
-=== EOF ===
+# Config Info
+File: config.yaml
+Lines: 393
+Last Updated: 2026-07-27 06:08:53

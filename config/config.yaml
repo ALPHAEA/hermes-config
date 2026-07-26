@@ -310,6 +310,7 @@ approvals:
   timeout: 60
   cron_mode: deny
 command_allowlist:
+- delete in root path
 - overwrite system file via redirection
 - shell command via -c/-lc flag
 - script execution via heredoc
