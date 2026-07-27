@@ -1,6 +1,6 @@
 # Hermes Agent 配置快照
 
-> 生成时间: 2026-07-27 06:08:53
+> 生成时间: 2026-07-28 06:15:49
 > 包含: 模型配置、工具集、Skills、Memory、Cron 任务
 
 ---
@@ -72,29 +72,8 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 
 ## 四、所有已安装 Skills (96 个 SKILL.md)
 
-### superpowers/ (14 个技能)
-| 技能 | 说明 |
-|------|------|
-| brainstorming | 创意设计前探索需求，一问一答细化设计 |
-| dispatching-parallel-agents | 并行派发代理处理独立任务 |
-| executing-plans | 在新会话中分批执行计划 |
-| finishing-a-development-branch | 完成开发分支 |
-| receiving-code-review | 接收代码评审 |
-| requesting-code-review | 提交代码评审 |
-| subagent-driven-development | 子代理驱动开发 |
-| systematic-debugging | 4 阶段系统化调试 |
-| test-driven-development | 红-绿-重构 TDD |
-| using-git-worktrees | 创建隔离的 git 工作树 |
-| using-superpowers | 技能使用指南 |
-| verification-before-completion | 完成前验证 |
-| writing-plans | 编写实施计划 |
-| writing-skills | TDD 式编写技能文档 |
-
-### software-development/ (6 个技能)
-- plan, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, writing-plans
-
-### autonomous-ai-agents/ (4 个)
-- claude-code, codex, hermes-agent, opencode
+### superpowers/ (14 个)
+- brainstorming, dispatching-parallel-agents, executing-plans, finishing-a-development-branch, receiving-code-review, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans, writing-skills
 
 ### creative/ (11 个)
 - architecture-diagram, ascii-art, ascii-video, baoyu-infographic, creative-ideation, excalidraw, manim-video, p5js, pixel-art, popular-web-designs, songwriting-and-ai-music
@@ -105,27 +84,31 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 ### productivity/ (7 个)
 - google-workspace, linear, maps, nano-pdf, notion, ocr-and-documents, powerpoint
 
-### mlops/ (13 个)
-| 子分类 | 技能 |
-|--------|------|
-| general | huggingface-hub |
-| evaluation | lm-evaluation-harness, weights-and-biases |
-| inference | llama-cpp, obliteratus, outlines, vllm |
-| models | audiocraft, segment-anything |
-| research | dspy |
-| training | axolotl, trl-fine-tuning, unsloth |
-
 ### github/ (6 个)
 - codebase-inspection, github-auth, github-code-review, github-issues, github-pr-workflow, github-repo-management
 
-### media/ (4 个)
-- gif-search, heartmula, songsee, youtube-content
+### software-development/ (6 个)
+- plan, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, writing-plans
 
 ### apple/ (4 个)
 - apple-notes, apple-reminders, findmy, imessage
 
+### media/ (4 个)
+- gif-search, heartmula, songsee, youtube-content
+
 ### note-taking/ (4 个)
 - note-restructure, obsidian, obsidian-webdav-jianguoyun, url-to-obsidian-note
+
+### autonomous-ai-agents/ (4 个)
+- claude-code, codex, hermes-agent, opencode
+
+### mlops/ 及子分类 (13 个)
+- general: huggingface-hub
+- evaluation: lm-evaluation-harness, weights-and-biases
+- inference: llama-cpp, obliteratus, outlines, vllm
+- models: audiocraft, segment-anything
+- research: dspy
+- training: axolotl, trl-fine-tuning, unsloth
 
 ### gaming/ (2 个)
 - minecraft-modpack-server, pokemon-player
@@ -134,15 +117,7 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 - english-pdf-wrong-ocr, math-pdf-wrong-ocr
 
 ### 单技能分类 (10 个)
-- data-science: jupyter-live-kernel
-- devops: webhook-subscriptions
-- dogfood: dogfood
-- email: himalaya
-- mcp: native-mcp
-- red-teaming: godmode
-- smart-home: openhue
-- social-media: xurl
-- yuanbao: yuanbao
+- agently-mail, data-science: jupyter-live-kernel, devops: webhook-subscriptions, dogfood, email: himalaya, mcp: native-mcp, red-teaming: godmode, smart-home: openhue, social-media: xurl, yuanbao
 
 ---
 
@@ -154,10 +129,9 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 - PDF 生成: fpdf2 + wqy-zenhei.ttc
 - Obsidian vault: ~/Documents/Obsidian Vault，坚果云 WebDAV 同步
 - Agent Mail (agently-cli): 已安装配置，邮箱 alphae@agent.qq.com
-- 系统: Linux 容器, ~1.2GB RAM
-- Skills: 96 SKILL.md (22 分类)
-- Config: 393 行，更新于 2026-07-27
-- Cron: 3 个定时任务
+- 系统: Linux 容器
+- Skills: 96 SKILL.md (27 分类)
+- Config: 393 行
 
 ### 用户画像 (Alpha)
 - 偏好中文交流
@@ -173,17 +147,17 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 当前有 3 个活动 cron 任务:
 1. **上海松江每日天气** (`3e33eb3dff29`)
    - 调度: `0 6 * * *` (每天 6:00)
-   - 已执行 92 次，状态: ok
+   - 已执行 93 次，状态: ok
    - 交付: 飞书
 
 2. **每日AI科技早报** (`8f7ff97d834a`)
    - 调度: `0 8 * * *` (每天 8:00)
-   - 已执行 93 次，状态: 最近一次 error
+   - 已执行 94 次，状态: ok
    - 交付: 飞书
 
 3. **daily-hermes-config-sync** (`615d91e235a8`)
    - 调度: `0 6 * * *` (每天 6:00)
-   - 已执行 3 次，状态: 最近一次 error
+   - 已执行 4 次，状态: ok
    - 交付: 飞书
 
 ---
