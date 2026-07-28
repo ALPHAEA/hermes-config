@@ -1,5 +1,4 @@
-Config File: config/config.yaml
-File Lines: 393
-File Size: 12K
-Last Updated: 2026-07-28 06:12:49 CST
-Updated By: Daily Sync Cron Job
+393 /home/agentuser/.hermes/config.yaml
+Updated: 2026-07-29 06:06:54
+File: config.yaml
+-rw------- 1 agentuser agentuser 10995 Jul 24 17:42 /home/agentuser/.hermes/config.yaml

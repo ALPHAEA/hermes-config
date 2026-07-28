@@ -1,6 +1,6 @@
 # Hermes Agent 配置快照
 
-> 生成时间: 2026-07-28 06:15:49
+> 生成时间: 2026-07-29 06:10:54
 > 包含: 模型配置、工具集、Skills、Memory、Cron 任务
 
 ---
@@ -117,7 +117,7 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 - english-pdf-wrong-ocr, math-pdf-wrong-ocr
 
 ### 单技能分类 (10 个)
-- agently-mail, data-science: jupyter-live-kernel, devops: webhook-subscriptions, dogfood, email: himalaya, mcp: native-mcp, red-teaming: godmode, smart-home: openhue, social-media: xurl, yuanbao
+- data-science: jupyter-live-kernel, devops: webhook-subscriptions, dogfood, email: himalaya, mcp: native-mcp, red-teaming: godmode, smart-home: openhue, social-media: xurl, yuanbao
 
 ---
 
@@ -125,7 +125,7 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 
 ### Agent 记忆
 - 当前模型: DeepSeek V4 Flash，不支持 vision_analyze
-- OCR: EasyOCR 已安装但慢，英文用 Tesseract
+- OCR: EasyOCR 已安装但慢，中文 OCR 可用
 - PDF 生成: fpdf2 + wqy-zenhei.ttc
 - Obsidian vault: ~/Documents/Obsidian Vault，坚果云 WebDAV 同步
 - Agent Mail (agently-cli): 已安装配置，邮箱 alphae@agent.qq.com
@@ -147,17 +147,17 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 当前有 3 个活动 cron 任务:
 1. **上海松江每日天气** (`3e33eb3dff29`)
    - 调度: `0 6 * * *` (每天 6:00)
-   - 已执行 93 次，状态: ok
+   - 已执行 94 次，状态: ok
    - 交付: 飞书
 
 2. **每日AI科技早报** (`8f7ff97d834a`)
    - 调度: `0 8 * * *` (每天 8:00)
-   - 已执行 94 次，状态: ok
+   - 已执行 95 次，状态: ok
    - 交付: 飞书
 
 3. **daily-hermes-config-sync** (`615d91e235a8`)
    - 调度: `0 6 * * *` (每天 6:00)
-   - 已执行 4 次，状态: ok
+   - 已执行 5 次，状态: ok
    - 交付: 飞书
 
 ---
