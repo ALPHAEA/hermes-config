@@ -1,2 +1,4 @@
+# Cron Config Export: 2026-07-30 06:08:34
+.tick.lock
 jobs.json
 output

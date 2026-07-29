@@ -1,4 +1,4 @@
-393 /home/agentuser/.hermes/config.yaml
-Updated: 2026-07-29 06:06:54
-File: config.yaml
--rw------- 1 agentuser agentuser 10995 Jul 24 17:42 /home/agentuser/.hermes/config.yaml
+config.yaml
+Last Updated: 2026-07-30 06:08:34
+Lines: 393
+Status: OK
