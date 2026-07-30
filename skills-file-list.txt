@@ -1,5 +1,6 @@
-Skills Export: 2026-07-30 06:08:34
-Total Files: 97
+# Skills File List
+# Generated: 2026-07-31 06:09:52
+# Total: 97 files
 
 agently-mail::agently-mail.md
 apple::apple-notes.md
