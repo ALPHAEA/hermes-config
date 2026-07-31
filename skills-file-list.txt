@@ -1,5 +1,5 @@
 # Skills File List
-# Generated: 2026-07-31 06:09:52
+# Generated: 2026-08-01 06:11:32
 # Total: 97 files
 
 agently-mail::agently-mail.md
@@ -53,8 +53,8 @@ mlops_training::axolotl.md
 mlops_training::trl-fine-tuning.md
 mlops_training::unsloth.md
 note-taking::note-restructure.md
-note-taking::obsidian-webdav-jianguoyun.md
 note-taking::obsidian.md
+note-taking::obsidian-webdav-jianguoyun.md
 note-taking::url-to-obsidian-note.md
 ocr::english-pdf-wrong-ocr.md
 ocr::math-pdf-wrong-ocr.md

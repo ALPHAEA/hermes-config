@@ -18,15 +18,15 @@
       "schedule_display": "0 6 * * *",
       "repeat": {
         "times": null,
-        "completed": 92
+        "completed": 97
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-26T09:54:55.697649+08:00",
-      "next_run_at": "2026-07-28T06:00:00+08:00",
-      "last_run_at": "2026-07-27T06:05:12.187598+08:00",
+      "next_run_at": "2026-08-02T06:00:00+08:00",
+      "last_run_at": "2026-08-01T06:07:51.761242+08:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -56,17 +56,17 @@
       "schedule_display": "0 8 * * *",
       "repeat": {
         "times": null,
-        "completed": 93
+        "completed": 98
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-26T09:55:40.756923+08:00",
-      "next_run_at": "2026-07-27T08:00:00+08:00",
-      "last_run_at": "2026-07-26T08:00:07.133398+08:00",
-      "last_status": "error",
-      "last_error": "Agent completed but produced empty response (model error, timeout, or misconfiguration)",
+      "next_run_at": "2026-08-01T08:00:00+08:00",
+      "last_run_at": "2026-07-31T08:24:47.708908+08:00",
+      "last_status": "ok",
+      "last_error": null,
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": {
@@ -79,7 +79,7 @@
     {
       "id": "615d91e235a8",
       "name": "daily-hermes-config-sync",
-      "prompt": "\u6267\u884c\u6bcf\u65e5 Hermes Agent \u914d\u7f6e\u540c\u6b65\u4efb\u52a1\u3002\n\n\u4f60\u9700\u8981\u5b8c\u6210\u4ee5\u4e0b\u6b65\u9aa4\uff1a\n\n1. \u5c06\u5f53\u524d Hermes Agent \u7684\u914d\u7f6e\u3001Skills\u3001Memory \u540c\u6b65\u5230 GitHub \u4ed3\u5e93 https://github.com/ALPHAEA/hermes-config.git\n\n2. \u5177\u4f53\u64cd\u4f5c\uff1a\n   - \u514b\u9686\u6216\u62c9\u53d6\u8fdc\u7a0b\u4ed3\u5e93\u5230 /tmp/hermes-config-sync/\n   - \u5bfc\u51fa\u5f53\u524d\u914d\u7f6e\uff1a\n     - \u590d\u5236 ~/.hermes/config.yaml \u5230\u4ed3\u5e93 config/config.yaml\n     - \u751f\u6210 config/config-info.txt\uff08\u542b\u6587\u4ef6\u884c\u6570\u548c\u66f4\u65b0\u65e5\u671f\uff09\n     - \u5c06 ~/.hermes/skills/ \u4e0b\u6240\u6709 SKILL.md \u6309 `\u5206\u7c7b--\u6280\u80fd\u540d.md` \u683c\u5f0f\u590d\u5236\u5230 skills/ \u76ee\u5f55\n     - \u751f\u6210 skills-file-list.txt\uff08\u5b8c\u6574\u6587\u4ef6\u5217\u8868\uff09\n     - \u751f\u6210 skills-stats.md\uff08\u6309\u5206\u7c7b\u7edf\u8ba1\uff09\n     - \u66f4\u65b0 hermes-config-snapshot.md\uff08\u5982\u679c\u4f60\u6709\u4e4b\u524d\u4fdd\u5b58\u7684\u6a21\u677f\uff0c\u7528\u5f53\u524d\u6700\u65b0\u6570\u636e\u5237\u65b0\uff09\n     - \u5bfc\u51fa cron \u4fe1\u606f\uff1acrontab -l > cron-jobs.txt, ls ~/.hermes/cron/ > cron-config.txt\n   - git add -A && git commit -m \"chore: \u6bcf\u65e5\u914d\u7f6e\u540c\u6b65 $(date '+%Y-%m-%d %H:%M:%S')\"\n   - git push\n\n3. GitHub \u8ba4\u8bc1\uff1a\n   - \u4ed3\u5e93: https://github.com/ALPHAEA/hermes-config.git\n   - \u8ba4\u8bc1\u65b9\u5f0f\uff1a\u7528 x-access-token \u683c\u5f0f\u7684 URL\n   - git remote set-url origin https://x-access-token:[REDACTED_PAT]@github.com/ALPHAEA/hermes-config.git\n\n4. Memory \u548c\u7528\u6237\u753b\u50cf\u5185\u5bb9\u4ece\u4f60\u7684\u5f53\u524d\u8bb0\u5fc6\u4e2d\u8bfb\u53d6\u5e76\u5199\u5165 memory.md \u6587\u4ef6\u3002memory \u5185\u5bb9\u683c\u5f0f\uff1a\n   ```\n   # Memory\n   ## Agent \u8bb0\u5fc6\n   (\u8fd9\u91cc\u586b\u5199\u8bb0\u5fc6\u5185\u5bb9)\n   ## \u7528\u6237\u753b\u50cf\n   (\u8fd9\u91cc\u586b\u5199\u7528\u6237\u753b\u50cf)\n   ```\n\n5. \u5b8c\u6210\u540e\u62a5\u544a\u540c\u6b65\u72b6\u6001\uff1a\u6587\u4ef6\u6570\u3001\u53d8\u66f4\u6570\u3001\u662f\u5426\u6709\u9519\u8bef\u3002\n\n6. \u4ea4\u4ed8\u65b9\u5f0f\uff1a\u5c06\u540c\u6b65\u7ed3\u679c\u6458\u8981\u4f5c\u4e3a\u6700\u7ec8\u54cd\u5e94\u8f93\u51fa\u3002",
+      "prompt": "\u6267\u884c\u6bcf\u65e5 Hermes Agent \u914d\u7f6e\u540c\u6b65\u4efb\u52a1\u3002\n\n\u4f60\u9700\u8981\u5b8c\u6210\u4ee5\u4e0b\u6b65\u9aa4\uff1a\n\n1. \u5c06\u5f53\u524d Hermes Agent \u7684\u914d\u7f6e\u3001Skills\u3001Memory \u540c\u6b65\u5230 GitHub \u4ed3\u5e93 https://github.com/ALPHAEA/hermes-config.git\n\n2. \u5177\u4f53\u64cd\u4f5c\uff1a\n   - \u62c9\u53d6\u8fdc\u7a0b\u4ed3\u5e93\u5230 /tmp/hermes-config-sync/\uff08\u5148 cd \u8fdb\u53bb git pull\uff0c\u5982\u679c\u4e0d\u5b58\u5728\u5219 git clone\uff09\n   - \u5bfc\u51fa\u5f53\u524d\u914d\u7f6e\uff1a\n     - \u590d\u5236 ~/.hermes/config.yaml \u5230\u4ed3\u5e93 config/config.yaml\n     - \u751f\u6210 config/config-info.txt\uff08\u542b\u6587\u4ef6\u884c\u6570\u548c\u66f4\u65b0\u65e5\u671f\uff09\n     - \u5c06 ~/.hermes/skills/ \u4e0b\u6240\u6709 SKILL.md \u6309\u300c\u5206\u7c7b::\u6280\u80fd\u540d.md\u300d\u683c\u5f0f\u590d\u5236\u5230 skills/ \u76ee\u5f55\n       - \u89c4\u5219\uff1a\u8def\u5f84 apple/apple-notes/SKILL.md \u2192 apple::apple-notes.md\n       - \u89c4\u5219\uff1a\u8def\u5f84 mlops/inference/llama-cpp/SKILL.md \u2192 mlops_inference::llama-cpp.md\uff08\u5b50\u5206\u7c7b\u7528\u4e0b\u5212\u7ebf\u6241\u5e73\u5316\uff0c\u4e0d\u8981\u6709\u659c\u6760\uff09\n       - \u89c4\u5219\uff1a\u8def\u5f84 dogfood/SKILL.md \u2192 dogfood::dogfood.md\n       - \u6587\u4ef6\u540d\u4e2d\u4e0d\u80fd\u6709 /\uff0c\u5426\u5219 cp \u4f1a\u521b\u5efa\u5b50\u76ee\u5f55\u5931\u8d25\uff01\n     - \u751f\u6210 skills-file-list.txt\uff08\u5b8c\u6574\u6587\u4ef6\u5217\u8868\uff09\n     - \u751f\u6210 skills-stats.md\uff08\u6309\u5206\u7c7b\u7edf\u8ba1\uff09\n     - \u66f4\u65b0 hermes-config-snapshot.md\uff08\u5982\u679c\u6709\u6a21\u677f\u5c31\u7528\u6700\u65b0\u6570\u636e\u5237\u65b0\uff09\n     - \u5bfc\u51fa cron \u4fe1\u606f\uff1acrontab -l > cron-jobs.txt, ls ~/.hermes/cron/ > cron-config.txt\n   - \u6ce8\u610f\uff1askills \u76ee\u5f55\u6587\u4ef6\u540d\u683c\u5f0f\u53ef\u80fd\u548c\u4e0a\u6b21\u4e0d\u540c\uff08\u65e7\u683c\u5f0f\u7528 -- \u5206\u9694\uff09\u3002\u5982\u679c\u68c0\u6d4b\u5230\u65e7\u683c\u5f0f\u6587\u4ef6\u4ecd\u7136\u5b58\u5728\uff0c\u9700\u8981\u7528 git rm -r --cached skills/ \u6e05\u9664\u65e7\u7d22\u5f15\u518d git add -A\n   - git add -A && git commit -m \"chore: \u6bcf\u65e5\u914d\u7f6e\u540c\u6b65 $(date '+%Y-%m-%d %H:%M:%S')\"\n   - git push\n\n3. GitHub \u8ba4\u8bc1\uff1a\u8fdc\u7a0b URL \u5df2\u914d\u7f6e\u597d\u5e26 token \u7684\u683c\u5f0f\uff0c\u76f4\u63a5 push \u5373\u53ef\n\n4. Memory \u548c\u7528\u6237\u753b\u50cf\u4ece\u6587\u4ef6\u8bfb\u53d6\uff1acat ~/.hermes/memories/MEMORY.md \u548c cat ~/.hermes/memories/USER.md\uff0c\u7136\u540e\u5199\u5165 memory.md \u6587\u4ef6\u3002\u683c\u5f0f\uff1a\n   ```\n   # Memory\n   ## Agent \u8bb0\u5fc6\n   (MEMORY.md \u5185\u5bb9)\n   ## \u7528\u6237\u753b\u50cf\n   (USER.md \u5185\u5bb9)\n   ```\n\n5. \u5b8c\u6210\u540e\u62a5\u544a\u540c\u6b65\u72b6\u6001\uff1a\u6587\u4ef6\u6570\u3001\u53d8\u66f4\u6570\u3001\u662f\u5426\u6709\u9519\u8bef\u3002\n\n6. \u4ea4\u4ed8\u65b9\u5f0f\uff1a\u5c06\u540c\u6b65\u7ed3\u679c\u6458\u8981\u4f5c\u4e3a\u6700\u7ec8\u54cd\u5e94\u8f93\u51fa\u3002",
       "skills": [],
       "skill": null,
       "model": null,
@@ -94,17 +94,17 @@
       "schedule_display": "0 6 * * *",
       "repeat": {
         "times": null,
-        "completed": 3
+        "completed": 8
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-23T16:23:12.507597+08:00",
-      "next_run_at": "2026-07-28T06:00:00+08:00",
-      "last_run_at": "2026-07-26T06:01:01.396774+08:00",
-      "last_status": "error",
-      "last_error": "Agent completed but produced empty response (model error, timeout, or misconfiguration)",
+      "next_run_at": "2026-08-02T06:00:00+08:00",
+      "last_run_at": "2026-07-31T06:10:32.672433+08:00",
+      "last_status": "ok",
+      "last_error": null,
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": {
@@ -115,5 +115,5 @@
       }
     }
   ],
-  "updated_at": "2026-07-27T06:05:12.188414+08:00"
+  "updated_at": "2026-08-01T06:07:51.761958+08:00"
 }

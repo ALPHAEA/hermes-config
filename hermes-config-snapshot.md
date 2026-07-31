@@ -1,6 +1,6 @@
 # Hermes Agent 配置快照
 
-> 生成时间: 2026-07-31 06:00:00
+> 生成时间: 2026-08-01 06:11:32
 > 包含: 模型配置、工具集、Skills、Memory、Cron 任务
 
 ---
@@ -72,52 +72,89 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 
 ## 四、所有已安装 Skills (97 个 SKILL.md)
 
-### superpowers (14 个)
-- brainstorming, dispatching-parallel-agents, executing-plans, finishing-a-development-branch, receiving-code-review, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans, writing-skills
-
-### creative (11 个)
-- architecture-diagram, ascii-art, ascii-video, baoyu-infographic, creative-ideation, excalidraw, manim-video, p5js, pixel-art, popular-web-designs, songwriting-and-ai-music
-
-### research (9 个)
-- arxiv, bing-news-search, blogwatcher, cron-news-report, llm-weekly-digest, llm-wiki, news-gathering-via-browser, polymarket, zhihu-article-fetch
-
-### productivity (7 个)
-- google-workspace, linear, maps, nano-pdf, notion, ocr-and-documents, powerpoint
-
-### github (6 个)
-- codebase-inspection, github-auth, github-code-review, github-issues, github-pr-workflow, github-repo-management
-
-### software-development (6 个)
-- plan, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, writing-plans
+### agently-mail (1 个)
+- agently-mail
 
 ### apple (4 个)
 - apple-notes, apple-reminders, findmy, imessage
 
-### media (4 个)
-- gif-search, heartmula, songsee, youtube-content
-
-### note-taking (4 个)
-- note-restructure, obsidian, obsidian-webdav-jianguoyun, url-to-obsidian-note
-
 ### autonomous-ai-agents (4 个)
 - claude-code, codex, hermes-agent, opencode
 
-### mlops 及子分类 (13 个)
-- general: huggingface-hub
-- evaluation: lm-evaluation-harness, weights-and-biases
-- inference: llama-cpp, obliteratus, outlines, vllm
-- models: audiocraft, segment-anything
-- research: dspy
-- training: axolotl, trl-fine-tuning, unsloth
+### creative (11 个)
+- architecture-diagram, ascii-art, ascii-video, baoyu-infographic, creative-ideation, excalidraw, manim-video, p5js, pixel-art, popular-web-designs, songwriting-and-ai-music
+
+### data-science (1 个)
+- jupyter-live-kernel
+
+### devops (1 个)
+- webhook-subscriptions
+
+### dogfood (1 个)
+- dogfood
+
+### email (1 个)
+- himalaya
 
 ### gaming (2 个)
 - minecraft-modpack-server, pokemon-player
 
+### github (6 个)
+- codebase-inspection, github-auth, github-code-review, github-issues, github-pr-workflow, github-repo-management
+
+### mcp (1 个)
+- native-mcp
+
+### media (4 个)
+- gif-search, heartmula, songsee, youtube-content
+
+### mlops (1 个)
+- huggingface-hub
+
+### mlops_evaluation (2 个)
+- lm-evaluation-harness, weights-and-biases
+
+### mlops_inference (4 个)
+- llama-cpp, obliteratus, outlines, vllm
+
+### mlops_models (2 个)
+- audiocraft, segment-anything
+
+### mlops_research (1 个)
+- dspy
+
+### mlops_training (3 个)
+- axolotl, trl-fine-tuning, unsloth
+
+### note-taking (4 个)
+- note-restructure, obsidian, obsidian-webdav-jianguoyun, url-to-obsidian-note
+
 ### ocr (2 个)
 - english-pdf-wrong-ocr, math-pdf-wrong-ocr
 
-### 其他分类
-- agently-mail, data-science: jupyter-live-kernel, devops: webhook-subscriptions, dogfood, email: himalaya, mcp: native-mcp, red-teaming: godmode, smart-home: openhue, social-media: xurl, yuanbao
+### productivity (7 个)
+- google-workspace, linear, maps, nano-pdf, notion, ocr-and-documents, powerpoint
+
+### red-teaming (1 个)
+- godmode
+
+### research (10 个)
+- arxiv, bing-news-search, blogwatcher, cron-news-report, llm-weekly-digest, llm-wiki, news-gathering-via-browser, polymarket, research-paper-writing, zhihu-article-fetch
+
+### smart-home (1 个)
+- openhue
+
+### social-media (1 个)
+- xurl
+
+### software-development (6 个)
+- plan, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, writing-plans
+
+### superpowers (14 个)
+- brainstorming, dispatching-parallel-agents, executing-plans, finishing-a-development-branch, receiving-code-review, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans, writing-skills
+
+### yuanbao (1 个)
+- yuanbao
 
 ---
 
@@ -125,19 +162,17 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 
 当前有 3 个活动 cron 任务:
 1. **上海松江每日天气** (`3e33eb3dff29`)
-   - 调度: `0 6 * * *` (每天 6:00)
-   - 已执行 96 次，状态: ok
-   - 交付: 飞书
-
+   - 调度: `0 6 * * *`
+   - 已执行 97 次，状态: ok
+   - 交付: feishu
 2. **每日AI科技早报** (`8f7ff97d834a`)
-   - 调度: `0 8 * * *` (每天 8:00)
-   - 已执行 96 次，状态: ok
-   - 交付: 飞书
-
+   - 调度: `0 8 * * *`
+   - 已执行 98 次，状态: ok
+   - 交付: feishu
 3. **daily-hermes-config-sync** (`615d91e235a8`)
-   - 调度: `0 6 * * *` (每天 6:00)
-   - 已执行 7 次，状态: ok
-   - 交付: 飞书
+   - 调度: `0 6 * * *`
+   - 已执行 8 次，状态: ok
+   - 交付: feishu
 
 ---
 
@@ -149,8 +184,8 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 
 ## 七、系统信息
 
-- **Config 文件:** 393 行
+- **Config 文件:** 394 行
 - **Skills 总数:** 97 个 (28 分类)
 - **Cron 任务数:** 3 个
 - **内存文件:** MEMORY.md + USER.md
-- **同步日期:** 2026-07-31
+- **同步日期:** 2026-08-01

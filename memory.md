@@ -1,7 +1,7 @@
 # Memory
+## 生成时间: 2026-08-01 06:11:32
 
 ## Agent 记忆
-
 当前使用的模型是 DeepSeek V4 Flash，不支持 vision_analyze 视觉分析（返回 unknown variant `image_url` 错误）。需要从图片提取文字时，可用 EasyOCR（已安装在 hermes venv 中，但首次加载 PyTorch 很慢约30-60s），或委托 subagent 来处理耗时的 OCR 任务。fpdf2 已安装可用于生成含中文字体的 PDF，字体路径：/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc。
 §
 当用户发送扫描的 PDF 或截图时需要 OCR 提取中文文字时：先用 pymupdf 检查页面是否有文字（page.get_text()），如果是扫描件则用 EasyOCR（已安装在 hermes venv 中），首次加载慢约30s是因为 PyTorch 加载。PDF 生成用 fpdf2 + wqy-zenhei.ttc 字体。当前使用的 DeepSeek V4 Flash 模型不支持 vision_analyze 视觉分析（返回 unknown variant `image_url` 错误）。
@@ -21,7 +21,6 @@ Obsidian 笔记规范（NOTE 目录）：
 - 同步：sync-nutstore.py sync（双向）或 up（仅上传）。远程旧文件需手动 curl DELETE 清理。
 
 ## 用户画像
-
 用户偏好使用中文交流
 §
 用户名叫 Alpha，工作涉及产品、设计、写代码。语言风格要求简单直接。需求要先做计划，确认后再动手。

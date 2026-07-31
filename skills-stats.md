@@ -1,6 +1,6 @@
 # Skills Statistics
 
-> 生成时间: 2026-07-31 06:09:52
+> 生成时间: 2026-08-01 06:11:32
 
 ## 按分类统计
 
@@ -145,8 +145,8 @@
 ### note-taking (4 个)
 
 - note-taking::note-restructure.md
-- note-taking::obsidian-webdav-jianguoyun.md
 - note-taking::obsidian.md
+- note-taking::obsidian-webdav-jianguoyun.md
 - note-taking::url-to-obsidian-note.md
 
 ### ocr (2 个)
