@@ -1,6 +1,6 @@
 # Hermes Agent 配置快照
 
-> 生成时间: 2026-08-02 06:08:27
+> 生成时间: 2026-08-02 06:09:17
 > 包含: 模型配置、工具集、Skills、Memory、Cron 任务
 
 ---
@@ -70,10 +70,7 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 
 ---
 
-## 四、所有已安装 Skills (98 个 SKILL.md)
-
-### # 共 97 个 SKILL.md，按 分类 (1 个)
-- 技能名.md
+## 四、所有已安装 Skills (97 个 SKILL.md)
 
 ### agently-mail (1 个)
 - agently-mail
@@ -190,7 +187,7 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 ## 七、系统信息
 
 - **Config 文件:** 393 行
-- **Skills 总数:** 98 个 (29 分类)
+- **Skills 总数:** 97 个 (28 分类)
 - **Cron 任务数:** 3 个
 - **内存文件:** MEMORY.md + USER.md
 - **同步日期:** 2026-08-02
