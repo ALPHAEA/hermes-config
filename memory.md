@@ -1,6 +1,4 @@
 # Memory
-## 生成时间: 2026-08-01 06:11:32
-
 ## Agent 记忆
 当前使用的模型是 DeepSeek V4 Flash，不支持 vision_analyze 视觉分析（返回 unknown variant `image_url` 错误）。需要从图片提取文字时，可用 EasyOCR（已安装在 hermes venv 中，但首次加载 PyTorch 很慢约30-60s），或委托 subagent 来处理耗时的 OCR 任务。fpdf2 已安装可用于生成含中文字体的 PDF，字体路径：/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc。
 §
@@ -19,7 +17,6 @@ Obsidian 笔记规范（NOTE 目录）：
 - assets 字段: "[[_assets/8位MD5哈希]]" 指向附件目录，可点击跳转
 - _assets 附件：目录用 8 位 MD5 哈希（对笔记原名取 MD5 前8位），文件用 Unix 时间戳秒级命名
 - 同步：sync-nutstore.py sync（双向）或 up（仅上传）。远程旧文件需手动 curl DELETE 清理。
-
 ## 用户画像
 用户偏好使用中文交流
 §

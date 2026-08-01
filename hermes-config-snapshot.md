@@ -1,6 +1,6 @@
 # Hermes Agent 配置快照
 
-> 生成时间: 2026-08-01 06:11:32
+> 生成时间: 2026-08-02 06:08:27
 > 包含: 模型配置、工具集、Skills、Memory、Cron 任务
 
 ---
@@ -70,7 +70,10 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 
 ---
 
-## 四、所有已安装 Skills (97 个 SKILL.md)
+## 四、所有已安装 Skills (98 个 SKILL.md)
+
+### # 共 97 个 SKILL.md，按 分类 (1 个)
+- 技能名.md
 
 ### agently-mail (1 个)
 - agently-mail
@@ -163,15 +166,17 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 当前有 3 个活动 cron 任务:
 1. **上海松江每日天气** (`3e33eb3dff29`)
    - 调度: `0 6 * * *`
-   - 已执行 97 次，状态: ok
-   - 交付: feishu
-2. **每日AI科技早报** (`8f7ff97d834a`)
-   - 调度: `0 8 * * *`
    - 已执行 98 次，状态: ok
    - 交付: feishu
+
+2. **每日AI科技早报** (`8f7ff97d834a`)
+   - 调度: `0 8 * * *`
+   - 已执行 99 次，状态: ok
+   - 交付: feishu
+
 3. **daily-hermes-config-sync** (`615d91e235a8`)
    - 调度: `0 6 * * *`
-   - 已执行 8 次，状态: ok
+   - 已执行 9 次，状态: ok
    - 交付: feishu
 
 ---
@@ -184,8 +189,8 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 
 ## 七、系统信息
 
-- **Config 文件:** 394 行
-- **Skills 总数:** 97 个 (28 分类)
+- **Config 文件:** 393 行
+- **Skills 总数:** 98 个 (29 分类)
 - **Cron 任务数:** 3 个
 - **内存文件:** MEMORY.md + USER.md
-- **同步日期:** 2026-08-01
+- **同步日期:** 2026-08-02

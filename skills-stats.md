@@ -1,221 +1,64 @@
-# Skills Statistics
+# Skills 分类统计
 
-> 生成时间: 2026-08-01 06:11:32
+> 生成时间: 2026-08-02 06:00:00
+> 共 **97** 个 SKILL.md，**28** 个分类
 
-## 按分类统计
-
-| 分类 | 数量 | 总大小 |
-|------|------|--------|
-| agently-mail | 1 | 9.6 KB |
-| apple | 4 | 10.7 KB |
-| autonomous-ai-agents | 4 | 72.2 KB |
-| creative | 11 | 120.1 KB |
-| data-science | 1 | 5.4 KB |
-| devops | 1 | 6.8 KB |
-| dogfood | 1 | 6.1 KB |
-| email | 1 | 5.9 KB |
-| gaming | 2 | 15.1 KB |
-| github | 6 | 56.9 KB |
-| mcp | 1 | 12.2 KB |
-| media | 4 | 14.3 KB |
-| mlops | 1 | 3.7 KB |
-| mlops_evaluation | 2 | 23.8 KB |
-| mlops_inference | 4 | 52.1 KB |
-| mlops_models | 2 | 29.1 KB |
-| mlops_research | 1 | 15.0 KB |
-| mlops_training | 3 | 18.9 KB |
-| note-taking | 4 | 21.3 KB |
-| ocr | 2 | 5.8 KB |
-| productivity | 7 | 55.8 KB |
-| red-teaming | 1 | 19.8 KB |
-| research | 10 | 179.3 KB |
-| smart-home | 1 | 2.7 KB |
-| social-media | 1 | 13.3 KB |
-| software-development | 6 | 46.9 KB |
-| superpowers | 14 | 90.2 KB |
-| yuanbao | 1 | 3.7 KB |
-| **合计** | **97** | **916.6 KB** |
-
-## 文件详情
+---
 
 ### agently-mail (1 个)
-
-- agently-mail::agently-mail.md
-
+- agently-mail
 ### apple (4 个)
-
-- apple::apple-notes.md
-- apple::apple-reminders.md
-- apple::findmy.md
-- apple::imessage.md
-
+- apple-notes, apple-reminders, findmy, imessage
 ### autonomous-ai-agents (4 个)
-
-- autonomous-ai-agents::claude-code.md
-- autonomous-ai-agents::codex.md
-- autonomous-ai-agents::hermes-agent.md
-- autonomous-ai-agents::opencode.md
-
+- claude-code, codex, hermes-agent, opencode
 ### creative (11 个)
-
-- creative::architecture-diagram.md
-- creative::ascii-art.md
-- creative::ascii-video.md
-- creative::baoyu-infographic.md
-- creative::creative-ideation.md
-- creative::excalidraw.md
-- creative::manim-video.md
-- creative::p5js.md
-- creative::pixel-art.md
-- creative::popular-web-designs.md
-- creative::songwriting-and-ai-music.md
-
+- architecture-diagram, ascii-art, ascii-video, baoyu-infographic, creative-ideation, excalidraw, manim-video, p5js, pixel-art, popular-web-designs, songwriting-and-ai-music
 ### data-science (1 个)
-
-- data-science::jupyter-live-kernel.md
-
+- jupyter-live-kernel
 ### devops (1 个)
-
-- devops::webhook-subscriptions.md
-
+- webhook-subscriptions
 ### dogfood (1 个)
-
-- dogfood::dogfood.md
-
+- dogfood
 ### email (1 个)
-
-- email::himalaya.md
-
+- himalaya
 ### gaming (2 个)
-
-- gaming::minecraft-modpack-server.md
-- gaming::pokemon-player.md
-
+- minecraft-modpack-server, pokemon-player
 ### github (6 个)
-
-- github::codebase-inspection.md
-- github::github-auth.md
-- github::github-code-review.md
-- github::github-issues.md
-- github::github-pr-workflow.md
-- github::github-repo-management.md
-
+- codebase-inspection, github-auth, github-code-review, github-issues, github-pr-workflow, github-repo-management
 ### mcp (1 个)
-
-- mcp::native-mcp.md
-
+- native-mcp
 ### media (4 个)
-
-- media::gif-search.md
-- media::heartmula.md
-- media::songsee.md
-- media::youtube-content.md
-
+- gif-search, heartmula, songsee, youtube-content
 ### mlops (1 个)
-
-- mlops::huggingface-hub.md
-
+- huggingface-hub
 ### mlops_evaluation (2 个)
-
-- mlops_evaluation::lm-evaluation-harness.md
-- mlops_evaluation::weights-and-biases.md
-
+- lm-evaluation-harness, weights-and-biases
 ### mlops_inference (4 个)
-
-- mlops_inference::llama-cpp.md
-- mlops_inference::obliteratus.md
-- mlops_inference::outlines.md
-- mlops_inference::vllm.md
-
+- llama-cpp, obliteratus, outlines, vllm
 ### mlops_models (2 个)
-
-- mlops_models::audiocraft.md
-- mlops_models::segment-anything.md
-
+- audiocraft, segment-anything
 ### mlops_research (1 个)
-
-- mlops_research::dspy.md
-
+- dspy
 ### mlops_training (3 个)
-
-- mlops_training::axolotl.md
-- mlops_training::trl-fine-tuning.md
-- mlops_training::unsloth.md
-
+- axolotl, trl-fine-tuning, unsloth
 ### note-taking (4 个)
-
-- note-taking::note-restructure.md
-- note-taking::obsidian.md
-- note-taking::obsidian-webdav-jianguoyun.md
-- note-taking::url-to-obsidian-note.md
-
+- note-restructure, obsidian, obsidian-webdav-jianguoyun, url-to-obsidian-note
 ### ocr (2 个)
-
-- ocr::english-pdf-wrong-ocr.md
-- ocr::math-pdf-wrong-ocr.md
-
+- english-pdf-wrong-ocr, math-pdf-wrong-ocr
 ### productivity (7 个)
-
-- productivity::google-workspace.md
-- productivity::linear.md
-- productivity::maps.md
-- productivity::nano-pdf.md
-- productivity::notion.md
-- productivity::ocr-and-documents.md
-- productivity::powerpoint.md
-
+- google-workspace, linear, maps, nano-pdf, notion, ocr-and-documents, powerpoint
 ### red-teaming (1 个)
-
-- red-teaming::godmode.md
-
+- godmode
 ### research (10 个)
-
-- research::arxiv.md
-- research::bing-news-search.md
-- research::blogwatcher.md
-- research::cron-news-report.md
-- research::llm-weekly-digest.md
-- research::llm-wiki.md
-- research::news-gathering-via-browser.md
-- research::polymarket.md
-- research::research-paper-writing.md
-- research::zhihu-article-fetch.md
-
+- arxiv, bing-news-search, blogwatcher, cron-news-report, llm-weekly-digest, llm-wiki, news-gathering-via-browser, polymarket, research-paper-writing, zhihu-article-fetch
 ### smart-home (1 个)
-
-- smart-home::openhue.md
-
+- openhue
 ### social-media (1 个)
-
-- social-media::xurl.md
-
+- xurl
 ### software-development (6 个)
-
-- software-development::plan.md
-- software-development::requesting-code-review.md
-- software-development::subagent-driven-development.md
-- software-development::systematic-debugging.md
-- software-development::test-driven-development.md
-- software-development::writing-plans.md
-
+- plan, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, writing-plans
 ### superpowers (14 个)
-
-- superpowers::brainstorming.md
-- superpowers::dispatching-parallel-agents.md
-- superpowers::executing-plans.md
-- superpowers::finishing-a-development-branch.md
-- superpowers::receiving-code-review.md
-- superpowers::requesting-code-review.md
-- superpowers::subagent-driven-development.md
-- superpowers::systematic-debugging.md
-- superpowers::test-driven-development.md
-- superpowers::using-git-worktrees.md
-- superpowers::using-superpowers.md
-- superpowers::verification-before-completion.md
-- superpowers::writing-plans.md
-- superpowers::writing-skills.md
-
+- brainstorming, dispatching-parallel-agents, executing-plans, finishing-a-development-branch, receiving-code-review, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans, writing-skills
 ### yuanbao (1 个)
-
-- yuanbao::yuanbao.md
+- yuanbao
 
