@@ -1,23 +1,2 @@
-# Cron Jobs Config - Generated: 2026-08-02 06:07:52
-# Total jobs: 3
-
-Job: "上海松江每日天气" (id=3e33eb3dff29)
-  schedule: 0 6 * * *
-  enabled: True  state: scheduled
-  deliver: origin  platform: feishu
-  last_status: ok
-  completed_count: 98
-
-Job: "每日AI科技早报" (id=8f7ff97d834a)
-  schedule: 0 8 * * *
-  enabled: True  state: scheduled
-  deliver: origin  platform: feishu
-  last_status: ok
-  completed_count: 99
-
-Job: "daily-hermes-config-sync" (id=615d91e235a8)
-  schedule: 0 6 * * *
-  enabled: True  state: scheduled
-  deliver: origin  platform: feishu
-  last_status: ok
-  completed_count: 9
+jobs.json
+output

@@ -1,6 +1,3 @@
-# Skills 文件列表 - Generated: 2026-08-02 06:00:00
-# 共 97 个 SKILL.md，按 分类::技能名.md 命名
-
 agently-mail::agently-mail.md
 apple::apple-notes.md
 apple::apple-reminders.md
@@ -38,9 +35,9 @@ media::gif-search.md
 media::heartmula.md
 media::songsee.md
 media::youtube-content.md
-mlops::huggingface-hub.md
 mlops_evaluation::lm-evaluation-harness.md
 mlops_evaluation::weights-and-biases.md
+mlops::huggingface-hub.md
 mlops_inference::llama-cpp.md
 mlops_inference::obliteratus.md
 mlops_inference::outlines.md
@@ -52,8 +49,8 @@ mlops_training::axolotl.md
 mlops_training::trl-fine-tuning.md
 mlops_training::unsloth.md
 note-taking::note-restructure.md
-note-taking::obsidian-webdav-jianguoyun.md
 note-taking::obsidian.md
+note-taking::obsidian-webdav-jianguoyun.md
 note-taking::url-to-obsidian-note.md
 ocr::english-pdf-wrong-ocr.md
 ocr::math-pdf-wrong-ocr.md
