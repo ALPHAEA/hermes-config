@@ -1,4 +1,3 @@
-agently-mail::agently-mail.md
 apple::apple-notes.md
 apple::apple-reminders.md
 apple::findmy.md

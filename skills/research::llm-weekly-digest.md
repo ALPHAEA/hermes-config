@@ -14,13 +14,15 @@ A systematic approach for generating comprehensive AI/LLM industry digests cover
 
 ## Key URLs (updated as of July 2026)
 
-### LMSYS Chatbot Arena (moved from lmarena.ai → arena.ai)
+### LMSYS Chatbot Arena (moved from lmarena.ai → arena.ai, confirmed Aug 2026)
+- **Text arena**: `https://arena.ai/leaderboard/text` — **confirmed WORKING as of Aug 2026**. Navigating `lmarena.ai/leaderboard/text` redirects here, and this page IS the live Elo leaderboard (NOT the AI app builder — that confusion was resolved; arena.ai now hosts both the product AND the leaderboard under `/leaderboard/*`).
 - **Main leaderboard**: `https://arena.ai/leaderboard/` (overview with all categories)
-- **Text arena**: `https://arena.ai/leaderboard/text` (Elo scores, 7M+ votes, 368 models)
 - **Agent arena**: `https://arena.ai/leaderboard/agent`
-- **Data freshness**: Shows "Jun 25, 2026" — typically updated every few days
-- **Breakdown of text categories**: Scroll to the "Categories" filter to switch between Overall, Expert, Math, Coding, Multi-Turn, Creative Writing, etc.
+- **Data freshness**: Shows "Aug 1, 2026" — typically updated every few days
+- **Breakdown of text categories**: In the "Categories(29)" filter sidebar, buttons for 🏆 Overall (default), 💻 Coding, 🧮 Math, ✍️ Creative Writing, 🤓 Expert, etc. Click to switch.
+- **Category click gotcha**: Use `browser_snapshot` to get a fresh element ref, then `browser_click(ref)`. JS `document.querySelectorAll('button')` text-matching (`includes('💻 Coding')`) may FAIL (emoji/whitespace mismatch). Always re-snapshot before each category switch — refs change on navigation.
 - **Model price info**: The table shows `Price $/M` column (input/output per million tokens) and `Context` length
+- **New-🆕 models**: e.g. Qwen3.8-Max debuted at rank ~5 (1496 Elo) — check for "Preliminary" tag (means < threshold votes, rank not fully stable).
 
 ### SWE-bench Verified (coding benchmark)
 - **Main page**: `https://swebench.com/` → click "Verified" button
@@ -153,16 +155,23 @@ Row format:
 ```
 Parsing pattern: `Select {Model} 🆕? {Model} {% Resolved} ${Avg Cost} icon {Date} {Agent Version}`
 
-Extraction JS:
+**✅ MOST RELIABLE extraction (verified Aug 2026)**: `document.querySelectorAll('tr')` / `table tbody tr` may return **EMPTY** on swebench.com (table is rendered via a custom framework, not standard `<table>` markup). Use the fallback that worked:
+```javascript
+(() => { const t = document.body.innerText; const lines = t.split('\n').map(l=>l.trim()).filter(l=>l.length>0); 
+const idx = lines.findIndex(l=>l.includes('% Resolved')); 
+if(idx>=0){ return lines.slice(idx, idx+60).join('\n'); } return 'not found'; })()
+```
+This slices the raw table text starting at the `% Resolved` header row. Parse each chunk as: `{Model}\n{% Resolved}\t${Avg Cost}\t{Date}\t{Agent}` (note the 🆕 appears on its own line). Verify the Date column to judge freshness.
+
+**Alternative table JS** (may work if `<table>` markup present):
 ```javascript
 (() => { const rows = document.querySelectorAll('table tbody tr'); 
   const data = []; 
   rows.forEach((row, i) => { if(i < 30) { 
     const cells = row.querySelectorAll('td'); 
     if(cells.length >= 7) { 
-      const modelName = cells[1]?.querySelector('a')?.textContent?.trim() || cells[1]?.textContent?.trim(); 
       data.push({
-        modelName: modelName.replace(/🆕\s*/, '').trim(),
+        modelName: cells[1]?.textContent?.trim().replace(/🆕\s*/,'').trim(),
         resolved: cells[2]?.textContent?.trim(),
         cost: cells[3]?.textContent?.trim(),
         date: cells[5]?.textContent?.trim(),
@@ -175,6 +184,7 @@ Extraction JS:
 ```
 
 ⚠️ **Always use `index.html`** (the main landing page), NOT `verified.html`. The table is server-rendered on `index.html`. `verified.html` only shows description text.
+⚠️ **Recency check matters**: In Aug 2026 the default `mini-SWE-agent v2` view still showed Feb 2026 dates (5+ months old) — the board had NOT caught up with the newest model releases (no Qwen3.8/GPT-5.6/Claude Opus 5 entries). Always check the Date column and note "榜单近期未更新" if stale. Cross-reference with arena.ai/Artificial Analysis for current frontrunners.
 
 ### From Hacker News (news.ycombinator.com)
 The page uses a clean structure with pairs of `<tr>` rows (title row + metadata row). Extract with:
@@ -266,11 +276,10 @@ The subagents return structured summaries (titles + summaries + URLs). Cross-ref
 ### Pitfall: delegate_task with only `toolsets=["search"]` is unreliable
 Subagents that only have `web_search` (not browser) may exit prematurely after 1-2 calls. Always include `toolsets=["browser"]` for news collection subagents.
 
-### Pitfall: LMSYS domain changes
-- `arena.ai` (as of mid-2026) redirects to `arena.ai` (a different product — AI app builder, not the leaderboard)
-- `lmarena.ai` is the actual Chatbot Arena domain
-- The Hugging Face Space at `huggingface.co/spaces/lmarena-ai/arena-leaderboard` still exists but data is inside an iframe that's hard to scrape
-- **Most reliable approach for leaderboard data**: Artificial Analysis (`artificialanalysis.ai`) and SWE-bench (`swebench.com`) — they both render data in accessible HTML
+### Pitfall: LMSYS domain resolution (confirmed Aug 2026)
+- **`arena.ai` IS the current Chatbot Arena leaderboard domain.** Navigate directly to `https://arena.ai/leaderboard/text` — it returns the live Elo table (verified Aug 2026). `lmarena.ai/leaderboard/text` redirects to it.
+- Early-2026 notes that "arena.ai redirects to an AI app builder" were a transient state; arena.ai now hosts BOTH its AI app builder product (at `/`) AND the leaderboard (under `/leaderboard/*`). Do not confuse them — always include `/leaderboard/` in the URL.
+- **Most robust ranking sources if arena.ai ever fails again**: Artificial Analysis (`artificialanalysis.ai`) and SWE-bench (`swebench.com`) — both render accessible HTML.
 
 ## Pitfalls
 
@@ -293,7 +302,7 @@ When running as a cron job:
 
 ### Other pitfalls
 
-1. **arena.ai ≠ LMSYS Chatbot Arena**: As of mid-2026, `arena.ai` redirects to a different product (AI app builder). The actual Chatbot Arena (LMSYS) lives at `lmarena.ai`. The Hugging Face Space `hf.co/spaces/lmarena-ai/arena-leaderboard` is the authoritative source but data is inside an iframe. **Use Artificial Analysis (`artificialanalysis.ai`) and SWE-bench (`swebench.com`) as primary authoritative ranking sources** since they render accessible HTML tables.
+1. **arena.ai IS the Chatbot Arena (as of Aug 2026)**: `https://arena.ai/leaderboard/text` returns the live Elo leaderboard (dated Aug 1, 2026, 7.5M+ votes, 386 models). `lmarena.ai/leaderboard/*` redirects to it. The earlier "arena.ai = AI app builder" notes reflect a transient mid-2026 state; it now hosts both the product and the leaderboard. Treat Artificial Analysis (`artificialanalysis.ai`) and SWE-bench (`swebench.com`) as strong complementary sources regardless.
 2. **SWE-bench agent selection matters**: The leaderboard defaults to `mini-SWE-agent v2`. To see results with all agents, change the dropdown. The default agent may exclude some model results.
 3. **SWE-bench page gotcha**: Use `index.html` not `verified.html`. The table is only server-rendered on the main `index.html` page. `verified.html` shows only description text.
 4. **delegate_task subagents cannot browse**: Subagents called via `delegate_task` don't have browser access by default. Pass `toolsets=["web"]` for search or use the main session for `browser_navigate`.
@@ -305,4 +314,4 @@ When running as a cron job:
 10. **New cost-efficiency contenders**: As of mid-2026, models like MiniMax M2.5 (high reasoning) achieve 75.80% SWE-bench at only $0.07/task — worth calling out in the 性价比 section as the "best bang for buck" leader.
 12. **Bing News time intervals work**: The `qft=interval%3d%2224%22` param sets past 24 hours. For past 7 days use `%227%22`, for 30 days use `%2230%22`. Bing may show Japanese UI labels but English content still works.
 13. **Bing News limited results per page**: Bing News only shows ~6-10 results per page. Run multiple queries with different keyword combinations for comprehensive coverage rather than trying to paginate.
-14. **When JS extraction returns empty arrays**: If `querySelectorAll('[role="row"]')` returns 0 results on arena.ai, the data is likely rendered in custom WebComponents. Fall back to the broad `querySelectorAll('*')` text-matching approach described above.
+14. **When JS extraction returns empty arrays**: If `querySelectorAll('[role="row"]')` OR broad `querySelectorAll('*')` text-matching return 0 results (seen on `swebench.com` in Aug 2026), fall back to **`document.body.innerText`** and slice lines from the header marker (e.g. split on '\n', find line containing `% Resolved`, slice onward). This raw-text approach is the most robust across React/custom-framework tables. On arena.ai specifically, the `querySelectorAll('*')` + `/±/` heuristic remains the best for Elo rows.
