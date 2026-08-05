@@ -1,2 +1,6 @@
-jobs.json
-output
+total 28
+drwx------  3 agentuser agentuser  4096 Aug  6 06:04 .
+drwx------ 17 agentuser agentuser  4096 Aug  6 06:00 ..
+-rw-------  1 agentuser agentuser 12792 Aug  6 06:04 jobs.json
+drwx------  5 agentuser agentuser  4096 Jul 24 06:10 output
+-rw-rw-r--  1 agentuser agentuser     0 Aug  6 06:00 .tick.lock
