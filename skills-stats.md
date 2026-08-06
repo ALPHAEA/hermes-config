@@ -1,6 +1,6 @@
 # Skills 统计
 
-- 总技能数: 96
+- 总技能数: 97
 - 分类数: 27
 
 | 分类 | 数量 |
@@ -9,7 +9,7 @@
 | autonomous-ai-agents | 4 |
 | creative | 11 |
 | data-science | 1 |
-| devops | 1 |
+| devops | 2 |
 | dogfood | 1 |
 | email | 1 |
 | gaming | 2 |

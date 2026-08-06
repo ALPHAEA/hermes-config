@@ -1,6 +1,6 @@
 # Hermes Agent 配置快照
 
-> 生成时间: 2026-08-06 06:09:46
+> 生成时间: 2026-08-07 06:09:54
 > 包含: 模型配置、工具集、Skills、Memory、Cron 任务
 
 ---
@@ -16,6 +16,8 @@
 - **API:** https://api.minimaxi.com/anthropic (anthropic_messages)
 - **默认模型:** MiniMax-M2.7-highspeed
 - **可用模型:** MiniMax-M2.7, M2.7-highspeed, M2.5, M2.5-highspeed, M2.1, M2.1-highspeed, M2
+
+---
 
 ---
 
@@ -35,6 +37,8 @@
 
 ### 可用个性 (Personalities)
 catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, pirate, shakespeare, surfer, teacher, technical, uwu
+
+---
 
 ---
 
@@ -70,7 +74,9 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 
 ---
 
-## 四、所有已安装 Skills (96 个 SKILL.md)
+---
+
+## 四、所有已安装 Skills (97 个 SKILL.md)
 
 ### apple (4 个)
 - apple-notes, apple-reminders, findmy, imessage
@@ -84,8 +90,8 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 ### data-science (1 个)
 - jupyter-live-kernel
 
-### devops (1 个)
-- webhook-subscriptions
+### devops (2 个)
+- hermes-config-github-sync, webhook-subscriptions
 
 ### dogfood (1 个)
 - dogfood
@@ -161,12 +167,10 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
    - 调度: `0 6 * * *`
    - 状态: ok
    - 交付: origin
-
 2. **每日AI科技早报** (`8f7ff97d834a`)
    - 调度: `0 8 * * *`
    - 状态: ok
    - 交付: origin
-
 3. **daily-hermes-config-sync** (`615d91e235a8`)
    - 调度: `0 6 * * *`
    - 状态: ok
@@ -180,10 +184,12 @@ catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, p
 
 ---
 
+---
+
 ## 七、系统信息
 
 - **Config 文件:** 393 行
-- **Skills 总数:** 96 个 (27 分类)
+- **Skills 总数:** 97 个 (27 分类)
 - **Cron 任务数:** 3 个
 - **内存文件:** MEMORY.md + USER.md
-- **同步日期:** 2026-08-06
+- **同步日期:** 2026-08-07

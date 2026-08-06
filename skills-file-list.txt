@@ -18,6 +18,7 @@ creative::pixel-art.md
 creative::popular-web-designs.md
 creative::songwriting-and-ai-music.md
 data-science::jupyter-live-kernel.md
+devops::hermes-config-github-sync.md
 devops::webhook-subscriptions.md
 dogfood::dogfood.md
 email::himalaya.md

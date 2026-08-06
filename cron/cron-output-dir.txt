@@ -1,6 +1,3 @@
-total 20
-drwx------ 5 agentuser agentuser 4096 Jul 24 06:10 .
-drwx------ 3 agentuser agentuser 4096 Aug  6 06:04 ..
-drwx------ 2 agentuser agentuser 4096 Aug  6 06:04 3e33eb3dff29
-drwx------ 2 agentuser agentuser 4096 Aug  5 06:06 615d91e235a8
-drwx------ 2 agentuser agentuser 4096 Aug  5 08:11 8f7ff97d834a
+3e33eb3dff29
+615d91e235a8
+8f7ff97d834a
