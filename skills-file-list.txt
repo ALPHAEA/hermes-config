@@ -1,97 +1,115 @@
-apple::apple-notes.md
-apple::apple-reminders.md
-apple::findmy.md
-apple::imessage.md
-autonomous-ai-agents::claude-code.md
-autonomous-ai-agents::codex.md
-autonomous-ai-agents::hermes-agent.md
-autonomous-ai-agents::opencode.md
-creative::architecture-diagram.md
-creative::ascii-art.md
-creative::ascii-video.md
-creative::baoyu-infographic.md
-creative::creative-ideation.md
-creative::excalidraw.md
-creative::manim-video.md
-creative::p5js.md
-creative::pixel-art.md
-creative::popular-web-designs.md
-creative::songwriting-and-ai-music.md
-data-science::jupyter-live-kernel.md
-devops::hermes-config-github-sync.md
-devops::webhook-subscriptions.md
-dogfood::dogfood.md
-email::himalaya.md
-gaming::minecraft-modpack-server.md
-gaming::pokemon-player.md
-github::codebase-inspection.md
-github::github-auth.md
-github::github-code-review.md
-github::github-issues.md
-github::github-pr-workflow.md
-github::github-repo-management.md
-mcp::native-mcp.md
-media::gif-search.md
-media::heartmula.md
-media::songsee.md
-media::youtube-content.md
-mlops::huggingface-hub.md
-mlops_evaluation::lm-evaluation-harness.md
-mlops_evaluation::weights-and-biases.md
-mlops_inference::llama-cpp.md
-mlops_inference::obliteratus.md
-mlops_inference::outlines.md
-mlops_inference::vllm.md
-mlops_models::audiocraft.md
-mlops_models::segment-anything.md
-mlops_research::dspy.md
-mlops_training::axolotl.md
-mlops_training::trl-fine-tuning.md
-mlops_training::unsloth.md
-note-taking::note-restructure.md
-note-taking::obsidian-webdav-jianguoyun.md
-note-taking::obsidian.md
-note-taking::url-to-obsidian-note.md
-ocr::english-pdf-wrong-ocr.md
-ocr::math-pdf-wrong-ocr.md
-productivity::google-workspace.md
-productivity::linear.md
-productivity::maps.md
-productivity::nano-pdf.md
-productivity::notion.md
-productivity::ocr-and-documents.md
-productivity::powerpoint.md
-red-teaming::godmode.md
-research::arxiv.md
-research::bing-news-search.md
-research::blogwatcher.md
-research::cron-news-report.md
-research::llm-weekly-digest.md
-research::llm-wiki.md
-research::news-gathering-via-browser.md
-research::polymarket.md
-research::research-paper-writing.md
-research::zhihu-article-fetch.md
-smart-home::openhue.md
-social-media::xurl.md
-software-development::plan.md
-software-development::requesting-code-review.md
-software-development::subagent-driven-development.md
-software-development::systematic-debugging.md
-software-development::test-driven-development.md
-software-development::writing-plans.md
-superpowers::brainstorming.md
-superpowers::dispatching-parallel-agents.md
-superpowers::executing-plans.md
-superpowers::finishing-a-development-branch.md
-superpowers::receiving-code-review.md
-superpowers::requesting-code-review.md
-superpowers::subagent-driven-development.md
-superpowers::systematic-debugging.md
-superpowers::test-driven-development.md
-superpowers::using-git-worktrees.md
-superpowers::using-superpowers.md
-superpowers::verification-before-completion.md
-superpowers::writing-plans.md
-superpowers::writing-skills.md
-yuanbao::yuanbao.md
+[apple] apple::apple-notes.md
+[apple] apple::apple-reminders.md
+[apple] apple::findmy.md
+[apple] apple::imessage.md
+[autonomous-ai-agents] autonomous-ai-agents::claude-code.md
+[autonomous-ai-agents] autonomous-ai-agents::codex.md
+[autonomous-ai-agents] autonomous-ai-agents::hermes-agent.md
+[autonomous-ai-agents] autonomous-ai-agents::opencode.md
+[computer-use] computer-use::computer-use.md
+[creative] creative::architecture-diagram.md
+[creative] creative::ascii-art.md
+[creative] creative::ascii-video.md
+[creative] creative::baoyu-infographic.md
+[creative] creative::claude-design.md
+[creative] creative::comfyui.md
+[creative] creative::creative-ideation.md
+[creative] creative::design-md.md
+[creative] creative::excalidraw.md
+[creative] creative::humanizer.md
+[creative] creative::manim-video.md
+[creative] creative::p5js.md
+[creative] creative::pixel-art.md
+[creative] creative::popular-web-designs.md
+[creative] creative::pretext.md
+[creative] creative::sketch.md
+[creative] creative::songwriting-and-ai-music.md
+[creative] creative::touchdesigner-mcp.md
+[data-science] data-science::jupyter-live-kernel.md
+[devops] devops::hermes-config-github-sync.md
+[devops] devops::webhook-subscriptions.md
+[dogfood] dogfood::dogfood.md
+[email] email::himalaya.md
+[find-skill-skillhub] find-skill-skillhub::find-skill-skillhub.md
+[gaming] gaming::minecraft-modpack-server.md
+[gaming] gaming::pokemon-player.md
+[github] github::codebase-inspection.md
+[github] github::github-auth.md
+[github] github::github-code-review.md
+[github] github::github-issues.md
+[github] github::github-pr-workflow.md
+[github] github::github-repo-management.md
+[hermes-desktop-plugins] hermes-desktop-plugins::hermes-desktop-plugins.md
+[mcp] mcp::native-mcp.md
+[media] media::gif-search.md
+[media] media::heartmula.md
+[media] media::songsee.md
+[media] media::youtube-content.md
+[mlops] mlops::huggingface-hub.md
+[mlops_evaluation] mlops_evaluation::lm-evaluation-harness.md
+[mlops_evaluation] mlops_evaluation::weights-and-biases.md
+[mlops_inference] mlops_inference::llama-cpp.md
+[mlops_inference] mlops_inference::obliteratus.md
+[mlops_inference] mlops_inference::outlines.md
+[mlops_inference] mlops_inference::vllm.md
+[mlops_models] mlops_models::audiocraft.md
+[mlops_models] mlops_models::segment-anything.md
+[mlops_research] mlops_research::dspy.md
+[mlops_training] mlops_training::axolotl.md
+[mlops_training] mlops_training::trl-fine-tuning.md
+[mlops_training] mlops_training::unsloth.md
+[note-taking] note-taking::note-restructure.md
+[note-taking] note-taking::obsidian-webdav-jianguoyun.md
+[note-taking] note-taking::obsidian.md
+[note-taking] note-taking::url-to-obsidian-note.md
+[ocr] ocr::english-pdf-wrong-ocr.md
+[ocr] ocr::math-pdf-wrong-ocr.md
+[productivity] productivity::airtable.md
+[productivity] productivity::google-workspace.md
+[productivity] productivity::linear.md
+[productivity] productivity::maps.md
+[productivity] productivity::nano-pdf.md
+[productivity] productivity::notion.md
+[productivity] productivity::ocr-and-documents.md
+[productivity] productivity::petdex.md
+[productivity] productivity::powerpoint.md
+[productivity] productivity::teams-meeting-pipeline.md
+[red-teaming] red-teaming::godmode.md
+[research] research::arxiv.md
+[research] research::bing-news-search.md
+[research] research::blogwatcher.md
+[research] research::cron-news-report.md
+[research] research::llm-weekly-digest.md
+[research] research::llm-wiki.md
+[research] research::news-gathering-via-browser.md
+[research] research::polymarket.md
+[research] research::research-paper-writing.md
+[research] research::zhihu-article-fetch.md
+[smart-home] smart-home::openhue.md
+[social-media] social-media::xurl.md
+[software-development] software-development::hermes-agent-skill-authoring.md
+[software-development] software-development::node-inspect-debugger.md
+[software-development] software-development::plan.md
+[software-development] software-development::python-debugpy.md
+[software-development] software-development::requesting-code-review.md
+[software-development] software-development::simplify-code.md
+[software-development] software-development::spike.md
+[software-development] software-development::subagent-driven-development.md
+[software-development] software-development::systematic-debugging.md
+[software-development] software-development::test-driven-development.md
+[software-development] software-development::writing-plans.md
+[superpowers] superpowers::brainstorming.md
+[superpowers] superpowers::dispatching-parallel-agents.md
+[superpowers] superpowers::executing-plans.md
+[superpowers] superpowers::finishing-a-development-branch.md
+[superpowers] superpowers::receiving-code-review.md
+[superpowers] superpowers::requesting-code-review.md
+[superpowers] superpowers::subagent-driven-development.md
+[superpowers] superpowers::systematic-debugging.md
+[superpowers] superpowers::test-driven-development.md
+[superpowers] superpowers::using-git-worktrees.md
+[superpowers] superpowers::using-superpowers.md
+[superpowers] superpowers::verification-before-completion.md
+[superpowers] superpowers::writing-plans.md
+[superpowers] superpowers::writing-skills.md
+[yuanbao] yuanbao::yuanbao.md

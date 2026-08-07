@@ -1,23 +1,11 @@
 # Hermes Agent 配置快照
 
-> 生成时间: 2026-08-07 06:09:54
+> 生成时间: 2026-08-07 12:35:20
 > 包含: 模型配置、工具集、Skills、Memory、Cron 任务
 
 ---
 
 ## 一、模型配置
-
-### 主模型 (deepseek)
-- **API:** https://api.deepseek.com/v1 (chat_completions)
-- **默认模型:** deepseek-v4-flash (DeepSeek V4 Flash)
-- **备用模型:** deepseek-v4-pro (DeepSeek V4 Pro)
-
-### 备用 Provider (minimax_coding)
-- **API:** https://api.minimaxi.com/anthropic (anthropic_messages)
-- **默认模型:** MiniMax-M2.7-highspeed
-- **可用模型:** MiniMax-M2.7, M2.7-highspeed, M2.5, M2.5-highspeed, M2.1, M2.1-highspeed, M2
-
----
 
 ---
 
@@ -25,171 +13,129 @@
 
 | 参数 | 值 |
 |------|-----|
-| 最大工具轮数 | 60 |
-| 超时 | 1800s (30min) |
+| 最大工具轮数 | N/A |
+| 超时 | 1800s |
 | 推理力度 | medium |
 | 默认个性 | kawaii |
-| 流式响应 | 开启 |
-| 上下文压缩 | 开启 (阈值0.5, 目标0.2) |
-| 持久容器 | 是 |
-| 会话重置 | 每日 4:00 / 闲置 1440min |
-| Delegation 模型 | 继承主模型 |
-
-### 可用个性 (Personalities)
-catgirl, concise, creative, helpful, hype, kawaii (当前), noir, philosopher, pirate, shakespeare, surfer, teacher, technical, uwu
+| 流式响应 | 关闭 |
+| 上下文压缩 | 关闭 |
+| 持久容器 | 否 |
 
 ---
 
----
+## 三、所有已安装 Skills
 
-## 三、工具集
+- **总技能数:** 115
+- **分类数:** 30
 
-### 各平台可用工具集
-| 平台 | 工具集 |
-|------|--------|
-| CLI | hermes-cli |
-| Discord | hermes-discord |
-| Home Assistant | hermes-homeassistant |
-| QQ Bot | hermes-qqbot |
-| Signal | hermes-signal |
-| Slack | hermes-slack |
-| Telegram | hermes-telegram |
-| WhatsApp | hermes-whatsapp |
-| Yuanbao | hermes-yuanbao |
-
-### 终端环境
-- **后端:** local (本地)
-- **Python:** ~/.hermes/hermes-agent/venv/
-- **镜像:** nikolaik/python-nodejs:python3.11-nodejs20
-- **资源:** 1 CPU / 5GB RAM / 50GB 磁盘
-- **持久容器:** 是
-
-### 辅助服务
-- Vision: auto provider
-- Web Extract: auto provider
-- Session Search: auto provider, max 3 concurrency
-- MCP: auto provider
-- TTS: edge (en-US-AriaNeural) / 备选: elevenlabs, openai, xai, mistral, neutts
-- STT: local (whisper base)
-
----
-
----
-
-## 四、所有已安装 Skills (97 个 SKILL.md)
-
-### apple (4 个)
+### apple (4)
 - apple-notes, apple-reminders, findmy, imessage
 
-### autonomous-ai-agents (4 个)
+### autonomous-ai-agents (4)
 - claude-code, codex, hermes-agent, opencode
 
-### creative (11 个)
-- architecture-diagram, ascii-art, ascii-video, baoyu-infographic, creative-ideation, excalidraw, manim-video, p5js, pixel-art, popular-web-designs, songwriting-and-ai-music
+### computer-use (1)
+- computer-use
 
-### data-science (1 个)
+### creative (18)
+- architecture-diagram, ascii-art, ascii-video, baoyu-infographic, claude-design, comfyui, creative-ideation, design-md, excalidraw, humanizer, manim-video, p5js, pixel-art, popular-web-designs, pretext, sketch, songwriting-and-ai-music, touchdesigner-mcp
+
+### data-science (1)
 - jupyter-live-kernel
 
-### devops (2 个)
+### devops (2)
 - hermes-config-github-sync, webhook-subscriptions
 
-### dogfood (1 个)
+### dogfood (1)
 - dogfood
 
-### email (1 个)
+### email (1)
 - himalaya
 
-### gaming (2 个)
+### find-skill-skillhub (1)
+- find-skill-skillhub
+
+### gaming (2)
 - minecraft-modpack-server, pokemon-player
 
-### github (6 个)
+### github (6)
 - codebase-inspection, github-auth, github-code-review, github-issues, github-pr-workflow, github-repo-management
 
-### mcp (1 个)
+### hermes-desktop-plugins (1)
+- hermes-desktop-plugins
+
+### mcp (1)
 - native-mcp
 
-### media (4 个)
+### media (4)
 - gif-search, heartmula, songsee, youtube-content
 
-### mlops (1 个)
+### mlops (1)
 - huggingface-hub
 
-### mlops_evaluation (2 个)
+### mlops_evaluation (2)
 - lm-evaluation-harness, weights-and-biases
 
-### mlops_inference (4 个)
+### mlops_inference (4)
 - llama-cpp, obliteratus, outlines, vllm
 
-### mlops_models (2 个)
+### mlops_models (2)
 - audiocraft, segment-anything
 
-### mlops_research (1 个)
+### mlops_research (1)
 - dspy
 
-### mlops_training (3 个)
+### mlops_training (3)
 - axolotl, trl-fine-tuning, unsloth
 
-### note-taking (4 个)
-- note-restructure, obsidian, obsidian-webdav-jianguoyun, url-to-obsidian-note
+### note-taking (4)
+- note-restructure, obsidian-webdav-jianguoyun, obsidian, url-to-obsidian-note
 
-### ocr (2 个)
+### ocr (2)
 - english-pdf-wrong-ocr, math-pdf-wrong-ocr
 
-### productivity (7 个)
-- google-workspace, linear, maps, nano-pdf, notion, ocr-and-documents, powerpoint
+### productivity (10)
+- airtable, google-workspace, linear, maps, nano-pdf, notion, ocr-and-documents, petdex, powerpoint, teams-meeting-pipeline
 
-### red-teaming (1 个)
+### red-teaming (1)
 - godmode
 
-### research (10 个)
+### research (10)
 - arxiv, bing-news-search, blogwatcher, cron-news-report, llm-weekly-digest, llm-wiki, news-gathering-via-browser, polymarket, research-paper-writing, zhihu-article-fetch
 
-### smart-home (1 个)
+### smart-home (1)
 - openhue
 
-### social-media (1 个)
+### social-media (1)
 - xurl
 
-### software-development (6 个)
-- plan, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, writing-plans
+### software-development (11)
+- hermes-agent-skill-authoring, node-inspect-debugger, plan, python-debugpy, requesting-code-review, simplify-code, spike, subagent-driven-development, systematic-debugging, test-driven-development, writing-plans
 
-### superpowers (14 个)
+### superpowers (14)
 - brainstorming, dispatching-parallel-agents, executing-plans, finishing-a-development-branch, receiving-code-review, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans, writing-skills
 
-### yuanbao (1 个)
+### yuanbao (1)
 - yuanbao
----
-
-## 五、Cron 定时任务
-
-当前有 3 个活动 cron 任务:
-1. **上海松江每日天气** (`3e33eb3dff29`)
-   - 调度: `0 6 * * *`
-   - 状态: ok
-   - 交付: origin
-2. **每日AI科技早报** (`8f7ff97d834a`)
-   - 调度: `0 8 * * *`
-   - 状态: ok
-   - 交付: origin
-3. **daily-hermes-config-sync** (`615d91e235a8`)
-   - 调度: `0 6 * * *`
-   - 状态: ok
-   - 交付: origin
 
 ---
 
-## 六、平台接入
+## 四、Cron 定时任务
 
-当前已连接平台: **飞书 (Feishu)**
-
+1. **上海松江每日天气**
+   - 调度: `{'kind': 'cron', 'expr': '0 6 * * *', 'display': '0 6 * * *'}`
+   - 状态: unknown
+2. **每日AI科技早报**
+   - 调度: `{'kind': 'cron', 'expr': '0 8 * * *', 'display': '0 8 * * *'}`
+   - 状态: unknown
+3. **daily-hermes-config-sync**
+   - 调度: `{'kind': 'cron', 'expr': '0 6 * * *', 'display': '0 6 * * *'}`
+   - 状态: unknown
 ---
 
----
+## 五、系统信息
 
-## 七、系统信息
-
-- **Config 文件:** 393 行
-- **Skills 总数:** 97 个 (27 分类)
-- **Cron 任务数:** 3 个
-- **内存文件:** MEMORY.md + USER.md
+- **Config 文件:** 365 行
+- **Skills 总数:** 115 个 (30 分类)
+- **Cron 任务数:** 0 个
 - **同步日期:** 2026-08-07

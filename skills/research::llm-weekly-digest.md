@@ -113,6 +113,16 @@ The leaderboard data is rendered with **custom React/WebComponent elements** —
 
 **Primary extraction method**: Use `browser_snapshot(full=true)` and read the text from the snapshot. The table data appears as accessible `row` elements with cell contents concatenated (e.g., `"1 1 6 Anthropic claude-fable-5 1509 ±9 4,299 $10 / $50 1M"`).
 
+**✅ MOST RELIABLE extraction (verified Aug 2026)**: Use `document.body.innerText` sliced from an anchor model name. **The `querySelectorAll('*')` + `/±/` regex heuristic below FAILED on arena.ai in Aug 2026 (returned empty)** — use this innerText approach instead:
+```javascript
+(() => { const t = document.body.innerText; const lines = t.split('\n').map(l=>l.trim()).filter(l=>l.length>0); 
+const idx = lines.findIndex(l=>l.includes('claude-fable-5')); 
+if(idx>=0){ return lines.slice(idx, idx+75).join('\n'); } return 'not found'; })()
+```
+The `#1` model (currently claude-fable-5) is the most reliable anchor. Each row renders as separate lines: `{model-name}\n{org} · {license}\n{score}\n±{CI}\n{votes}\t{price-in}/{price-out}\t{context}\n{rank}\n{spread}\n{rank-spread}`. To get the next batch of rows, slice `idx+25` etc. (each model ≈ 9-14 lines). Anchor on whichever model you already know is #1 from the snapshot. For AGENT arena, anchor on the current #1 (e.g. 'Claude Opus 5 (High)') and slice similarly — each agent row ≈ 15 lines (rank, spread, model, org, then 6 metric pairs of value+±CI, then sessions).
+
+**Pitfall**: arena.ai and Agent Arena render only ~20-40 rows into the DOM (virtualized list). Repeated innerText extraction from the same page will NOT reveal deeper ranks. If you need deeper data, either use the "License Type: Open Source" / search filters to reorder, or accept the top ~30 as sufficient for a digest.
+
 **Fallback JS extraction** (when snapshot is truncated): Use `querySelectorAll('*')` with text-matching heuristics:
 ```javascript
 (() => { const all = document.querySelectorAll('*'); const texts = []; 
@@ -216,7 +226,9 @@ Filtering: prioritize stories with 100+ points for "big news", 50+ for notable i
 The news page has a featured banner article followed by a reverse-chronological list. The featured article's linked heading + paragraph summary gives you the key announcement. Date stamps are in `<time>` elements.
 
 ### From arena.ai agent arena (arena.ai/leaderboard/agent)
-The Agent Arena uses a different table format with 8+ metric columns. Extract similarly with broad DOM traversal:
+The Agent Arena uses a different table format with 8+ metric columns. **VERIFIED Aug 2026**: the most reliable extraction is `document.body.innerText` anchored on the #1 model, NOT the regex below (which may return empty). Top of the Aug 6, 2026 board: 1️⃣ Claude Opus 5 (High) +11.99%, 2️⃣ Claude Fable 5 (High) +11.66%, 3️⃣ Claude Opus 5 (Max) +11.19%, 4️⃣ GPT 5.6 Sol (xHigh) +10.28%, 5️⃣ Kimi K3 (Max) +10.08%, 6️⃣ Claude Opus 4.8 (Thinking), 7️⃣ GPT 5.5 (xHigh), 8️⃣ Claude Opus 4.7 (Thinking), 9️⃣ Claude Sonnet 5 (High). Heading shows date stamp (e.g. "Aug 6, 2026") and session count. Anthropic dominated the top of the board — useful trending signal for the report.
+
+Broad DOM traversal as lower-priority fallback:
 ```javascript
 (() => { const all = document.querySelectorAll('*'); const texts = []; 
 all.forEach(el => { const t = el.textContent?.trim(); 

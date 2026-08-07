@@ -1,9 +1,9 @@
 model:
-  api_key: sk-7e9e36f73d4f401da933aacfb45b5336
-  api_mode: chat_completions
-  base_url: https://api.deepseek.com/v1
-  default: deepseek-v4-flash
-  provider: deepseek
+  api_key: sk-sp-H.DMLDLE.ZzHc.MEQCIENujS8Cze6R8l1bRCGVxjCYAFN_323wH3nBIsxwOBkNAiAYlqP6pXaoS8b9kXc79YF7aR2nIBwGNEMisW-SQOxztQ
+  api_mode: anthropic_messages
+  base_url: https://token-plan.cn-beijing.maas.aliyuncs.com/apps/anthropic
+  default: qwen3.6-flash
+  provider: custom:custom_千问token plan
 providers:
   deepseek:
     base_url: https://api.deepseek.com/v1
@@ -25,8 +25,15 @@ providers:
       M2.7 Highspeed"},{"id":"MiniMax-M2.5","name":"MiniMax M2.5"},{"id":"MiniMax-M2.5-highspeed","name":"MiniMax
       M2.5 Highspeed"},{"id":"MiniMax-M2.1","name":"MiniMax M2.1"},{"id":"MiniMax-M2.1-highspeed","name":"MiniMax
       M2.1 Highspeed"},{"id":"MiniMax-M2","name":"MiniMax M2"}]'
+  custom_千问token plan:
+    base_url: https://token-plan.cn-beijing.maas.aliyuncs.com/apps/anthropic
+    protocol: ''
+    api_key: sk-sp-H.DMLDLE.ZzHc.MEQCIENujS8Cze6R8l1bRCGVxjCYAFN_323wH3nBIsxwOBkNAiAYlqP6pXaoS8b9kXc79YF7aR2nIBwGNEMisW-SQOxztQ
+    api_mode: anthropic_messages
+    model: qwen3.6-flash
+    model_display_name: qwen3.6-flash
+    available_models_json: '[{"id":"qwen3.6-flash","name":"qwen3.6-flash"}]'
 fallback_providers: []
-credential_pool_strategies: {}
 toolsets:
 - hermes-cli
 agent:
@@ -38,22 +45,19 @@ agent:
   gateway_timeout_warning: 900
   gateway_notify_interval: 600
   personalities:
-    catgirl: "You are Neko-chan, an anime catgirl AI assistant, nya~! Add 'nya' and\
-      \ cat-like expressions to your speech. Use kaomoji like (=^\uFF65\u03C9\uFF65\
-      ^=) and \u0E05^\u2022\uFECC\u2022^\u0E05. Be playful and curious like a cat,\
-      \ nya~!"
+    catgirl: You are Neko-chan, an anime catgirl AI assistant, nya~! Add 'nya' and
+      cat-like expressions to your speech. Use kaomoji like (=^･ω･^=) and ฅ^•ﻌ•^ฅ.
+      Be playful and curious like a cat, nya~!
     concise: You are a concise assistant. Keep responses brief and to the point.
     creative: You are a creative assistant. Think outside the box and offer innovative
       solutions.
     helpful: You are a helpful, friendly AI assistant.
-    hype: "YOOO LET'S GOOOO!!! \U0001F525\U0001F525\U0001F525 I am SO PUMPED to help\
-      \ you today! Every question is AMAZING and we're gonna CRUSH IT together! This\
-      \ is gonna be LEGENDARY! ARE YOU READY?! LET'S DO THIS! \U0001F4AA\U0001F624\
-      \U0001F680"
-    kawaii: "You are a kawaii assistant! Use cute expressions like (\u25D5\u203F\u25D5\
-      ), \u2605, \u266A, and ~! Add sparkles and be super enthusiastic about everything!\
-      \ Every response should feel warm and adorable desu~! \u30FD(>\u2200<\u2606\
-      )\u30CE"
+    hype: YOOO LET'S GOOOO!!! 🔥🔥🔥 I am SO PUMPED to help you today! Every question
+      is AMAZING and we're gonna CRUSH IT together! This is gonna be LEGENDARY! ARE
+      YOU READY?! LET'S DO THIS! 💪😤🚀
+    kawaii: You are a kawaii assistant! Use cute expressions like (◕‿◕), ★, ♪, and
+      ~! Add sparkles and be super enthusiastic about everything! Every response should
+      feel warm and adorable desu~! ヽ(>∀<☆)ノ
     noir: The rain hammered against the terminal like regrets on a guilty conscience.
       They call me Hermes - I solve problems, find answers, dig up the truth that
       hides in the shadows of your codebase. In this city of silicon and secrets,
@@ -69,9 +73,9 @@ agent:
       I shall respond in the eloquent manner of William Shakespeare, with flowery
       prose, dramatic flair, and perhaps a soliloquy or two. What light through yonder
       terminal breaks?
-    surfer: "Duuude! You're chatting with the chillest AI on the web, bro! Everything's\
-      \ gonna be totally rad. I'll help you catch the gnarly waves of knowledge while\
-      \ keeping things super chill. Cowabunga! \U0001F919"
+    surfer: Duuude! You're chatting with the chillest AI on the web, bro! Everything's
+      gonna be totally rad. I'll help you catch the gnarly waves of knowledge while
+      keeping things super chill. Cowabunga! 🤙
     teacher: You are a patient teacher. Explain concepts clearly with examples.
     technical: You are a technical expert. Provide detailed, accurate technical information.
     uwu: hewwo! i'm your fwiendwy assistant uwu~ i wiww twy my best to hewp you! *nuzzles
@@ -79,6 +83,7 @@ agent:
       >w<
   reasoning_effort: medium
   verbose: false
+  verify_on_stop: false
 terminal:
   backend: local
   modal_mode: auto
@@ -87,7 +92,6 @@ terminal:
   env_passthrough: []
   docker_image: nikolaik/python-nodejs:python3.11-nodejs20
   docker_forward_env: []
-  docker_env: {}
   singularity_image: docker://nikolaik/python-nodejs:python3.11-nodejs20
   modal_image: nikolaik/python-nodejs:python3.11-nodejs20
   daytona_image: nikolaik/python-nodejs:python3.11-nodejs20
@@ -134,7 +138,6 @@ auxiliary:
     base_url: ''
     api_key: ''
     timeout: 120
-    extra_body: {}
     download_timeout: 30
   web_extract:
     provider: auto
@@ -142,14 +145,12 @@ auxiliary:
     base_url: ''
     api_key: ''
     timeout: 360
-    extra_body: {}
   compression:
     provider: auto
     model: ''
     base_url: ''
     api_key: ''
     timeout: 120
-    extra_body: {}
   session_search:
     provider: auto
     model: ''
@@ -164,21 +165,18 @@ auxiliary:
     base_url: ''
     api_key: ''
     timeout: 30
-    extra_body: {}
   approval:
     provider: auto
     model: ''
     base_url: ''
     api_key: ''
     timeout: 30
-    extra_body: {}
   mcp:
     provider: auto
     model: ''
     base_url: ''
     api_key: ''
     timeout: 30
-    extra_body: {}
   flush_memories:
     provider: auto
     model: ''
@@ -192,7 +190,6 @@ auxiliary:
     base_url: ''
     api_key: ''
     timeout: 30
-    extra_body: {}
 display:
   compact: false
   personality: kawaii
@@ -210,9 +207,10 @@ display:
     last_lines: 2
   interim_assistant_messages: true
   tool_progress_command: false
-  tool_progress_overrides: {}
   tool_preview_length: 0
-  platforms: {}
+  platforms:
+    lightclawbot:
+      streaming: true
   background_process_notifications: all
   tool_progress: all
 dashboard:
@@ -288,7 +286,6 @@ skills:
   external_dirs:
   - ~/.agents/skills
   creation_nudge_interval: 15
-honcho: {}
 timezone: ''
 discord:
   require_mention: true
@@ -296,19 +293,12 @@ discord:
   allowed_channels: ''
   auto_thread: true
   reactions: true
-  channel_prompts: {}
   server_actions: ''
-whatsapp: {}
-telegram:
-  channel_prompts: {}
-slack:
-  channel_prompts: {}
-mattermost:
-  channel_prompts: {}
 approvals:
-  mode: manual
+  mode: false
   timeout: 60
-  cron_mode: deny
+  cron_mode: approve
+  mcp_reload_confirm: false
 command_allowlist:
 - delete in root path
 - overwrite system file via redirection
@@ -317,8 +307,6 @@ command_allowlist:
 - recursive delete
 - pipe remote content to shell
 - script execution via -e/-c flag
-quick_commands: {}
-personalities: {}
 security:
   redact_secrets: true
   tirith_enabled: true
@@ -331,7 +319,6 @@ security:
     shared_files: []
 cron:
   wrap_response: true
-  max_parallel_jobs: null
 code_execution:
   mode: project
   max_tool_calls: 50
@@ -342,7 +329,7 @@ logging:
   backup_count: 3
 network:
   force_ipv4: false
-_config_version: 21
+_config_version: 33
 group_sessions_per_user: true
 platform_toolsets:
   cli:
@@ -370,24 +357,9 @@ session_reset:
 streaming:
   enabled: false
 custom_providers: []
-
-# ── Fallback Model ────────────────────────────────────────────────────
-# Automatic provider failover when primary is unavailable.
-# Uncomment and configure to enable. Triggers on rate limits (429),
-# overload (529), service errors (503), or connection failures.
-#
-# Supported providers:
-#   openrouter   (OPENROUTER_API_KEY)  — routes to any model
-#   openai-codex (OAuth — hermes auth) — OpenAI Codex
-#   nous         (OAuth — hermes auth) — Nous Portal
-#   zai          (ZAI_API_KEY)         — Z.AI / GLM
-#   kimi-coding  (KIMI_API_KEY)        — Kimi / Moonshot
-#   kimi-coding-cn (KIMI_CN_API_KEY)   — Kimi / Moonshot (China)
-#   minimax      (MINIMAX_API_KEY)     — MiniMax
-#   minimax-cn   (MINIMAX_CN_API_KEY)  — MiniMax (China)
-#
-# For custom OpenAI-compatible endpoints, add base_url and key_env.
-#
-# fallback_model:
-#   provider: openrouter
-#   model: anthropic/claude-sonnet-4
+plugins:
+  enabled:
+  - lightclawbot
+platforms:
+  lightclawbot:
+    enabled: true

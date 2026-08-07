@@ -50,6 +50,7 @@ Repo in this setup: `https://github.com/ALPHAEA/hermes-config.git` (remote URL a
    ## 用户画像
    <USER.md content>
    ```
+   When doing this inside `execute_code`, read the source files with plain Python `open()`/`read()` — **NOT** `hermes_tools.read_file` (see Pitfall 7).
 
 5. **Cron**: see Pitfall 1. Copy `jobs.json` → `cron/cron-jobs.json`; `ls` the cron and output dirs into `cron-config.txt` / `cron/cron-output-dir.txt`.
 
@@ -82,4 +83,6 @@ In the skills dir, each SKILL.md lives under `<dirs>/<skillname>/SKILL.md`. Cate
 
 5. **Memory separator `§`.** MEMORY.md entries are separated by literal `§` lines; preserve them as-is when wrapping into `memory.md` (don't strip or convert).
 
-6. **Snapshot template** is largely static (models, personalities, toolset tables). Only the timestamps, skills section, cron section, and the totals in the system-info section change daily — rebuild those programmatically from `jobs.json` + walked skills, keeping the static blocks identical.
+6. **Snapshot template** is largely static (models, personalities, toolset tables). Only the timestamps, skills section, cron section, and the totals in the system-info section change daily — rebuild those programmatically from `jobs.json` + walked skills, keeping the static blocks identical. If reusing the previous snapshot as a template, read it with plain Python `open()` too (same line-number-prefix issue as Pitfall 7) — section-extraction on `read_file` output fails because every line is polluted with `N|` prefixes.
+
+7. **`hermes_tools.read_file` adds line-number prefixes.** Inside `execute_code`, `read_file(path)` returns content with `     1|`-style prefixes prepended to every line (e.g. `     1|当前模型...`). This corrupts any file you then re-emit, especially `memory.md` and the snapshot. When copying file content verbatim (MEMORY.md, USER.md, jobs.json, previous snapshot), always read with plain Python `read()`. Verification tip: a prefixed `memory.md` shows up as ` M` in git status; after rewriting with raw content it correctly shows *no diff* when memory is unchanged.
