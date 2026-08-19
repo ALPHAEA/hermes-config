@@ -1,6 +1,6 @@
 # Hermes Agent 配置快照
 
-> 生成时间: 2026-08-07 12:35:20
+> 生成时间: 2026-08-20 06:01:22
 > 包含: 模型配置、工具集、Skills、Memory、Cron 任务
 
 ---
@@ -25,8 +25,8 @@
 
 ## 三、所有已安装 Skills
 
-- **总技能数:** 115
-- **分类数:** 30
+- **总技能数:** 121
+- **分类数:** 36
 
 ### apple (4)
 - apple-notes, apple-reminders, findmy, imessage
@@ -64,6 +64,9 @@
 ### hermes-desktop-plugins (1)
 - hermes-desktop-plugins
 
+### humanizer-zh-pro (1)
+- humanizer-zh-pro
+
 ### mcp (1)
 - native-mcp
 
@@ -89,7 +92,7 @@
 - axolotl, trl-fine-tuning, unsloth
 
 ### note-taking (4)
-- note-restructure, obsidian-webdav-jianguoyun, obsidian, url-to-obsidian-note
+- note-restructure, obsidian, obsidian-webdav-jianguoyun, url-to-obsidian-note
 
 ### ocr (2)
 - english-pdf-wrong-ocr, math-pdf-wrong-ocr
@@ -103,6 +106,9 @@
 ### research (10)
 - arxiv, bing-news-search, blogwatcher, cron-news-report, llm-weekly-digest, llm-wiki, news-gathering-via-browser, polymarket, research-paper-writing, zhihu-article-fetch
 
+### self-improving-agent-pro-plus-new (1)
+- self-improving-agent-pro-plus-new
+
 ### smart-home (1)
 - openhue
 
@@ -114,6 +120,18 @@
 
 ### superpowers (14)
 - brainstorming, dispatching-parallel-agents, executing-plans, finishing-a-development-branch, receiving-code-review, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans, writing-skills
+
+### superpowers-skill (1)
+- superpowers-skill
+
+### ui-ux-pro-max (1)
+- ui-ux-pro-max
+
+### weather-style (1)
+- weather-style
+
+### web-composite-search (1)
+- web-composite-search
 
 ### yuanbao (1)
 - yuanbao
@@ -135,7 +153,7 @@
 
 ## 五、系统信息
 
-- **Config 文件:** 365 行
-- **Skills 总数:** 115 个 (30 分类)
-- **Cron 任务数:** 0 个
-- **同步日期:** 2026-08-07
+- **Config 文件:** 369 行
+- **Skills 总数:** 121 个 (36 分类)
+- **Cron 任务数:** 3 个
+- **同步日期:** 2026-08-20

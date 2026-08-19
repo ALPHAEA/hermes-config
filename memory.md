@@ -1,12 +1,6 @@
-# Memory & User Profile
-
-> 生成时间: 2026-08-07 12:35:30
-> 来源: ~/.hermes/memories/MEMORY.md + USER.md
-
----
+# Memory
 
 ## Agent 记忆
-
 当前使用的模型是 DeepSeek V4 Flash，不支持 vision_analyze 视觉分析（返回 unknown variant `image_url` 错误）。需要从图片提取文字时，可用 EasyOCR（已安装在 hermes venv 中，但首次加载 PyTorch 很慢约30-60s），或委托 subagent 来处理耗时的 OCR 任务。fpdf2 已安装可用于生成含中文字体的 PDF，字体路径：/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc。
 §
 当用户发送扫描的 PDF 或截图时需要 OCR 提取中文文字时：先用 pymupdf 检查页面是否有文字（page.get_text()），如果是扫描件则用 EasyOCR（已安装在 hermes venv 中），首次加载慢约30s是因为 PyTorch 加载。PDF 生成用 fpdf2 + wqy-zenhei.ttc 字体。当前使用的 DeepSeek V4 Flash 模型不支持 vision_analyze 视觉分析（返回 unknown variant `image_url` 错误）。
@@ -20,11 +14,9 @@ Agent Mail (agently-cli) 已安装配置。用户邮箱：alphae@agent.qq.com，
 - _assets 附件：必须放在 vault 顶层 _assets/ 目录下（切勿放入 NOTE/<子目录>/_assets/），目录名用 8 位 MD5（对笔记原名取 MD5 前8位），文件用 Unix 时间戳秒级命名。笔记内用 [[_assets/<md5>/<file>]] 引用（从 vault 根解析，子目录笔记也能指向顶层）
 §
 模型 qwen3.6-flash（custom provider）**不支持多模态**：vision_analyze 工具对本地文件和外部URL都返回 404。需要视觉分析时只能靠底层Python像素分析，无法真正识别图片内容。如果用户需要多模态能力，应切换到 Claude Sonnet/GPT-4o/Qwen-VL 等支持视觉的模型。
-
----
-
+§
+用户对每日早报（cron job 8f7ff97d834a，每天8:00）的格式要求：新闻每条必须带来源+时间+具体数字，表格呈现榜单，国产模型标🇨🇳，结尾2-3条核心结论，一屏可读。曾因输出10段重复废话被用户批评，严禁重复内容。早报包含两板块：AI行业新闻(Google News抓取) + 全球大模型对比(LMArena实时榜单)。
 ## 用户画像
-
 用户偏好使用中文交流
 §
 用户名叫 Alpha，工作涉及产品、设计、写代码。语言风格要求简单直接。需求要先做计划，确认后再动手。

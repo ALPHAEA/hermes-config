@@ -37,6 +37,12 @@ As of mid-2026, `arena.ai` redirects to an AI app builder product (NOT the LMSYS
 
 **Practical approach**: Use `delegate_task` with `toolsets=["browser"]` to have subagents scrape arena.ai/swE-bench data, and verify key findings (top 3-5 model names) in the main session.
 
+### ✅ Verified 2026-08: Direct snapshot works for LMArena (simpler than subagents)
+`browser_navigate("https://lmarena.ai/leaderboard")` returns an accessibility snapshot containing ALL arena sections (Agent, Text, WebDev, Vision, Document, Text-to-Image, Image Edit, Image-to-WebDev, Search, Text-to-Video, Image-to-Video, Video Edit) with ranks, model names, Elo scores, and confidence intervals — directly in the snapshot text. No subagent needed.
+- Snapshot is large (~300KB, truncated); use the returned file path + `read_file(offset=...)` to page through remaining sections.
+- Data format in snapshot: `StaticText "1" ... StaticText "claude-fable-5" ... StaticText "1506" StaticText "±5"`. Agent arena uses % net-improvement instead of Elo.
+- Country attribution: model families map to vendors — claude=Anthropic, gpt/gemini/grok=US, qwen/kimi/deepseek/glm/ernie/wan=China, seedance/seedream=Bytedance, minimax/kling=China. Mark Chinese models with 🇨🇳 per user preference.
+
 ### Reliable Sources (verified working)
 
 | Source | URL | Method | Notes |

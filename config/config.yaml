@@ -2,7 +2,7 @@ model:
   api_key: sk-sp-H.DMLDLE.ZzHc.MEQCIENujS8Cze6R8l1bRCGVxjCYAFN_323wH3nBIsxwOBkNAiAYlqP6pXaoS8b9kXc79YF7aR2nIBwGNEMisW-SQOxztQ
   api_mode: anthropic_messages
   base_url: https://token-plan.cn-beijing.maas.aliyuncs.com/apps/anthropic
-  default: qwen3.6-flash
+  default: qwen3.8-max
   provider: custom:custom_千问token plan
 providers:
   deepseek:
@@ -30,12 +30,12 @@ providers:
     protocol: ''
     api_key: sk-sp-H.DMLDLE.ZzHc.MEQCIENujS8Cze6R8l1bRCGVxjCYAFN_323wH3nBIsxwOBkNAiAYlqP6pXaoS8b9kXc79YF7aR2nIBwGNEMisW-SQOxztQ
     api_mode: anthropic_messages
-    model: qwen3.6-flash
-    model_display_name: qwen3.6-flash
-    available_models_json: '[{"id":"qwen3.6-flash","name":"qwen3.6-flash"}]'
+    model: qwen3.8-max
+    model_display_name: qwen3.8-max
+    available_models_json: '[{"id":"qwen3.8-max","name":"qwen3.8-max"}]'
 fallback_providers: []
 toolsets:
-- hermes-cli
+  - hermes-cli
 agent:
   max_turns: 60
   gateway_timeout: 1800
@@ -278,13 +278,14 @@ delegation:
   max_iterations: 50
   reasoning_effort: ''
   default_toolsets:
-  - terminal
-  - file
-  - web
+    - terminal
+    - file
+    - web
 prefill_messages_file: ''
 skills:
   external_dirs:
-  - ~/.agents/skills
+    - ~/.agents/skills
+    - /home/agentuser/.hermes/skills
   creation_nudge_interval: 15
 timezone: ''
 discord:
@@ -300,13 +301,13 @@ approvals:
   cron_mode: approve
   mcp_reload_confirm: false
 command_allowlist:
-- delete in root path
-- overwrite system file via redirection
-- shell command via -c/-lc flag
-- script execution via heredoc
-- recursive delete
-- pipe remote content to shell
-- script execution via -e/-c flag
+  - delete in root path
+  - overwrite system file via redirection
+  - shell command via -c/-lc flag
+  - script execution via heredoc
+  - recursive delete
+  - pipe remote content to shell
+  - script execution via -e/-c flag
 security:
   redact_secrets: true
   tirith_enabled: true
@@ -333,23 +334,23 @@ _config_version: 33
 group_sessions_per_user: true
 platform_toolsets:
   cli:
-  - hermes-cli
+    - hermes-cli
   discord:
-  - hermes-discord
+    - hermes-discord
   homeassistant:
-  - hermes-homeassistant
+    - hermes-homeassistant
   qqbot:
-  - hermes-qqbot
+    - hermes-qqbot
   signal:
-  - hermes-signal
+    - hermes-signal
   slack:
-  - hermes-slack
+    - hermes-slack
   telegram:
-  - hermes-telegram
+    - hermes-telegram
   whatsapp:
-  - hermes-whatsapp
+    - hermes-whatsapp
   yuanbao:
-  - hermes-yuanbao
+    - hermes-yuanbao
 session_reset:
   at_hour: 4
   idle_minutes: 1440
@@ -359,7 +360,10 @@ streaming:
 custom_providers: []
 plugins:
   enabled:
-  - lightclawbot
+    - lightclawbot
 platforms:
   lightclawbot:
     enabled: true
+onboarding:
+  seen:
+    busy_input_prompt: true
