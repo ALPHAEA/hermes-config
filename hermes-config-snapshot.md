@@ -25,8 +25,11 @@
 
 ## 三、所有已安装 Skills
 
-- **总技能数:** 121
-- **分类数:** 36
+- **总技能数:** 122
+- **分类数:** 37
+
+### agently-mail (1)
+- agently-mail
 
 ### apple (4)
 - apple-notes, apple-reminders, findmy, imessage
@@ -142,18 +145,18 @@
 
 1. **上海松江每日天气**
    - 调度: `{'kind': 'cron', 'expr': '0 6 * * *', 'display': '0 6 * * *'}`
-   - 状态: unknown
+   - 状态: ok
 2. **每日AI科技早报**
    - 调度: `{'kind': 'cron', 'expr': '0 8 * * *', 'display': '0 8 * * *'}`
-   - 状态: unknown
+   - 状态: ok
 3. **daily-hermes-config-sync**
    - 调度: `{'kind': 'cron', 'expr': '0 6 * * *', 'display': '0 6 * * *'}`
-   - 状态: unknown
+   - 状态: ok
 ---
 
 ## 五、系统信息
 
 - **Config 文件:** 369 行
-- **Skills 总数:** 121 个 (36 分类)
+- **Skills 总数:** 122 个 (37 分类)
 - **Cron 任务数:** 3 个
-- **同步日期:** 2026-08-20
+- **同步日期:** 2026-08-21
