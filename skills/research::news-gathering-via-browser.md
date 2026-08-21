@@ -16,7 +16,9 @@ Use this approach when you need to gather current news across multiple topics bu
 
 ### 1. Navigate to Google News with a Specific Search Query
 
-**CRITICAL: Use `when` parameter for freshness.** Append `&when=1d` (past 24h), `&when=3d`, or `&when=7d` (past week) to filter by recency. Without this parameter, Google News returns content from weeks or months ago regardless of your query keywords.
+**CRITICAL: Use `when` parameter for freshness.** Append `&when=1d` (past 24h), `&when=3d`, or `&when=7d` (past week) to filter by recency. Without this parameter, Google News returns content from weeks or months ago regardless of your query keywords. Alternatively embed it in the query itself — `q=(OpenAI+OR+Anthropic)+AI+when:1d` works identically and avoids URL-parameter fiddling (verified 2026-08).
+
+**Query quality tip (verified 2026-08):** Generic queries like `AI artificial intelligence` return mostly low-value local/school/education stories. Anchor on company names for industry-grade results: `(OpenAI OR Anthropic OR Google OR Nvidia OR Meta OR Microsoft) AI when:1d` produced a dense, high-signal front page in one shot. For China coverage, add a separate `China AI model chip when:1d` style query.
 
 ```diff
 - https://news.google.com/search?q=OpenAI+Claude+LLM&hl=en-US&gl=US&ceid=US%3Aen
