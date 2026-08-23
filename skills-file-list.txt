@@ -47,9 +47,9 @@ media::gif-search.md
 media::heartmula.md
 media::songsee.md
 media::youtube-content.md
+mlops::huggingface-hub.md
 mlops_evaluation::lm-evaluation-harness.md
 mlops_evaluation::weights-and-biases.md
-mlops::huggingface-hub.md
 mlops_inference::llama-cpp.md
 mlops_inference::obliteratus.md
 mlops_inference::outlines.md
@@ -107,7 +107,6 @@ superpowers::executing-plans.md
 superpowers::finishing-a-development-branch.md
 superpowers::receiving-code-review.md
 superpowers::requesting-code-review.md
-superpowers-skill::superpowers-skill.md
 superpowers::subagent-driven-development.md
 superpowers::systematic-debugging.md
 superpowers::test-driven-development.md
@@ -116,6 +115,7 @@ superpowers::using-superpowers.md
 superpowers::verification-before-completion.md
 superpowers::writing-plans.md
 superpowers::writing-skills.md
+superpowers-skill::superpowers-skill.md
 ui-ux-pro-max::ui-ux-pro-max.md
 weather-style::weather-style.md
 web-composite-search::web-composite-search.md
