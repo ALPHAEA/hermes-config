@@ -162,7 +162,7 @@ The final response is AUTO-DELIVERED — no need to call `send_message`. Just ou
 ### 🔴 DuckDuckGo HTML endpoint is useless for search
 `curl -s "https://html.duckduckgo.com/html/?q=..."` returns only the static HTML shell without search results. Do not attempt. Use Bing News, Hacker News, or browser-based scraping of dedicated news sites instead.
 
-### 🔴 arena.ai → lmarena.ai redirect issue
-`arena.ai` redirects to an AI app builder, NOT the LMSYS Chatbot Arena. Use `lmarena.ai` or the Hugging Face Space directly. The Hugging Face Space (`huggingface.co/spaces/lmarena-ai/arena-leaderboard`) loads a Gradio app that can time out — fall back to subagent browser scraping or snapshot-based extraction.
+### ✅ arena.ai redirect resolved (verified 2026-09-02)
+`arena.ai` previously redirected to an AI app builder — that is now obsolete. As of 2026-09-02, `browser_navigate("https://lmarena.ai/leaderboard")` redirects to `https://arena.ai/leaderboard`, which serves the REAL Arena leaderboard. The Overview page snapshot contains all arena sections directly (Agent/Text/WebDev/Vision/Document/Text-to-Image/Image Edit/Search/Text-to-Video/Image-to-Video/Video Edit) with ranks, model names, scores and CIs — no subagent needed. Snapshot (~300KB) truncates to a file; page through remaining sections with `read_file(offset=...)` and `search_files` on the snapshot file (search for section headings like "Text-to-Video"). Google News `/read/` links resolve via JS redirect — after `browser_navigate`, read `window.location.href` via `browser_console` to get the real article URL.
 - ✅ Always note the data timestamp from the source page
 - ✅ For leaderboards, include total votes and model count
