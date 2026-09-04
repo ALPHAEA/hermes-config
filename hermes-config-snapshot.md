@@ -1,6 +1,6 @@
 # Hermes Agent 配置快照
 
-> 生成时间: 2026-09-04 06:01:27
+> 生成时间: 2026-09-05 06:01:58
 > 包含: 模型配置、工具集、Skills、Memory、Cron 任务
 
 ---
@@ -26,6 +26,7 @@
 ---
 
 ---
+
 ## 三、所有已安装 Skills
 
 - **总技能数:** 122
@@ -35,22 +36,46 @@
 - agently-mail
 
 ### apple (4)
-- apple-notes, apple-reminders, findmy, imessage
+- apple-notes
+- apple-reminders
+- findmy
+- imessage
 
 ### autonomous-ai-agents (4)
-- claude-code, codex, hermes-agent, opencode
+- claude-code
+- codex
+- hermes-agent
+- opencode
 
 ### computer-use (1)
 - computer-use
 
 ### creative (18)
-- architecture-diagram, ascii-art, ascii-video, baoyu-infographic, claude-design, comfyui, creative-ideation, design-md, excalidraw, humanizer, manim-video, p5js, pixel-art, popular-web-designs, pretext, sketch, songwriting-and-ai-music, touchdesigner-mcp
+- architecture-diagram
+- ascii-art
+- ascii-video
+- baoyu-infographic
+- claude-design
+- comfyui
+- creative-ideation
+- design-md
+- excalidraw
+- humanizer
+- manim-video
+- p5js
+- pixel-art
+- popular-web-designs
+- pretext
+- sketch
+- songwriting-and-ai-music
+- touchdesigner-mcp
 
 ### data-science (1)
 - jupyter-live-kernel
 
 ### devops (2)
-- hermes-config-github-sync, webhook-subscriptions
+- hermes-config-github-sync
+- webhook-subscriptions
 
 ### dogfood (1)
 - dogfood
@@ -62,10 +87,16 @@
 - find-skill-skillhub
 
 ### gaming (2)
-- minecraft-modpack-server, pokemon-player
+- minecraft-modpack-server
+- pokemon-player
 
 ### github (6)
-- codebase-inspection, github-auth, github-code-review, github-issues, github-pr-workflow, github-repo-management
+- codebase-inspection
+- github-auth
+- github-code-review
+- github-issues
+- github-pr-workflow
+- github-repo-management
 
 ### hermes-desktop-plugins (1)
 - hermes-desktop-plugins
@@ -77,40 +108,72 @@
 - native-mcp
 
 ### media (4)
-- gif-search, heartmula, songsee, youtube-content
+- gif-search
+- heartmula
+- songsee
+- youtube-content
 
 ### mlops (1)
 - huggingface-hub
 
 ### mlops_evaluation (2)
-- lm-evaluation-harness, weights-and-biases
+- lm-evaluation-harness
+- weights-and-biases
 
 ### mlops_inference (4)
-- llama-cpp, obliteratus, outlines, vllm
+- llama-cpp
+- obliteratus
+- outlines
+- vllm
 
 ### mlops_models (2)
-- audiocraft, segment-anything
+- audiocraft
+- segment-anything
 
 ### mlops_research (1)
 - dspy
 
 ### mlops_training (3)
-- axolotl, trl-fine-tuning, unsloth
+- axolotl
+- trl-fine-tuning
+- unsloth
 
 ### note-taking (4)
-- note-restructure, obsidian, obsidian-webdav-jianguoyun, url-to-obsidian-note
+- note-restructure
+- obsidian
+- obsidian-webdav-jianguoyun
+- url-to-obsidian-note
 
 ### ocr (2)
-- english-pdf-wrong-ocr, math-pdf-wrong-ocr
+- english-pdf-wrong-ocr
+- math-pdf-wrong-ocr
 
 ### productivity (10)
-- airtable, google-workspace, linear, maps, nano-pdf, notion, ocr-and-documents, petdex, powerpoint, teams-meeting-pipeline
+- airtable
+- google-workspace
+- linear
+- maps
+- nano-pdf
+- notion
+- ocr-and-documents
+- petdex
+- powerpoint
+- teams-meeting-pipeline
 
 ### red-teaming (1)
 - godmode
 
 ### research (10)
-- arxiv, bing-news-search, blogwatcher, cron-news-report, llm-weekly-digest, llm-wiki, news-gathering-via-browser, polymarket, research-paper-writing, zhihu-article-fetch
+- arxiv
+- bing-news-search
+- blogwatcher
+- cron-news-report
+- llm-weekly-digest
+- llm-wiki
+- news-gathering-via-browser
+- polymarket
+- research-paper-writing
+- zhihu-article-fetch
 
 ### self-improving-agent-pro-plus-new (1)
 - self-improving-agent-pro-plus-new
@@ -122,10 +185,33 @@
 - xurl
 
 ### software-development (11)
-- hermes-agent-skill-authoring, node-inspect-debugger, plan, python-debugpy, requesting-code-review, simplify-code, spike, subagent-driven-development, systematic-debugging, test-driven-development, writing-plans
+- hermes-agent-skill-authoring
+- node-inspect-debugger
+- plan
+- python-debugpy
+- requesting-code-review
+- simplify-code
+- spike
+- subagent-driven-development
+- systematic-debugging
+- test-driven-development
+- writing-plans
 
 ### superpowers (14)
-- brainstorming, dispatching-parallel-agents, executing-plans, finishing-a-development-branch, receiving-code-review, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans, writing-skills
+- brainstorming
+- dispatching-parallel-agents
+- executing-plans
+- finishing-a-development-branch
+- receiving-code-review
+- requesting-code-review
+- subagent-driven-development
+- systematic-debugging
+- test-driven-development
+- using-git-worktrees
+- using-superpowers
+- verification-before-completion
+- writing-plans
+- writing-skills
 
 ### superpowers-skill (1)
 - superpowers-skill
@@ -142,21 +228,18 @@
 ### yuanbao (1)
 - yuanbao
 
----
----
-
 ## 四、Cron 定时任务
 
 1. **上海松江每日天气**
-   - 调度: `0 6 * * *`
+   - 调度: `{'kind': 'cron', 'expr': '0 6 * * *', 'display': '0 6 * * *'}`
    - 状态: 启用
 2. **每日AI科技早报**
-   - 调度: `0 8 * * *`
+   - 调度: `{'kind': 'cron', 'expr': '0 8 * * *', 'display': '0 8 * * *'}`
    - 状态: 启用
 3. **daily-hermes-config-sync**
-   - 调度: `0 6 * * *`
+   - 调度: `{'kind': 'cron', 'expr': '0 6 * * *', 'display': '0 6 * * *'}`
    - 状态: 启用
----
+
 ---
 
 ## 五、系统信息
@@ -164,4 +247,4 @@
 - **Config 文件:** 369 行
 - **Skills 总数:** 122 个 (37 分类)
 - **Cron 任务数:** 3 个
-- **同步日期:** 2026-09-04
+- **同步日期:** 2026-09-05
