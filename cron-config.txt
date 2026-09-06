@@ -1,4 +1,6 @@
 executions.db
+executions.db-shm
+executions.db-wal
 jobs.json
 output
 ticker_heartbeat
