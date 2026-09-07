@@ -1,6 +1,6 @@
 # Hermes Agent 配置快照
 
-> 生成时间: 2026-09-07 06:00:48
+> 生成时间: 2026-09-08 06:01:20
 > 包含: 模型配置、工具集、Skills、Memory、Cron 任务
 
 ---
@@ -142,8 +142,8 @@
 
 ### note-taking (4)
 - note-restructure
-- obsidian
 - obsidian-webdav-jianguoyun
+- obsidian
 - url-to-obsidian-note
 
 ### ocr (2)
@@ -249,4 +249,4 @@
 - **Config 文件:** 369 行
 - **Skills 总数:** 122 个 (37 分类)
 - **Cron 任务数:** 3 个
-- **同步日期:** 2026-09-07
+- **同步日期:** 2026-09-08

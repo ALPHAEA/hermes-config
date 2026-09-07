@@ -61,8 +61,8 @@ mlops_training::axolotl.md
 mlops_training::trl-fine-tuning.md
 mlops_training::unsloth.md
 note-taking::note-restructure.md
-note-taking::obsidian.md
 note-taking::obsidian-webdav-jianguoyun.md
+note-taking::obsidian.md
 note-taking::url-to-obsidian-note.md
 ocr::english-pdf-wrong-ocr.md
 ocr::math-pdf-wrong-ocr.md
@@ -101,6 +101,7 @@ software-development::subagent-driven-development.md
 software-development::systematic-debugging.md
 software-development::test-driven-development.md
 software-development::writing-plans.md
+superpowers-skill::superpowers-skill.md
 superpowers::brainstorming.md
 superpowers::dispatching-parallel-agents.md
 superpowers::executing-plans.md
@@ -115,7 +116,6 @@ superpowers::using-superpowers.md
 superpowers::verification-before-completion.md
 superpowers::writing-plans.md
 superpowers::writing-skills.md
-superpowers-skill::superpowers-skill.md
 ui-ux-pro-max::ui-ux-pro-max.md
 weather-style::weather-style.md
 web-composite-search::web-composite-search.md
