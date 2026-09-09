@@ -18,7 +18,6 @@ Agent Mail (agently-cli) 已安装配置。用户邮箱：alphae@agent.qq.com，
 用户对每日早报（cron job 8f7ff97d834a，每天8:00）的格式要求：新闻每条必须带来源+时间+具体数字，表格呈现榜单，国产模型标🇨🇳，结尾2-3条核心结论，一屏可读。曾因输出10段重复废话被用户批评，严禁重复内容。早报包含两板块：AI行业新闻(Google News抓取) + 全球大模型对比(LMArena实时榜单)。
 §
 头条文章抓取：桌面页 requests 只得空JS壳，须用移动端API https://m.toutiao.com/i{article_id}/info/（iPhone UA），JSON data 含 title/content(HTML)/publish_time(unix秒)；图片域名 p*-sign.toutiaoimg.com 无防盗链（带 Referer 直接下载）。HTML图片→本地文件映射必须按出现顺序替换，禁止URL模糊匹配（头条图共享 tos-cn-i-<appid> 前缀，模糊匹配会把所有图映射到第一张）。
-
 ## 用户画像
 用户偏好使用中文交流
 §
