@@ -18,15 +18,15 @@
       "schedule_display": "0 6 * * *",
       "repeat": {
         "times": null,
-        "completed": 140
+        "completed": 141
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-26T09:54:55.697649+08:00",
-      "next_run_at": "2026-09-13T06:00:00+08:00",
-      "last_run_at": "2026-09-12T06:00:48.280054+08:00",
+      "next_run_at": "2026-09-14T06:00:00+08:00",
+      "last_run_at": "2026-09-13T06:01:07.439722+08:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -59,15 +59,15 @@
       "schedule_display": "0 8 * * *",
       "repeat": {
         "times": null,
-        "completed": 141
+        "completed": 142
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-26T09:55:40.756923+08:00",
-      "next_run_at": "2026-09-12T08:00:00+08:00",
-      "last_run_at": "2026-09-11T08:03:12.460355+08:00",
+      "next_run_at": "2026-09-13T08:00:00+08:00",
+      "last_run_at": "2026-09-12T08:02:57.347585+08:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -98,15 +98,15 @@
       "schedule_display": "0 6 * * *",
       "repeat": {
         "times": null,
-        "completed": 51
+        "completed": 52
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-23T16:23:12.507597+08:00",
-      "next_run_at": "2026-09-13T06:00:00+08:00",
-      "last_run_at": "2026-09-11T06:01:31.277687+08:00",
+      "next_run_at": "2026-09-14T06:00:00+08:00",
+      "last_run_at": "2026-09-12T06:01:44.308572+08:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -120,5 +120,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-09-12T06:00:48.281543+08:00"
+  "updated_at": "2026-09-13T06:01:07.440344+08:00"
 }
