@@ -1,6 +1,6 @@
 # Hermes Agent 配置快照
 
-> 生成时间: 2026-09-14 06:01:58
+> 生成时间: 2026-09-15 06:01:52
 > 包含: 模型配置、工具集、Skills、Memory、Cron 任务
 
 ---
@@ -30,7 +30,6 @@
 ---
 
 ## 三、所有已安装 Skills
-
 - **总技能数:** 122
 - **分类数:** 37
 
@@ -142,8 +141,8 @@
 
 ### note-taking (4)
 - note-restructure
-- obsidian
 - obsidian-webdav-jianguoyun
+- obsidian
 - url-to-obsidian-note
 
 ### ocr (2)
@@ -231,22 +230,15 @@
 - yuanbao
 
 ## 四、Cron 定时任务
+共 3 个定时任务（数据源: cron/jobs.json；系统 crontab 为空属正常）：
 
-1. **上海松江每日天气**
-   - 调度: `{'kind': 'cron', 'expr': '0 6 * * *', 'display': '0 6 * * *'}`
-   - 状态: 启用
-2. **每日AI科技早报**
-   - 调度: `{'kind': 'cron', 'expr': '0 8 * * *', 'display': '0 8 * * *'}`
-   - 状态: 启用
-3. **daily-hermes-config-sync**
-   - 调度: `{'kind': 'cron', 'expr': '0 6 * * *', 'display': '0 6 * * *'}`
-   - 状态: 启用
-
----
+- **上海松江每日天气** (`3e33eb3dff29`) — 计划: `0 6 * * *` — 启用: ✅ — 上次状态: -
+- **每日AI科技早报** (`8f7ff97d834a`) — 计划: `0 8 * * *` — 启用: ✅ — 上次状态: -
+- **daily-hermes-config-sync** (`615d91e235a8`) — 计划: `0 6 * * *` — 启用: ✅ — 上次状态: -
 
 ## 五、系统信息
 
 - **Config 文件:** 369 行
 - **Skills 总数:** 122 个 (37 分类)
 - **Cron 任务数:** 3 个
-- **同步日期:** 2026-09-14
+- **同步日期:** 2026-09-15
