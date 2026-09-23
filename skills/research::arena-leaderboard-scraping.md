@@ -10,8 +10,8 @@ Use when a report needs real-time model rankings with scores (Elo, net improveme
 ## Key facts (verified 2026-09-15)
 
 - `lmarena.ai/leaderboard` redirects to `arena.ai/leaderboard` — that IS the real Chatbot Arena successor.
-- The **Overview page** snapshot lists all sections' Top-10 model names but **without scores**. For Elo/votes/prices, visit each section's dedicated page.
-- Each section page header shows: data date (e.g. "Sep 13, 2026"), total votes or sessions, model count — always capture these for the report.
+- The **Overview page** snapshot lists all sections' Top-10 model names. Scores may or may not hydrate: on a **first cold load it can render names+ranks WITHOUT Elo**; simply `browser_navigate` to Overview **again** — the second load typically contains full scores ± CI for every section (verified 2026-09-23: Text/WebDev/Vision/T2I/T2V/I2V all had Elo inline in the Overview snapshot). Only fall back to per-section pages when you need votes, prices, timestamps, or the second load still lacks scores.
+- Each section page header shows: data date (e.g. "Sep 13, 2026"), total votes or sessions, model count — always capture these for the report. Overview section cards lack these headers; grab them from the dedicated page (e.g. text page: "Sep 13, 2026 · 8,146,274 votes · 402 models"; agent page: "Sep 16, 2026 · 1,850,083 sessions · 46 models").
 
 ## Per-section URL map (working paths)
 
@@ -26,7 +26,7 @@ Use when a report needs real-time model rankings with scores (Elo, net improveme
 | Text-to-Video | `https://arena.ai/leaderboard/text-to-video` | Elo |
 | Image-to-Video | `https://arena.ai/leaderboard/image-to-video` | Elo |
 
-**Pitfall — guessed paths 404**: `/leaderboard/webdev`, `/leaderboard/chat/vision`, `/leaderboard/image/text-to-image` all return "Leaderboard Not Found". Use the exact map above.
+**Pitfall — guessed paths 404**: `/leaderboard/webdev`, `/leaderboard/code-webdev`, `/leaderboard/chat/vision`, `/leaderboard/image/text-to-image` all return "Leaderboard Not Found". Use the exact map above.
 
 **Pitfall — Vision page slow render**: the initial snapshot may show only navigation chrome. Extract via browser_console JS instead of relying on the snapshot.
 
@@ -50,8 +50,11 @@ Row format: `rank || rank-spread || model | Lab · License || score ±CI [Prelim
 
 ## News-source fallbacks (same session findings)
 
-- `news.google.com/search` may redirect to `google.com/sorry` (bot check) from datacenter IPs. Fallback: Bing News with 24h filter (`https://www.bing.com/news/search?q=...&qft=interval%3d%2224%22`) + direct scrape of `techcrunch.com/category/artificial-intelligence/` (clean headlines + "N hours ago" in one snapshot).
+- `news.google.com/search` may redirect to `google.com/sorry` (bot check) from datacenter IPs. Fallback: Bing News with 24h filter + direct scrape of `techcrunch.com/category/artificial-intelligence/` (clean headlines + "N hours ago" in one snapshot).
 - **Bing News does NOT support `OR` queries** — `OpenAI OR Anthropic OR Nvidia` returns zero results. One topic per query, or scrape TechCrunch for multi-company coverage.
+- **Bing News locale fix (verified 2026-09-23)**: from Asian IPs, results come back localized (Japanese sources/UI) unless you append `&setlang=en-US&cc=US`:
+  `https://www.bing.com/news/search?q=OpenAI&qft=interval%3d%2224%22&setlang=en-US&cc=US`
+  Each result card includes source name + relative age ("4 hours ago") — exactly what sourced/timestamped digest reports need. Old cards leak into 24h-filtered results anyway; filter by displayed age.
 
 ## Verification
 
