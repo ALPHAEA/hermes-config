@@ -1,6 +1,7 @@
 # Memory
 
 ## Agent 记忆
+
 扫描PDF/截图OCR：先 pymupdf page.get_text() 查文字层，扫描件用 EasyOCR（已装 hermes venv，首次加载 PyTorch 约30-60s，耗时可委托 subagent）。PDF 生成用 fpdf2 + 字体 /usr/share/fonts/truetype/wqy/wqy-zenhei.ttc。DeepSeek V4 Flash 不支持 vision_analyze（unknown variant `image_url`）。
 §
 Obsidian vault 路径：~/Documents/Obsidian Vault，通过坚果云 WebDAV 同步（账号 yizhiqiangvip@163.com）。同步脚本在 ~/Documents/Obsidian Vault/.obsidian/sync-nutstore.py，用法：python sync-nutstore.py sync（双向）、down（下载）、up（上传）。
@@ -20,6 +21,7 @@ Agent Mail (agently-cli) 已安装配置。用户邮箱：alphae@agent.qq.com，
 飞书文档(feishu.cn/wiki)抓取：限流页"页面访问人数过多"→点Refresh等30s重试。正文虚拟滚动：容器.bear-web-x-container，采集data-block-id+docx-*-block类（heading/text/bullet/code/image），scrollTop步进400px每步220ms，记rect.top+scrollTop作位置，收Map按pos排序拼MD。图片是blob: URL需登录态：curl下载返回code:5 Login Required，CSP拦截外部POST；唯一导出法=滚到图可见处canvas.drawImage→toDataURL('image/jpeg',0.7)（宽900约40-60KB/张）存window变量，分批经browser_console取回base64落盘。console单次30s超时须分段；浏览器会话可能中途重置，数据尽快取回。url-to-obsidian-note是手写技能curator补丁会被拒，配方记这里。
 
 ## 用户画像
+
 用户偏好使用中文交流
 §
 用户名叫 Alpha，工作涉及产品、设计、写代码。语言风格要求简单直接。需求要先做计划，确认后再动手。

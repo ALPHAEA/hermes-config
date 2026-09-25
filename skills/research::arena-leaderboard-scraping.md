@@ -26,9 +26,15 @@ Use when a report needs real-time model rankings with scores (Elo, net improveme
 | Text-to-Video | `https://arena.ai/leaderboard/text-to-video` | Elo |
 | Image-to-Video | `https://arena.ai/leaderboard/image-to-video` | Elo |
 
+Additional working paths (harvested from footer links, verified reachable 2026-09-25): `/leaderboard/image-edit`, `/leaderboard/video-edit`, `/leaderboard/document`, `/leaderboard/search`, `/leaderboard/code/image-to-webdev`. All map re-verified 2026-09-25 — text/webdev/vision/text-to-image/text-to-video/image-to-video all rendered full tables with Elo ±CI in the initial snapshot.
+
 **Pitfall — guessed paths 404**: `/leaderboard/webdev`, `/leaderboard/code-webdev`, `/leaderboard/chat/vision`, `/leaderboard/image/text-to-image` all return "Leaderboard Not Found". Use the exact map above.
 
 **Pitfall — Vision page slow render**: the initial snapshot may show only navigation chrome. Extract via browser_console JS instead of relying on the snapshot.
+
+## Overview page: cheap innerText extraction (verified 2026-09-25)
+
+The Overview page (`arena.ai/leaderboard`) carries **Agent Top 10 (net-improvement %)**, **Pareto Optimal Models with $/task costs**, and a **"NEW RELEASE RANKINGS" ticker** (fresh models + entry ranks, e.g. "GPT 6 Sol is #5 in WebDev" — ideal source for 排名变动 commentary). All of this fits in the first ~3.8KB of `document.body.innerText` — grab it via browser_console with `document.body.innerText.substring(0, 3800)`; no snapshot, no scrolling, no subagent needed.
 
 ## Fast extraction JS (browser_console)
 
