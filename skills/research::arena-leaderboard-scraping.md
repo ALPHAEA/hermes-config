@@ -61,6 +61,8 @@ Row format: `rank || rank-spread || model | Lab · License || score ±CI [Prelim
 - **Bing News locale fix (verified 2026-09-23)**: from Asian IPs, results come back localized (Japanese sources/UI) unless you append `&setlang=en-US&cc=US`:
   `https://www.bing.com/news/search?q=OpenAI&qft=interval%3d%2224%22&setlang=en-US&cc=US`
   Each result card includes source name + relative age ("4 hours ago") — exactly what sourced/timestamped digest reports need. Old cards leak into 24h-filtered results anyway; filter by displayed age.
+- **Bing News sort-by-date (verified 2026-09-26)**: `interval%3d%2224%22` alone still returns relevance-ordered cards days/weeks old. For same-day digest news, use `qft=sortbydate%3d%221%22` instead — returns "Most recent" ordering with cards as fresh as minutes ago. Multi-keyword AND queries (`AI+OpenAI+Anthropic+Google+Gemini`) work in this mode.
+- **Per-section pages render full tables in the compact `browser_navigate` snapshot (re-verified 2026-09-26)**: agent/text/code/webdev/vision/text-to-image/text-to-video/image-to-video all returned rank+model+vendor+score+votes+price inline, plus the data-date/votes/models header — no Overview second-load or JS extraction needed. Occasionally a sub-page first renders only nav chrome (Vision, code/webdev); one follow-up `browser_snapshot` returns the hydrated table.
 
 ## Verification
 
