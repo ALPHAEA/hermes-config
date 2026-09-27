@@ -30,7 +30,7 @@ Additional working paths (harvested from footer links, verified reachable 2026-0
 
 **Pitfall — guessed paths 404**: `/leaderboard/webdev`, `/leaderboard/code-webdev`, `/leaderboard/chat/vision`, `/leaderboard/image/text-to-image` all return "Leaderboard Not Found". Use the exact map above.
 
-**Pitfall — Vision page slow render**: the initial snapshot may show only navigation chrome. Extract via browser_console JS instead of relying on the snapshot.
+**Pitfall — section pages sometimes render only nav chrome on first load** (seen on Vision, Agent, Text): the compact snapshot shows just sidebar/nav. Fix without re-navigating: `browser_console` with `document.body.innerText.length` then `.substring(0, 6000)` — the hydrated table is almost always present in innerText even when the accessibility snapshot lags (re-verified 2026-09-27 on /leaderboard/agent and /leaderboard/text: innerText returned full rows with ranks, Elo ±CI, votes, prices immediately after a chrome-only snapshot). Alternatively one follow-up `browser_snapshot` returns the hydrated table.
 
 ## Overview page: cheap innerText extraction (verified 2026-09-25)
 
