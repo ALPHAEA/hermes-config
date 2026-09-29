@@ -18,6 +18,7 @@ Agent Mail (agently-cli) 已安装配置。用户邮箱：alphae@agent.qq.com，
 腾讯云开发者社区文章（cloud.tencent.com/developer/article/N）：curl+UA 直接拿到完整静态 HTML，正文在 <div class="rno-markdown new-version">，用 BeautifulSoup 转 Markdown 即可，无需浏览器。注意页面尾部的 qcloudimg 二维码/备案图不是正文图，须排除；发布日期在 HTML 中形如 2026-06-30 10:22:30（或 createTime unix 秒）。url-to-obsidian-note skill 是手写技能，curator 补丁会被拒绝，站点配方记在这里。
 §
 飞书文档(feishu.cn/wiki)抓取：限流页"页面访问人数过多"→点Refresh等30s重试。正文虚拟滚动：容器.bear-web-x-container，采集data-block-id+docx-*-block类（heading/text/bullet/code/image），scrollTop步进400px每步220ms，记rect.top+scrollTop作位置，收Map按pos排序拼MD。图片是blob: URL需登录态：curl下载返回code:5 Login Required，CSP拦截外部POST；唯一导出法=滚到图可见处canvas.drawImage→toDataURL('image/jpeg',0.7)（宽900约40-60KB/张）存window变量，分批经browser_console取回base64落盘。console单次30s超时须分段；浏览器会话可能中途重置，数据尽快取回。url-to-obsidian-note是手写技能curator补丁会被拒，配方记这里。
+
 ## 用户画像
 用户偏好使用中文交流
 §
