@@ -10,7 +10,7 @@ Use when a report needs real-time model rankings with scores (Elo, net improveme
 ## Key facts (verified 2026-09-15)
 
 - `lmarena.ai/leaderboard` redirects to `arena.ai/leaderboard` — that IS the real Chatbot Arena successor.
-- The **Overview page** snapshot lists all sections' Top-10 model names. Scores may or may not hydrate: on a **first cold load it can render names+ranks WITHOUT Elo**; simply `browser_navigate` to Overview **again** — the second load typically contains full scores ± CI for every section (verified 2026-09-23: Text/WebDev/Vision/T2I/T2V/I2V all had Elo inline in the Overview snapshot). Only fall back to per-section pages when you need votes, prices, timestamps, or the second load still lacks scores.
+- The **Overview page** snapshot lists all sections' Top-10 model names. Scores may or may not hydrate: on a **first cold load it can render names+ranks WITHOUT Elo**; simply `browser_navigate` to Overview **again** — the second load typically contains full scores ± CI for every section (verified 2026-09-23). **However (verified 2026-09-30): Overview may render NO section tables at all** — only the "Top 10 Agents" widget, Pareto Optimal Models, and New Release ticker, and clicking its category tabs ("Best Text Models" etc.) does NOT swap in tables. Don't retry-loop on Overview; go straight to per-section URLs when you need Elo/votes/prices/timestamps. Overview's Agent widget + Pareto remain extractable via `document.body.innerText` (see below).
 - Each section page header shows: data date (e.g. "Sep 13, 2026"), total votes or sessions, model count — always capture these for the report. Overview section cards lack these headers; grab them from the dedicated page (e.g. text page: "Sep 13, 2026 · 8,146,274 votes · 402 models"; agent page: "Sep 16, 2026 · 1,850,083 sessions · 46 models").
 
 ## Per-section URL map (working paths)
@@ -51,7 +51,7 @@ Row format: `rank || rank-spread || model | Lab · License || score ±CI [Prelim
 
 ## Vendor → country mapping (for 🇨🇳 flags in Chinese reports)
 
-- China 🇨🇳: qwen/wan/happyhorse=Alibaba, kimi=Moonshot, deepseek=DeepSeek, glm=Z.ai, ernie=Baidu, seedance/seedream/dreamina=Bytedance, minimax/hailuo=MiniMax, kling=KlingAI, vidu=Shengshu, hy4=Tencent, pixverse
+- China 🇨🇳: qwen/wan/happyhorse=Alibaba, kimi=Moonshot, deepseek=DeepSeek, glm=Z.ai, ernie=Baidu, seedance/seedream/dreamina=Bytedance, minimax/hailuo=MiniMax, kling=KlingAI, vidu=Shengshu, hy4=Tencent, pixverse, hidream
 - US: claude=Anthropic, gpt/sora/gpt-image=OpenAI, gemini/veo=Google, muse=Meta, grok=SpaceXAI, mai=Microsoft, flux=Black Forest Labs
 
 ## News-source fallbacks (same session findings)
@@ -62,7 +62,8 @@ Row format: `rank || rank-spread || model | Lab · License || score ±CI [Prelim
   `https://www.bing.com/news/search?q=OpenAI&qft=interval%3d%2224%22&setlang=en-US&cc=US`
   Each result card includes source name + relative age ("4 hours ago") — exactly what sourced/timestamped digest reports need. Old cards leak into 24h-filtered results anyway; filter by displayed age.
 - **Bing News sort-by-date (verified 2026-09-26)**: `interval%3d%2224%22` alone still returns relevance-ordered cards days/weeks old. For same-day digest news, use `qft=sortbydate%3d%221%22` instead — returns "Most recent" ordering with cards as fresh as minutes ago. Multi-keyword AND queries (`AI+OpenAI+Anthropic+Google+Gemini`) work in this mode.
-- **Per-section pages render full tables in the compact `browser_navigate` snapshot (re-verified 2026-09-26)**: agent/text/code/webdev/vision/text-to-image/text-to-video/image-to-video all returned rank+model+vendor+score+votes+price inline, plus the data-date/votes/models header — no Overview second-load or JS extraction needed. Occasionally a sub-page first renders only nav chrome (Vision, code/webdev); one follow-up `browser_snapshot` returns the hydrated table.
+- **Per-section pages render full tables in the compact `browser_navigate` snapshot (re-verified 2026-09-30)**: agent/text/code/webdev/vision/text-to-image/text-to-video/image-to-video all returned rank+model+vendor+score+votes+price inline, plus the data-date/votes/models header — no Overview second-load or JS extraction needed. Occasionally a sub-page first renders only nav chrome (Vision, code/webdev); one follow-up `browser_snapshot` returns the hydrated table.
+- **TechCrunch article detail (verified 2026-09-30)**: the category listing snapshot gives headline + author + relative age for ~25 stories — often enough for digest entries without opening articles. To get details, construct the article URL as `techcrunch.com/YYYY/MM/DD/<headline-words-joined-by-dashes>/`; this works when the slug matches exactly but can 404 (e.g. Anthropic prospectus story). Safer: read the listing snapshot file for the actual `href`s, or click the headline's link ref — note that clicking a ref from a STALE snapshot (after a new navigate) may land back on the listing page, so re-snapshot first. A 404 page still usefully shows "Latest News" + "Most Popular" sidebars with fresh headlines.
 
 ## Verification
 
