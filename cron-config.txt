@@ -1,3 +1,5 @@
+.jobs.lock
+.tick.lock
 executions.db
 executions.db-shm
 executions.db-wal
