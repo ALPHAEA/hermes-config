@@ -65,7 +65,7 @@ Row format: `rank || rank-spread || model | Lab · License || score ±CI [Prelim
 ## News-source fallbacks (same session findings)
 
 - `news.google.com/search` may redirect to `google.com/sorry` (bot check) from datacenter IPs. Fallback: Bing News with 24h filter + direct scrape of `techcrunch.com/category/artificial-intelligence/` (clean headlines + "N hours ago" in one snapshot).
-- **Bing News does NOT support `OR` queries** — `OpenAI OR Anthropic OR Nvidia` returns zero results. One topic per query, or scrape TechCrunch for multi-company coverage.
+- **Bing News OR queries: inconsistent** — one session got zero results for `OpenAI OR Anthropic OR Nvidia`, but 2026-10-03 `OpenAI OR Anthropic OR Gemini OR Nvidia AI` (with `qft=interval%3d%227%22&setlang=en-US&cc=US`) returned fresh cards (33min–11h old). Treat OR as best-effort: try it once; if zero/stale results, fall back to one topic per query or scrape TechCrunch for multi-company coverage. Note generic queries (`AI artificial intelligence`) leak days-old cards even with the 24h filter — vendor-keyword queries stay much fresher.
 - **Bing News locale fix (verified 2026-09-23)**: from Asian IPs, results come back localized (Japanese sources/UI) unless you append `&setlang=en-US&cc=US`:
   `https://www.bing.com/news/search?q=OpenAI&qft=interval%3d%2224%22&setlang=en-US&cc=US`
   Each result card includes source name + relative age ("4 hours ago") — exactly what sourced/timestamped digest reports need. Old cards leak into 24h-filtered results anyway; filter by displayed age.
