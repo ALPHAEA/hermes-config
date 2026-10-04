@@ -63,6 +63,14 @@ python3 .obsidian/sync-nutstore.py sync
   - 从 HTML 提取图片 URL 的可靠方法：用 Playwright 拿到 `page.content()`（或 `document.documentElement.innerHTML`，几 MB），然后正则 `https?://mmbiz\.qpic\.cn/[^"'\s<>\\]+` 提取所有 URL，**保留完整 query**，按出现顺序去重（含 `/0` 全尺寸与 `/300`/`/132`/`/400` 缩略图时，保留最大尺寸那一版，通常取 base path 以 `/0` 结尾的那个）。注意 `sz_mmbiz_jpg`/`mmbiz_jpg` 等前缀属于 appID 签名，必须完整保留。
   - 判断图是否下载成功：检查文件大小（正文长截图通常 100KB~300KB）；小于 ~3KB 的通常是二维码/小图标，但仍可保留。
 
+### 微信公众号「图片消息」类型（picture_page_info_list）
+- 有些公众号发的不是图文文章而是**图片轮播消息**（类似小红书式图集）。特征：`#js_content` 只有标题+一段描述文字（innerText 200~500 字），正文图片不在 `<img>` 标签里。
+- 图片 URL 藏在页面 JS 变量 `picture_page_info_list` 中：Playwright 拿 `page.content()`（3~4MB）后正则 `cdn_url: '([^']+)'` 按顺序提取（记得把 `\x26amp;` 还原为 `&`）。
+- 每张图可能同时有：mmbiz.qpic.cn 静态原图（3000×4000 PNG，5MB+）+ `318.wxapp.tc.qq.com/.../stodownload` 实况照片视频。**只下载 mmbiz 静态图，跳过 wxapp 视频链接**。
+- cdn_url 列表中同一张图会出现 2~3 次（live photo 的静态帧重复），下载后用 PIL resize(64,64) 像素差对比去重（avgdiff<25 视为同图）。
+- 5MB 级 PNG 建议转 JPG quality=88（降到 ~1.1MB）再入库，方便坚果云同步。
+- 发布时间在 JS 变量 `create_time: '<unix秒>'` 中。
+
 ### 微信公众号内容多样性的陷阱
 - 引流推广文正文可能只有一段文字 + 大量长截图（无 `<p>` 正文段落）。若 `#js_content.innerText()` 只有一两句且图片是内容主体，说明图片 URL 都在 HTML 里——必须用上面的 regex + curl 方法抓全所有图并嵌入，否则笔记会严重缺失内容。用户常在发现图片没抓全后要求重做，所以**首轮就要把 HTML 正则提取的图片全部下载嵌入**，不要只依赖 DOM 的已加载 img。
 - **知乎 (zhuanlan.zhihu.com) — 高反爬，无法直接获取**：知乎使用 ZSE (知乎安全引擎) 全面防护，需要 JS 签名令牌。当前环境（无登录态、无浏览器 JS 执行）下所有方式均失败：
