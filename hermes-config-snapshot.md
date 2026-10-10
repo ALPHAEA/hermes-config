@@ -1,6 +1,6 @@
 # Hermes Agent 配置快照
 
-> 生成时间: 2026-10-10 06:02:22
+> 生成时间: 2026-10-11 06:01:30
 > 包含: 模型配置、工具集、Skills、Memory、Cron 任务
 
 ---
@@ -65,10 +65,10 @@
 - baoyu-infographic
 - claude-design
 - comfyui
+- creative-ideation
 - design-md
 - excalidraw
 - humanizer
-- ideation
 - manim-video
 - p5js
 - pixel-art
@@ -110,7 +110,7 @@
 - hermes-desktop-plugins
 
 ### humanizer-zh-pro (1)
-- humanizer-zh
+- humanizer-zh-pro
 
 ### mcp (1)
 - native-mcp
@@ -125,25 +125,25 @@
 - huggingface-hub
 
 ### mlops_evaluation (2)
-- evaluating-llms-harness
+- lm-evaluation-harness
 - weights-and-biases
 
 ### mlops_inference (4)
 - llama-cpp
 - obliteratus
 - outlines
-- serving-llms-vllm
+- vllm
 
 ### mlops_models (2)
-- audiocraft-audio-generation
-- segment-anything-model
+- audiocraft
+- segment-anything
 
 ### mlops_research (1)
 - dspy
 
 ### mlops_training (3)
 - axolotl
-- fine-tuning-with-trl
+- trl-fine-tuning
 - unsloth
 
 ### note-taking (4)
@@ -172,7 +172,6 @@
 - godmode
 
 ### research (11)
-- News Gathering via Browser
 - arena-leaderboard-scraping
 - arxiv
 - bing-news-search
@@ -180,12 +179,13 @@
 - cron-news-report
 - llm-weekly-digest
 - llm-wiki
+- news-gathering-via-browser
 - polymarket
 - research-paper-writing
 - zhihu-article-fetch
 
 ### self-improving-agent-pro-plus-new (1)
-- heartflow-engine
+- self-improving-agent-pro-plus-new
 
 ### smart-home (1)
 - openhue
@@ -223,7 +223,7 @@
 - writing-skills
 
 ### superpowers-skill (1)
-- superpowers
+- superpowers-skill
 
 ### ui-ux-pro-max (1)
 - ui-ux-pro-max
@@ -236,6 +236,7 @@
 
 ### yuanbao (1)
 - yuanbao
+
 ## 四、Cron 定时任务
 
 - **上海松江每日天气** (`3e33eb3dff29`) — 计划: `0 6 * * *` — 启用: ✅ — 上次状态: ok
@@ -246,4 +247,4 @@
 - **Config 文件:** 369 行
 - **Skills 总数:** 123 个 (37 分类)
 - **Cron 任务数:** 3 个
-- **同步日期:** 2026-10-10
+- **同步日期:** 2026-10-11
