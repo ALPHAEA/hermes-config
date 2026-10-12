@@ -18,18 +18,18 @@
       "schedule_display": "0 6 * * *",
       "repeat": {
         "times": null,
-        "completed": 170
+        "completed": 171
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-26T09:54:55.697649+08:00",
-      "next_run_at": "2026-10-13T06:00:00+08:00",
-      "last_run_at": "2026-10-12T06:00:50.593841+08:00",
+      "next_run_at": "2026-10-14T06:00:00+08:00",
+      "last_run_at": "2026-10-13T06:01:22.649294+08:00",
       "last_status": "ok",
       "last_error": null,
-      "last_delivery_error": null,
+      "last_delivery_error": "live adapter send failed: [230002] Bot/User can NOT be out of the chat.; live adapter delivery to feishu:oc_cfbb42b598bc6b266c24bfc3b601b89e failed: [230002] Bot/User can NOT be out of the chat.; delivery error: Feishu send failed: [230002] Bot/User can NOT be out of the chat.",
       "deliver": "origin",
       "origin": {
         "platform": "feishu",
@@ -59,15 +59,15 @@
       "schedule_display": "0 8 * * *",
       "repeat": {
         "times": null,
-        "completed": 171
+        "completed": 172
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-26T09:55:40.756923+08:00",
-      "next_run_at": "2026-10-12T08:00:00+08:00",
-      "last_run_at": "2026-10-11T08:04:04.246015+08:00",
+      "next_run_at": "2026-10-13T08:00:00+08:00",
+      "last_run_at": "2026-10-12T08:04:57.854981+08:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -98,15 +98,15 @@
       "schedule_display": "0 6 * * *",
       "repeat": {
         "times": null,
-        "completed": 81
+        "completed": 82
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-23T16:23:12.507597+08:00",
-      "next_run_at": "2026-10-13T06:00:00+08:00",
-      "last_run_at": "2026-10-11T06:02:01.525663+08:00",
+      "next_run_at": "2026-10-14T06:00:00+08:00",
+      "last_run_at": "2026-10-12T06:02:40.704242+08:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -120,5 +120,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-10-12T06:00:50.594609+08:00"
+  "updated_at": "2026-10-13T06:01:22.650041+08:00"
 }
