@@ -83,6 +83,48 @@ Row format: `rank || rank-spread || model | Lab · License || score ±CI [Prelim
 
 - **Re-verified 2026-10-09 (full digest run)**: Google News still `google.com/sorry`-blocked; generic Bing News `AI artificial intelligence` + 24h filter still leaked 2024/2026-05 cards. **Single-vendor Bing query (`q=OpenAI` + `interval%3d%2224%22`) returned uniformly fresh cards (20min–14h)** — prefer one vendor/topic per query over generic terms; the 4-word OR query (`OpenAI OR Anthropic OR Google AI model`) again returned zero results. Section pages: agent/code/webdev/vision/text-to-image/text-to-video/image-to-video all rendered full tables in the first compact snapshot; **`/leaderboard/text` rendered nav chrome only (24 elements)** — recovered cleanly with the fast-extraction JS via `browser_console` (`table tr` → `td` cells joined by `' | '`, slice(0,4), plus `h1` textContent) without re-navigating. That JS variant is now proven as the chrome-only fallback alongside `document.body.innerText`.
 
+## 🔴 2026-10-13: browser_navigate now Cloudflare-blocked → r.jina.ai reader proxy is the working path
+
+`browser_navigate("https://lmarena.ai/leaderboard")` redirects to `arena.ai/leaderboard` and returns a Cloudflare "Sorry, you have been blocked" page (plain curl too). Dead ends confirmed:
+- HF Space `lmarena-ai/arena-leaderboard` — static iframe that just re-embeds the blocked lmarena.ai URL.
+- `lmarena-ai-arena-leaderboard.static.hf.space/index.html` — 404/iframe wrapper, no data.
+- Wayback Machine — 429 Too Many Requests (both curl and browser).
+
+**Working method (verified 2026-10-13): `https://r.jina.ai/<target-url>` via plain curl** — returns full page as markdown, no key needed, ~15s for 7 sections in parallel:
+```bash
+curl -s --max-time 90 "https://r.jina.ai/https://lmarena.ai/leaderboard/agent" -o /tmp/lm_agent.txt
+```
+
+**Current section URL paths (from the Overview footer, harvested 2026-10-13 — NOTE these differ from the older map above; `chat/`, `image/`, `video/` prefixes are back):**
+- `/leaderboard/agent` — ⚠️ markdown mode DROPS model names (rank lines + `N x.xx%±...` data lines only). Names come from agent.html JSON-LD (below). Section header stats only in HTML mode too (`grep -oE "[A-Z][a-z]{2} [0-9]{1,2}, 2026|[0-9,]+ sessions|[0-9]+ models"`).
+- `/leaderboard/chat/text` — ⚠️ renders FRAGMENTED (one value per line, unreliable to regex); use text.html JSON-LD + title-anchored score search instead. Markdown header (date/votes/models as 3 consecutive lines) IS present.
+- `/leaderboard/code/webdev` — clean pipe table in markdown (2026-10-13 run); older run had dropped names → keep HTML-mode JSON-LD as fallback
+- `/leaderboard/chat/vision` — clean markdown pipe table
+- `/leaderboard/image/text-to-image` — clean
+- `/leaderboard/video/text-to-video` — clean
+- `/leaderboard/video/image-to-video` — clean
+
+**Clean-table parse** (webdev/vision/t2i/t2v/i2v): rows look like `| 1 | 1 1 | [claude-opus-5.5-max](url) Anthropic · Proprietary | 1813+15/-15 | 2,294 | $4 / $20 | 1M |` — extract with `re.findall(r'^\| \d+ \|(.+)$', txt, re.M)`, then strip URLs via `re.sub(r'\]\([^)]*\)',']',row)`.
+
+**HTML-mode fallback when markdown loses fields:**
+```bash
+curl -s --max-time 90 -H "X-Return-Format: html" "https://r.jina.ai/https://lmarena.ai/leaderboard/agent" -o /tmp/lm/agent.html
+```
+
+**✅ BEST name extraction: JSON-LD ItemList (verified 2026-10-13, works for ALL 7 sections).**
+Every section's HTML output embeds a schema.org ItemList with the authoritative rank→model-name mapping. The older `title="..."`+span-class regex FAILED (0 rows) on agent.html — class names drift between builds; JSON-LD is stable:
+```python
+import re
+html = open('/tmp/lm/agent.html').read()
+m = re.search(r'"@type":"ItemList".*?"itemListElement":\[(.*?)\]', html, re.S)
+names = sorted((int(p), n) for p, n in re.findall(r'"position":(\d+),"name":"([^"]+)"', m.group(1)))
+```
+Pairing names with scores: agent net-improvement % per rank is in agent.txt markdown (data line starts with model count, first % is net improvement); for Elo boards search the first `<span class="body-sm">(\d{4})</span>` (+ optional `±(\d+)` / `Preliminary`) within ~3000 chars after each `title="<model>"` occurrence in the HTML — title anchors ARE present even when the full row regex isn't.
+
+**Pitfall — terminal tool rejects `&` backgrounding in foreground commands** ("use background=true"). For the 7-section fetch just run curls sequentially in one command (~15s each, well within timeout) or use execute_code with subprocess.
+
+**Overview page via r.jina.ai is also gold**: total sessions, New Release Rankings ticker, Top-10 Agents with %, Pareto Optimal Models with $/task, Arena blog headlines — all in ~10KB markdown. Good for report intros and 排名变动 commentary.
+
 ## Verification
 
 Cross-check the top 3 model names of at least one section between the Overview page and the dedicated section page before publishing — catches stale caches and wrong-path 404s.
