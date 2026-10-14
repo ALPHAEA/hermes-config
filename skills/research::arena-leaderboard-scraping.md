@@ -90,7 +90,7 @@ Row format: `rank || rank-spread || model | Lab · License || score ±CI [Prelim
 - `lmarena-ai-arena-leaderboard.static.hf.space/index.html` — 404/iframe wrapper, no data.
 - Wayback Machine — 429 Too Many Requests (both curl and browser).
 
-**Working method (verified 2026-10-13): `https://r.jina.ai/<target-url>` via plain curl** — returns full page as markdown, no key needed, ~15s for 7 sections in parallel:
+**Working method (verified 2026-10-13): `https://r.jina.ai/<target-url>` via plain curl** — returns full page as markdown, no key needed. ⚠️ Fetch SEQUENTIALLY (≤3 concurrent); heavy parallelism gets 403-blocked — see 2026-10-14 section below:
 ```bash
 curl -s --max-time 90 "https://r.jina.ai/https://lmarena.ai/leaderboard/agent" -o /tmp/lm_agent.txt
 ```
@@ -125,6 +125,14 @@ Pairing names with scores: agent net-improvement % per rank is in agent.txt mark
 
 **Overview page via r.jina.ai is also gold**: total sessions, New Release Rankings ticker, Top-10 Agents with %, Pareto Optimal Models with $/task, Arena blog headlines — all in ~10KB markdown. Good for report intros and 排名变动 commentary.
 
+## 🔴 2026-10-14: r.jina.ai heavy parallelism → 403 + stale-file trap (both bit in one cron run)
+
+1. **16 concurrent r.jina.ai curls (8 sections × md+html, ThreadPoolExecutor max_workers=8) → EVERY response Cloudflare-blocked** ("Just a moment... / Target URL returned error 403", ~300-byte–6KB files). The "~15s for 7 sections in parallel" note above only survived light parallelism. **Fix: fetch sequentially or with max_workers≤3, and REJECT any output file containing `Just a moment` or `Target URL returned error 403` — retry it once after a few seconds.**
+2. **Stale `/tmp/lm` trap (the dangerous one).** `/tmp/lm/` persists across cron runs. The blocked fetch wrote fresh `lm_*.txt` stubs while the PREVIOUS day's good `agent.txt`/`text.html`/etc. (different filename prefix) sat in the same dir — parsing the old names silently built the whole report from day-old data with no error. **Fix: use a run-unique dir (`/tmp/lm_$(date +%s)`), or before parsing verify every file's mtime is from this run AND scan for the 403 markers. Also cross-check each section's data-date header ("Oct 8, 2026") is within ~3 days of the report date — the 2026-10-14 report shipped headers dated Oct 7–12 without flagging them.**
+3. **arena.ai Cloudflare interstitial in browser: the "Verify you are human" checkbox is clickable via `browser_click` but never passes** (stays unchecked, page never advances). Browser route to lmarena.ai/arena.ai remains fully dead — r.jina.ai curl is the only working path.
+4. **r.jina.ai also fetches TechCrunch article bodies**: `curl -s "https://r.jina.ai/https://techcrunch.com/YYYY/MM/DD/slug/"` returns full markdown (dateline "10:56 AM PDT · October 12, 2026" + lead paragraphs) — cleaner than regexing `<p>` tags off raw curl. **Pitfall: guessing the date prefix from "N hours ago" in the listing can be off by a day (Meta Muse Wonder was 10/12, not 10/13) → wrong URL silently returns the site chrome instead of the article. Always harvest real hrefs first:** `curl -s <listing> | grep -oE 'href="https://techcrunch\.com/2026/10/1[234]/[^"]+"' | sort -u` (adjust date range).
+5. Confirmed unchanged: JSON-LD ItemList name extraction and clean-pipe-table regex worked on all 7 sections; HF Space `lmarena-ai/arena-leaderboard` now serves only stale 2023 CSV/pkl files in its repo — do not use it as a data fallback.
+
 ## Verification
 
-Cross-check the top 3 model names of at least one section between the Overview page and the dedicated section page before publishing — catches stale caches and wrong-path 404s.
+Cross-check the top 3 model names of at least one section between the Overview page and the dedicated section page before publishing — catches stale caches and wrong-path 404s. ALSO (added 2026-10-14): verify file freshness — every scraped file must be from the current run (mtime or run-unique dir) and free of `Just a moment`/`403 Forbidden` markers; a cross-check between two stale sources passes silently.
