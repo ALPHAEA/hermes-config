@@ -133,6 +133,34 @@ Pairing names with scores: agent net-improvement % per rank is in agent.txt mark
 4. **r.jina.ai also fetches TechCrunch article bodies**: `curl -s "https://r.jina.ai/https://techcrunch.com/YYYY/MM/DD/slug/"` returns full markdown (dateline "10:56 AM PDT · October 12, 2026" + lead paragraphs) — cleaner than regexing `<p>` tags off raw curl. **Pitfall: guessing the date prefix from "N hours ago" in the listing can be off by a day (Meta Muse Wonder was 10/12, not 10/13) → wrong URL silently returns the site chrome instead of the article. Always harvest real hrefs first:** `curl -s <listing> | grep -oE 'href="https://techcrunch\.com/2026/10/1[234]/[^"]+"' | sort -u` (adjust date range).
 5. Confirmed unchanged: JSON-LD ItemList name extraction and clean-pipe-table regex worked on all 7 sections; HF Space `lmarena-ai/arena-leaderboard` now serves only stale 2023 CSV/pkl files in its repo — do not use it as a data fallback.
 
+## 🔴 2026-10-15: r.jina.ai ALSO blocked by lmarena/arena.ai Cloudflare → USE HF datasets-server API (BEST METHOD)
+
+Both browser (Cloudflare interstitial, checkbox never passes) and `r.jina.ai` (returns "Just a moment... / Target URL returned error 403" for every lmarena.ai/arena.ai URL) are dead. Wayback Machine returns 429 from this IP, and r.jina.ai blocks web.archive.org entirely ("Anonymous access... blocked until 2035"). 
+
+**✅ WORKING METHOD (verified 2026-10-15): HuggingFace official dataset `lmarena-ai/leaderboard-dataset`** — updated daily (~03:05 UTC), contains every section's `latest` split as parquet with full fields. No auth needed. Two access paths:
+
+1. **datasets-server rows API (simplest, no pyarrow needed):**
+```bash
+curl -s "https://datasets-server.huggingface.co/rows?dataset=lmarena-ai%2Fleaderboard-dataset&config=agent&split=latest&offset=0&length=100"
+```
+Config names = directory names: `agent`, `text`, `webdev`, `vision`, `text_to_image`, `text_to_video`, `image_to_video`, plus `document`, `search`, `image_edit`, `video_edit`, `text_factuality`, etc. Rows JSON fields:
+- agent: `model_name, organization, score` (net improvement as fraction, ×100 for %), `session_count, rank, leaderboard_publish_date`
+- Elo boards: `model_name, organization, rating, rating_lower/upper` (CI = ±(upper-lower)/2), `vote_count, rank, leaderboard_publish_date`
+- Filter `category == "overall"` for the main board.
+- `leaderboard_publish_date` varies per section (agent/text/webdev ~2 days old; video boards can be ~3 weeks stale) — ALWAYS report per-section dates.
+2. Parquet download via `resolve/main/<config>/latest-00000-of-00001.parquet` (needs pyarrow; the venv lacks it — path 1 is sufficient).
+
+Deep-rank lookup for Chinese models: fetch `length=100` and filter by organization ∈ {alibaba, moonshot, deepseek, zai, baidu, bytedance, minimax, kling, shengshu, tencent, xiaomi, stepfun} or name keywords (qwen/kimi/glm/ernie/seedance/wan/mimo/hy3/hy4).
+
+Note: Xiaomi (MiMo) counts as Chinese for 🇨🇳 flags — was missing from the vendor map.
+
+## 🔴 2026-10-15 (same run): TechCrunch article URLs 404 from datacenter IPs; use tag/category RSS feeds instead
+- Constructed article URLs (`techcrunch.com/YYYY/MM/DD/slug/`) now return "Page not found" for BOTH direct curl AND r.jina.ai AND browser from this IP — only listing pages load. The 404 page's "Latest News" sidebar is still useful (fresh headlines + relative ages).
+- **Working body-extraction path: WordPress RSS feeds via plain curl**:
+  - `https://techcrunch.com/category/artificial-intelligence/feed/` → last 20 AI items with `<title>`, `<pubDate>`, `<description>` (1-2 sentence lead).
+  - Tag feeds work too: `https://techcrunch.com/tag/<tag-slug>/feed/` (e.g. `character-ai`) — good for finding a specific story that has scrolled off the AI feed.
+- Description gives enough for a digest entry (who/what + key number). pubDate gives exact timestamp; convert to relative time for the report.
+
 ## Verification
 
 Cross-check the top 3 model names of at least one section between the Overview page and the dedicated section page before publishing — catches stale caches and wrong-path 404s. ALSO (added 2026-10-14): verify file freshness — every scraped file must be from the current run (mtime or run-unique dir) and free of `Just a moment`/`403 Forbidden` markers; a cross-check between two stale sources passes silently.
