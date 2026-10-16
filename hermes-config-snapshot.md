@@ -1,6 +1,6 @@
 # Hermes Agent 配置快照
 
-> 生成时间: 2026-10-16 06:01:32
+> 生成时间: 2026-10-17 06:01:07
 > 包含: 模型配置、工具集、Skills、Memory、Cron 任务
 
 ---
@@ -37,7 +37,7 @@
 
 ## 三、所有已安装 Skills
 
-- **总技能数:** 123
+- **总技能数:** 124
 - **分类数:** 37
 
 ### agently-mail (1)
@@ -171,7 +171,7 @@
 ### red-teaming (1)
 - godmode
 
-### research (11)
+### research (12)
 - arena-leaderboard-scraping
 - arxiv
 - bing-news-search
@@ -182,6 +182,7 @@
 - news-gathering-via-browser
 - polymarket
 - research-paper-writing
+- web-scraping-fallbacks
 - zhihu-article-fetch
 
 ### self-improving-agent-pro-plus-new (1)
@@ -239,13 +240,13 @@
 
 ## 四、Cron 定时任务
 
-- **上海松江每日天气** (`3e33eb3dff29`) — 计划: `0 6 * * *` — 启用: ✅ — 上次状态: ok
-- **每日AI科技早报** (`8f7ff97d834a`) — 计划: `0 8 * * *` — 启用: ✅ — 上次状态: ok
-- **daily-hermes-config-sync** (`615d91e235a8`) — 计划: `0 6 * * *` — 启用: ✅ — 上次状态: ok
+- **上海松江每日天气** (`3e33eb3dff29`) — 计划: `0 6 * * *` — 启用: ✅ — 上次状态: scheduled
+- **每日AI科技早报** (`8f7ff97d834a`) — 计划: `0 8 * * *` — 启用: ✅ — 上次状态: scheduled
+- **daily-hermes-config-sync** (`615d91e235a8`) — 计划: `0 6 * * *` — 启用: ✅ — 上次状态: scheduled
 
 ## 五、系统信息
 
 - **Config 文件:** 369 行
-- **Skills 总数:** 123 个 (37 分类)
+- **Skills 总数:** 124 个 (37 分类)
 - **Cron 任务数:** 3 个
-- **同步日期:** 2026-10-16
+- **同步日期:** 2026-10-17

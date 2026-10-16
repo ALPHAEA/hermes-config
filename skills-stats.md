@@ -1,8 +1,7 @@
 # Skills 统计
 
-总技能数: 123
-分类数: 37
-生成时间: 2026-10-16 06:01:32
+- 总技能数: 124
+- 分类数: 37
 
 | 分类 | 数量 |
 |------|------|
@@ -32,7 +31,7 @@
 | ocr | 2 |
 | productivity | 10 |
 | red-teaming | 1 |
-| research | 11 |
+| research | 12 |
 | self-improving-agent-pro-plus-new | 1 |
 | smart-home | 1 |
 | social-media | 1 |
