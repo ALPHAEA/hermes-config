@@ -154,6 +154,8 @@ Deep-rank lookup for Chinese models: fetch `length=100` and filter by organizati
 
 Note: Xiaomi (MiMo) counts as Chinese for 🇨🇳 flags — was missing from the vendor map.
 
+**Re-verified 2026-10-17**: datasets-server API still the only working path (browser + r.jina.ai + Wayback all still blocked/429; HF Space static page still re-embeds blocked lmarena.ai; GitHub repos lmarena/* are 404 — no public repo). All 7 configs returned fresh rows in one sequential execute_code loop (~3.5s total). Section publish dates lag differently: text=10-15, agent=10-14, webdev=10-13, vision=10-09, text_to_image=10-07, video boards=09-22 (~3.5 weeks stale — flag in report). TechCrunch AI RSS feed (`/category/artificial-intelligence/feed/`) gave 12 items with exact pubDate + description lead — sufficient for digest entries without opening articles.
+
 ## 🔴 2026-10-15 (same run): TechCrunch article URLs 404 from datacenter IPs; use tag/category RSS feeds instead
 - Constructed article URLs (`techcrunch.com/YYYY/MM/DD/slug/`) now return "Page not found" for BOTH direct curl AND r.jina.ai AND browser from this IP — only listing pages load. The 404 page's "Latest News" sidebar is still useful (fresh headlines + relative ages).
 - **Working body-extraction path: WordPress RSS feeds via plain curl**:
