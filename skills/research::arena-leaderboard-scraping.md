@@ -154,6 +154,15 @@ Deep-rank lookup for Chinese models: fetch `length=100` and filter by organizati
 
 Note: Xiaomi (MiMo) counts as Chinese for 🇨🇳 flags — was missing from the vendor map.
 
+**Re-verified 2026-10-18 (full digest run)**: all 10-15/10-17 findings hold — Google News `google.com/sorry`-blocked, Bing generic 24h query leaked stale cards, arena.ai Cloudflare checkbox clickable but never passes, HF Space still stale (2023–2024 pkl/csv). datasets-server API returned all 7 configs fresh in one sequential execute_code loop (~3s). New details:
+- Row counts vary per board (agent 52, text_to_image 82, video boards 48) — `length=100` is fine; a short board is not truncation.
+- **Dead end: arena.ai direct API routes** — `https://arena.ai/api/v1/leaderboard/text/arena?limit=5` (and lmarena.ai equivalent) return `{"error":"Route not allowed"}` via plain curl. Don't probe API paths; use datasets-server.
+- **TechCrunch article-URL 404s are partial, not total**: hrefs harvested from a listing can 404 in BOTH curl and browser (anthropic-workforce, meta-scraping stories on 10-18) while a sibling story (replit) curls fine. Don't chase individual articles — the AI RSS feed descriptions + pubDates covered all digest entries.
+- Section publish dates this run: agent/webdev=10-16, text=10-15, vision=10-09, text_to_image=10-07, video boards=09-22 (~4 weeks stale — flagged in report).
+- **Use `scripts/fetch_leaderboards.py`** (added 2026-10-18): one command fetches all 7 boards, filters `category=="overall"`, flags 🇨🇳, prints top-N + per-section publish dates + best Chinese rank. Proven in the 2026-10-18 run.
+
+**Reusable fetch script**: `scripts/fetch_leaderboards.py` — run via terminal: `python3 <skill_dir>/scripts/fetch_leaderboards.py [topN]`. Outputs everything the digest's 板块二 needs; no browser, no scraping.
+
 **Re-verified 2026-10-17**: datasets-server API still the only working path (browser + r.jina.ai + Wayback all still blocked/429; HF Space static page still re-embeds blocked lmarena.ai; GitHub repos lmarena/* are 404 — no public repo). All 7 configs returned fresh rows in one sequential execute_code loop (~3.5s total). Section publish dates lag differently: text=10-15, agent=10-14, webdev=10-13, vision=10-09, text_to_image=10-07, video boards=09-22 (~3.5 weeks stale — flag in report). TechCrunch AI RSS feed (`/category/artificial-intelligence/feed/`) gave 12 items with exact pubDate + description lead — sufficient for digest entries without opening articles.
 
 ## 🔴 2026-10-15 (same run): TechCrunch article URLs 404 from datacenter IPs; use tag/category RSS feeds instead
