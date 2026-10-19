@@ -8,7 +8,7 @@ description: Fallback extraction techniques for bot-protected websites (Cloudfla
 ## When to use
 - `browser_navigate` returns a Cloudflare "Just a moment..." challenge page, a CAPTCHA, or the site 403s direct curl.
 - A page renders but tables lose cell content (names dropped, numbers only).
-- Google News (`news.google.com`) shows the `/sorry/index` CAPTCHA — do not retry; switch to Bing News (`qft=interval%3d%2224%22` for 24h) or scrape dedicated sites (TechCrunch, The Verge category pages).
+- Google News (`news.google.com`) shows the `/sorry/index` CAPTCHA — do not retry the browser. **The official RSS endpoint is NOT CAPTCHA-gated** (verified 2026-10-19 from a datacenter IP that got the browser CAPTCHA): `curl -s "https://news.google.com/rss/search?q=AI+when:1d&hl=en-US&gl=US&ceid=US:en" -H "User-Agent: Mozilla/5.0"` returns clean XML with title/source/pubDate for hundreds of items. Decode the `CBMi...` wrapper links to real URLs with pip `googlenewsdecoder` (API: `GoogleDecoder().decode_google_news_url(link)` — full pipeline in `references/google-news-rss-pipeline.md`, runnable script in `scripts/google_news_rss.py`). Only if RSS also fails, fall back to Bing News (`qft=interval%3d%2224%22` for 24h) or dedicated sites (TechCrunch, The Verge category pages).
 
 ## Technique 1: r.jina.ai reader proxy (verified 2026-10, bypassed Cloudflare on lmarena.ai/arena.ai)
 Jina's reader renders the page server-side and returns markdown — no challenge, no API key needed for basic use:
@@ -42,7 +42,7 @@ Rendered HTML (from jina or the site itself) often embeds the full dataset even 
 
 ## Pitfalls
 - Clicking the Cloudflare "Verify you are human" checkbox via `browser_click` typically does NOT pass (managed challenge fingerprints the automation); don't loop on retries — switch to the reader proxy immediately.
-- Google News `/sorry/index` = IP-blocked; same rule: don't retry, use alternate news sources.
+- Google News `/sorry/index` = browser IP-blocked; don't retry the browser — but the RSS endpoint (`/rss/search?q=...`) usually still works from the same IP. Also: after a browser session hits the `/sorry` interstitial, later `browser_navigate` calls may fail with temp-file errors (broken session); switch to curl entirely rather than fighting the browser.
 - DuckDuckGo HTML endpoint (`html.duckduckgo.com/html/`) returns an empty shell — useless, never attempt.
 - `curl https://lmarena.ai/...` directly gives 301 → arena.ai → 403. Only the jina reader worked (as of 2026-10).
 - Markdown-mode jina output for dense tables can be lossy; when numbers appear without names, always escalate to `x-respond-with: html` + JSON-LD extraction rather than guessing names.

@@ -25,4 +25,3 @@ Agent Mail (agently-cli) 已安装配置。用户邮箱：alphae@agent.qq.com，
 用户偏好使用中文交流
 §
 用户名叫 Alpha，工作涉及产品、设计、写代码。语言风格要求简单直接。需求要先做计划，确认后再动手。
-
