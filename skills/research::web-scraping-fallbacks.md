@@ -24,6 +24,14 @@ curl -s -m 60 "https://r.jina.ai/https://TARGET-SITE/path" -o /tmp/page.md
   - `-H "x-retry: 2"` — retry flaky renders.
 - If markdown output drops table cell text (happens on some React/TanStack-Table pages), refetch with `x-respond-with: html` (Technique 2).
 
+## LMArena (arena.ai / lmarena.ai) specifics (verified 2026-10-20)
+- Put the **arena.ai** domain in the jina URL, not lmarena.ai: `curl -s -m 120 "https://r.jina.ai/https://arena.ai/leaderboard/chat/text"` — same paths under lmarena.ai return Jina 403s. (The overview page `r.jina.ai/https://lmarena.ai/leaderboard` does work.)
+- Correct subpage paths — a wrong path (e.g. `/leaderboard/text`) silently 403s and wastes retry rounds:
+  `chat/text`, `chat/vision`, `chat/document`, `chat/search`, `code/webdev`, `code/image-to-webdev`, `image/text-to-image`, `image/image-edit/single-image`, `video/text-to-video`, `video/image-to-video`, `video/video-edit`, `agent`.
+- Subpage markdown = plain-text table (Rank / Rank Spread / Model / Score±CI / Votes) with data timestamp, total votes, and model count at top. Overview page gives "Top 10 Agents" with % net-improvement, e.g. `1 Claude Opus 5.5 (Max)20.35%`.
+- Jina intermittently rate-limits even with 25–60s sleeps: blocked responses are **270–550 bytes** starting with `Title: Just a moment...` or containing `Warning: Target URL returned error 403`. Success heuristic: size > 2000 bytes. Retry each page up to 3× with 20–30s gaps; some pages may never come through — report those sections as "no data" instead of fabricating.
+- HF Space `lmarena-ai/arena-leaderboard` is stale (CSVs stop 2025-08) and its app.py just iframes the origin — never useful for current data.
+
 ## Technique 2: recover tables from embedded JSON-LD / Next.js flight data
 Rendered HTML (from jina or the site itself) often embeds the full dataset even when visible text extraction fails:
 
