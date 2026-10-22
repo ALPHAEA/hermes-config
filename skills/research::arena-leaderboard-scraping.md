@@ -7,6 +7,16 @@ description: Scrape LMArena/Arena (arena.ai, formerly lmarena.ai) leaderboards �
 
 Use when a report needs real-time model rankings with scores (Elo, net improvement %), votes, prices — e.g. daily AI digests. Complements `cron-news-report` (which is manually authored and cannot be patched; this skill carries the URL-level detail it lacks).
 
+## ⚡ SCRIPT-FIRST RULE (as of 2026-10-22 — read this before touching any URL)
+
+**For leaderboard data, run the script FIRST and skip all scraping:**
+```bash
+python3 /home/agentuser/.hermes/skills/research/arena-leaderboard-scraping/scripts/fetch_leaderboards.py [topN]
+```
+It hits the HF datasets-server API, returns all 7 boards with ranks, scores ±CI, votes/sessions, per-section publish dates, and best-CN-model ranks — in ~3s. Everything below this section is historical fallback knowledge; do NOT re-probe lmarena.ai / arena.ai / HF Space / Wayback / r.jina.ai first. The 2026-10-22 digest run wasted ~15 tool calls re-discovering documented dead ends before loading this skill — a cron run must load this skill BEFORE any browser navigation.
+
+Re-confirmed dead ends (2026-10-22, all previously documented): browser → Cloudflare interstitial with ZERO iframes in DOM (nothing to click) and never auto-passes after 45s+; HF Space static wrapper → "arena.ai refused to connect", its own repo data stops at 2025-08; `curl arena.ai/api/v1/*` → `{"error":"Route not allowed"}`; Wayback → persistent 429 even after 90s backoff; `timetravel.mementoweb.org` → empty responses; r.jina.ai → "Just a moment... 403". Section publish-date lag pattern held: agent/text=report-date-2, webdev/vision=-3, text_to_image=-15, video boards=~4 weeks stale (flag in report).
+
 ## Key facts (verified 2026-09-15)
 
 - `lmarena.ai/leaderboard` redirects to `arena.ai/leaderboard` — that IS the real Chatbot Arena successor.
