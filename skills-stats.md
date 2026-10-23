@@ -1,6 +1,6 @@
 # Skills 统计
 
-- 总技能数: 124
+- 总技能数: 125
 - 分类数: 37
 
 | 分类 | 数量 |
@@ -27,7 +27,7 @@
 | mlops_models | 2 |
 | mlops_research | 1 |
 | mlops_training | 3 |
-| note-taking | 4 |
+| note-taking | 5 |
 | ocr | 2 |
 | productivity | 10 |
 | red-teaming | 1 |

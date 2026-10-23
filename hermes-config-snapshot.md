@@ -1,6 +1,6 @@
 # Hermes Agent 配置快照
 
-> 生成时间: 2026-10-23 06:01:59
+> 生成时间: 2026-10-24 06:01:38
 > 包含: 模型配置、工具集、Skills、Memory、Cron 任务
 
 ---
@@ -37,7 +37,7 @@
 
 ## 三、所有已安装 Skills
 
-- **总技能数:** 124
+- **总技能数:** 125
 - **分类数:** 37
 
 ### agently-mail (1)
@@ -146,11 +146,12 @@
 - trl-fine-tuning
 - unsloth
 
-### note-taking (4)
+### note-taking (5)
 - note-restructure
 - obsidian
 - obsidian-webdav-jianguoyun
 - url-to-obsidian-note
+- web-article-recipes
 
 ### ocr (2)
 - english-pdf-wrong-ocr
@@ -247,6 +248,6 @@
 ## 五、系统信息
 
 - **Config 文件:** 369 行
-- **Skills 总数:** 124 个 (37 分类)
+- **Skills 总数:** 125 个 (37 分类)
 - **Cron 任务数:** 3 个
-- **同步日期:** 2026-10-23
+- **同步日期:** 2026-10-24
