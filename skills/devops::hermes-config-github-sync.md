@@ -47,11 +47,14 @@ Repo in this setup: `https://github.com/ALPHAEA/hermes-config.git`.
    # Memory
 
    ## Agent 记忆
-   <MEMORY.md content>
+
+   <MEMORY.md content, rstrip'd>
 
    ## 用户画像
-   <USER.md content>
+
+   <USER.md content, rstrip'd>
    ```
+   Keep exactly this blank-line layout (blank line AFTER each `##` header, single trailing newline) — as of 2026-10-24 this is the committed format; deviating causes a spurious whitespace diff every day.
    When doing this inside `execute_code`, read the source files with plain Python `open()`/`read()` — **NOT** `hermes_tools.read_file` (see Pitfall 7).
 
 5. **Cron**: see Pitfall 1. Copy `jobs.json` → `cron/cron-jobs.json`; `ls` the cron and output dirs into `cron-config.txt` / `cron/cron-output-dir.txt`.
