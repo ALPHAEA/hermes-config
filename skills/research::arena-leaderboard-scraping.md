@@ -9,6 +9,8 @@ Use when a report needs real-time model rankings with scores (Elo, net improveme
 
 ## ⚡ SCRIPT-FIRST RULE (as of 2026-10-22 — read this before touching any URL)
 
+**Re-verified 2026-10-25 (full digest run)**: script-first worked in ~3s, all 7 boards fresh (agent/webdev=10-23, text=10-22, vision=10-19, t2i=10-07, video boards=09-22 stale ~4.5wk — flagged). This run STILL wasted ~8 calls on documented dead ends before loading the skill (Google News → google.com/sorry; Bing generic AI query → Sep-dated cards leaked; lmarena browser → Cloudflare never passes; HF Space → stale 2023 files + iframe re-embedding blocked lmarena.ai). News that worked: TechCrunch AI RSS feed (exact pubDate + desc, one curl+python) + Bing single-query cards as supplement. CRON RUNS: load this skill FIRST, run the script, curl the RSS feed — done in 2 calls.
+
 **For leaderboard data, run the script FIRST and skip all scraping:**
 ```bash
 python3 /home/agentuser/.hermes/skills/research/arena-leaderboard-scraping/scripts/fetch_leaderboards.py [topN]
