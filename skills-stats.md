@@ -1,8 +1,10 @@
+# Skills 统计
+
 总技能数: 125
 分类数: 37
 
 | 分类 | 数量 |
-|------|------|
+|---|---|
 | agently-mail | 1 |
 | apple | 4 |
 | autonomous-ai-agents | 4 |
