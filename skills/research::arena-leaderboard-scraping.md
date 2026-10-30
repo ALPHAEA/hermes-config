@@ -194,6 +194,15 @@ Note: Xiaomi (MiMo) counts as Chinese for 🇨🇳 flags — was missing from th
   - Tag feeds work too: `https://techcrunch.com/tag/<tag-slug>/feed/` (e.g. `character-ai`) — good for finding a specific story that has scrolled off the AI feed.
 - Description gives enough for a digest entry (who/what + key number). pubDate gives exact timestamp; convert to relative time for the report.
 
+## OpenRouter Rankings (模型调用量/token 用量榜) — plain curl, no browser (verified 2026-10-30)
+
+`https://openrouter.ai/rankings` is **server-side rendered**: plain `curl` with a browser UA returns ~2.5MB HTML containing ALL leaderboard tables — no Cloudflare, no browser needed (contrast with lmarena above).
+- Its frontend API endpoints are dead: `/api/frontend/models/find?order=top-weekly`, `/api/frontend/rankings`, `/api/frontend/stats/*` all return 404. Don't probe; parse the HTML. `/api/v1/models` works but has no usage ranking.
+- Tables are keyed by `<caption>` text: "Model rankings by tokens processed" = **weekly Top榜**; "most recent complete day" = **today榜**; "trailing thirty days" = **month榜**. Row cells: Rank | Model | Author | tokens (e.g. "42.4T tokens") | Change% (e.g. "+96%", "&gt;999%").
+- ⚠️ Run cells through `html.unescape()` after tag stripping (`&gt;999%` is common).
+- Data date: `<time>` element right after "Usage data through".
+- **Ready-made script**: `~/.hermes/scripts/openrouter_top_models.py` — fetches + parses weekly Top10 & today Top5, flags CN vendors 🇨🇳 (author ∈ deepseek/z-ai/tencent/xiaomi/stepfun/minimax/qwen/moonshot/bytedance/01-ai/thudm/baidu/inclusionai/baichuan), prints a Feishu-markdown section with 环比 gainers + CN share. Wired as no_agent cron job "OpenRouter模型调用量日报" (daily 8:05, right after the 8:00 AI早报). Run the script instead of re-implementing.
+
 ## Verification
 
 Cross-check the top 3 model names of at least one section between the Overview page and the dedicated section page before publishing — catches stale caches and wrong-path 404s. ALSO (added 2026-10-14): verify file freshness — every scraped file must be from the current run (mtime or run-unique dir) and free of `Just a moment`/`403 Forbidden` markers; a cross-check between two stale sources passes silently.

@@ -88,6 +88,8 @@ Since you can only navigate to one URL at a time, use this workflow for multiple
 
 ### 6. Handling Blocked Sites
 
+**Google News itself can be blocked (verified 2026-10-30):** browser_navigate to news.google.com may redirect to `google.com/sorry/index` bot-check (no residential proxy). Fallback that works well: `https://techcrunch.com/category/artificial-intelligence/` loads fine in browser, and TechCrunch article pages are NOT Cloudflare-blocked — fetch them directly with `curl -sL -A "<chrome UA>"` and parse `<p>` tags with a small Python regex script, much faster than clicking through each article in the browser. Extract real URLs from the listing page via browser_console: `Array.from(document.querySelectorAll('h3 a')).map(a=>a.href+' | '+a.textContent.trim())`.
+
 Most major news sites (Axios, Reuters, Fortune, VentureBeat, NYT) are blocked by Cloudflare/Vercel bot detection when accessed via browser_navigate. **Don't waste time trying to access them directly.** Instead:
 
 - Extract maximum signal from Google News search result summaries themselves — headlines + source + relative timestamp + author

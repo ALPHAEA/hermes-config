@@ -2,8 +2,6 @@ executions.db
 executions.db-shm
 executions.db-wal
 jobs.json
-.jobs.lock
 output
 ticker_heartbeat
 ticker_last_success
-.tick.lock
