@@ -18,15 +18,15 @@
       "schedule_display": "0 6 * * *",
       "repeat": {
         "times": null,
-        "completed": 198
+        "completed": 199
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-26T09:54:55.697649+08:00",
-      "next_run_at": "2026-11-09T06:00:00+08:00",
-      "last_run_at": "2026-11-08T06:01:14.885111+08:00",
+      "next_run_at": "2026-11-10T06:00:00+08:00",
+      "last_run_at": "2026-11-09T06:00:29.323816+08:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -59,17 +59,17 @@
       "schedule_display": "0 8 * * *",
       "repeat": {
         "times": null,
-        "completed": 199
+        "completed": 200
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-26T09:55:40.756923+08:00",
-      "next_run_at": "2026-11-08T08:00:00+08:00",
-      "last_run_at": "2026-11-07T08:20:39.725106+08:00",
-      "last_status": "error",
-      "last_error": "RuntimeError: HTTP 429: Your token-plan 1-month quota has been exhausted. The quota will reset at 11-07 16:00:00 UTC.",
+      "next_run_at": "2026-11-09T08:00:00+08:00",
+      "last_run_at": "2026-11-08T08:06:11.924564+08:00",
+      "last_status": "ok",
+      "last_error": null,
       "last_delivery_error": null,
       "deliver": "feishu:oc_bcf5126f2135457663520557265933db",
       "origin": {
@@ -98,17 +98,17 @@
       "schedule_display": "0 6 * * *",
       "repeat": {
         "times": null,
-        "completed": 108
+        "completed": 109
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-23T16:23:12.507597+08:00",
-      "next_run_at": "2026-11-09T06:00:00+08:00",
-      "last_run_at": "2026-11-07T06:20:37.331331+08:00",
-      "last_status": "error",
-      "last_error": "RuntimeError: HTTP 429: Your token-plan 1-month quota has been exhausted. The quota will reset at 11-07 16:00:00 UTC.",
+      "next_run_at": "2026-11-10T06:00:00+08:00",
+      "last_run_at": "2026-11-08T06:03:12.439311+08:00",
+      "last_status": "ok",
+      "last_error": null,
       "last_delivery_error": null,
       "deliver": "local",
       "origin": {
@@ -141,15 +141,15 @@
       "schedule_display": "5 8 * * *",
       "repeat": {
         "times": null,
-        "completed": 10
+        "completed": 11
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-10-30T21:46:26.766076+08:00",
-      "next_run_at": "2026-11-08T08:05:00+08:00",
-      "last_run_at": "2026-11-07T08:05:35.884261+08:00",
+      "next_run_at": "2026-11-09T08:05:00+08:00",
+      "last_run_at": "2026-11-08T08:05:53.881973+08:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -166,5 +166,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-11-08T06:01:14.885753+08:00"
+  "updated_at": "2026-11-09T06:00:29.325304+08:00"
 }
