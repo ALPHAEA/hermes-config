@@ -40,7 +40,7 @@ Repo in this setup: `https://github.com/ALPHAEA/hermes-config.git`.
    生成时间: <now, %Y-%m-%d %H:%M:%S>
    ```
 
-3. **Export skills** (see flattening rules below). Clear `skills/` dir first, rebuild it, then generate `skills-file-list.txt` (sorted filenames, one per line) and `skills-stats.md` (markdown table `| 分类 | 数量 |`, plus 总技能数/分类数 header lines).
+3. **Export skills** (see flattening rules below). Clear `skills/` dir first, rebuild it, then generate `skills-file-list.txt` (sorted filenames, one per line) and `skills-stats.md` (markdown table `| 分类 | 数量 |`, plus 总技能数/分类数 header lines). `skills-stats.md` committed format is: `# Skills 统计` / blank / `总技能数: N` / `分类数: N` (plain lines, NO bullets, NO 生成时间 line — adding them creates a spurious diff every day, as nearly happened on 2026-11-09).
 
 4. **Memory**: read `MEMORY.md` and `USER.md` from the memories dir, write `memory.md` as:
    ```
