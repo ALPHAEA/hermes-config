@@ -109,7 +109,7 @@ Row format: `rank || rank-spread || model | Lab · License || score ±CI [Prelim
 ## 🔴 2026-10-13: browser_navigate now Cloudflare-blocked → r.jina.ai reader proxy is the working path
 
 `browser_navigate("https://lmarena.ai/leaderboard")` redirects to `arena.ai/leaderboard` and returns a Cloudflare "Sorry, you have been blocked" page (plain curl too). Dead ends confirmed:
-- HF Space `lmarena-ai/arena-leaderboard` — static iframe that just re-embeds the blocked lmarena.ai URL.
+- HF Space `lmarena-ai/arena-leaderboard` — static iframe that just re-embeds the blocked lmarena.ai URL. Full chain mapped end-to-end (2026-11-12): space page → iframe src `lmarena-ai-arena-leaderboard.static.hf.space/index.html` (loads, title "LMArena Leaderboard", contains ONLY an iframe) → its iframe src = `https://lmarena.ai/leaderboard` (Cloudflare-blocked). Do not walk this chain; it terminates at the blocked site.
 - `lmarena-ai-arena-leaderboard.static.hf.space/index.html` — 404/iframe wrapper, no data.
 - Wayback Machine — 429 Too Many Requests (both curl and browser).
 
