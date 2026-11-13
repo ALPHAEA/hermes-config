@@ -1,44 +1,30 @@
 # Skills 统计
 
-总技能数: 125
-分类数: 37
+总技能数: 54
+分类数: 23
 
 | 分类 | 数量 |
-|------|------|
+|---|---|
 | agently-mail | 1 |
-| apple | 4 |
-| autonomous-ai-agents | 4 |
-| computer-use | 1 |
-| creative | 18 |
-| data-science | 1 |
+| autonomous-ai-agents | 1 |
+| creative | 2 |
 | devops | 2 |
-| dogfood | 1 |
-| email | 1 |
 | find-skill-skillhub | 1 |
 | gaming | 2 |
-| github | 6 |
-| hermes-desktop-plugins | 1 |
 | humanizer-zh-pro | 1 |
 | mcp | 1 |
-| media | 4 |
-| mlops | 1 |
-| mlops_evaluation | 2 |
-| mlops_inference | 4 |
-| mlops_models | 2 |
+| mlops_inference | 2 |
 | mlops_research | 1 |
 | mlops_training | 3 |
-| note-taking | 5 |
+| note-taking | 4 |
 | ocr | 2 |
-| productivity | 10 |
+| productivity | 1 |
 | red-teaming | 1 |
-| research | 12 |
+| research | 7 |
 | self-improving-agent-pro-plus-new | 1 |
-| smart-home | 1 |
-| social-media | 1 |
-| software-development | 11 |
+| software-development | 3 |
 | superpowers | 14 |
 | superpowers-skill | 1 |
 | ui-ux-pro-max | 1 |
 | weather-style | 1 |
 | web-composite-search | 1 |
-| yuanbao | 1 |

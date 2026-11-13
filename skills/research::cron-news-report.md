@@ -37,6 +37,20 @@ As of mid-2026, `arena.ai` redirects to an AI app builder product (NOT the LMSYS
 
 **Practical approach**: Use `delegate_task` with `toolsets=["browser"]` to have subagents scrape arena.ai/swE-bench data, and verify key findings (top 3-5 model names) in the main session.
 
+### ✅ Verified 2026-11-13: HF parquet dataset is the MOST reliable LMArena source
+`lmarena.ai` / `arena.ai` may be behind an aggressive Cloudflare "Verify you are human" challenge (headless browsers often can't pass it, even after clicking the checkbox). Robust fallback = official dataset `lmarena-ai/leaderboard-dataset` on HuggingFace:
+```bash
+# Per-category latest parquet (configs: agent, text, webdev, vision, document, image_edit,
+# text_to_image, text_to_video, image_to_video, video_edit, search + *_style_control variants)
+curl -sL -o lb_text.parquet "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/resolve/main/text/latest-00000-of-00001.parquet"
+# Parse with pyarrow (install via: uv venv /tmp/pqenv && VIRTUAL_ENV=/tmp/pqenv uv pip install pyarrow)
+```
+- Columns: model_name, organization, license, rating (+rating_lower/upper), vote_count, rank, category, leaderboard_publish_date. Agent config uses `score`/`score_ci_*`/`observation_count`/`session_count`/`cost_per_task_p50` instead (score = net-improvement fraction, ×100 for %).
+- Each config has MANY `category` values (overall, coding, chinese, english, hard_prompts, ...). ALWAYS filter `category == "overall"` and sort by rank, then by -rating, then dedupe by model_name (duplicate rows exist across sub-lists).
+- `leaderboard_publish_date` gives exact data freshness per category.
+- HF `datasets-server.huggingface.co/rows` and `/filter` endpoints returned 500/502/422 for this dataset — don't rely on them; download parquet directly.
+- Google News (news.google.com/search) triggers a `/sorry` CAPTCHA from datacenter IPs — use TechCrunch AI category page instead (clean snapshot with "N hours ago" timestamps).
+
 ### ✅ Verified 2026-08: Direct snapshot works for LMArena (simpler than subagents)
 `browser_navigate("https://lmarena.ai/leaderboard")` returns an accessibility snapshot containing ALL arena sections (Agent, Text, WebDev, Vision, Document, Text-to-Image, Image Edit, Image-to-WebDev, Search, Text-to-Video, Image-to-Video, Video Edit) with ranks, model names, Elo scores, and confidence intervals — directly in the snapshot text. No subagent needed.
 - Snapshot is large (~300KB, truncated); use the returned file path + `read_file(offset=...)` to page through remaining sections.

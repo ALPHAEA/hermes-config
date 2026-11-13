@@ -1,6 +1,6 @@
 # Hermes Agent 配置快照
 
-> 生成时间: 2026-11-13 06:01:57
+> 生成时间: 2026-11-14 06:02:45
 > 包含: 模型配置、工具集、Skills、Memory、Cron 任务
 
 ---
@@ -37,59 +37,22 @@
 
 ## 三、所有已安装 Skills
 
-- **总技能数:** 125
-- **分类数:** 37
+- **总技能数:** 54
+- **分类数:** 23
 
 ### agently-mail (1)
 - agently-mail
 
-### apple (4)
-- apple-notes
-- apple-reminders
-- findmy
-- imessage
-
-### autonomous-ai-agents (4)
-- claude-code
-- codex
+### autonomous-ai-agents (1)
 - hermes-agent
-- opencode
 
-### computer-use (1)
-- computer-use
-
-### creative (18)
-- architecture-diagram
-- ascii-art
-- ascii-video
-- baoyu-infographic
-- claude-design
-- comfyui
+### creative (2)
 - creative-ideation
-- design-md
-- excalidraw
-- humanizer
-- manim-video
-- p5js
 - pixel-art
-- popular-web-designs
-- pretext
-- sketch
-- songwriting-and-ai-music
-- touchdesigner-mcp
-
-### data-science (1)
-- jupyter-live-kernel
 
 ### devops (2)
 - hermes-config-github-sync
 - webhook-subscriptions
-
-### dogfood (1)
-- dogfood
-
-### email (1)
-- himalaya
 
 ### find-skill-skillhub (1)
 - find-skill-skillhub
@@ -98,45 +61,15 @@
 - minecraft-modpack-server
 - pokemon-player
 
-### github (6)
-- codebase-inspection
-- github-auth
-- github-code-review
-- github-issues
-- github-pr-workflow
-- github-repo-management
-
-### hermes-desktop-plugins (1)
-- hermes-desktop-plugins
-
 ### humanizer-zh-pro (1)
 - humanizer-zh-pro
 
 ### mcp (1)
 - native-mcp
 
-### media (4)
-- gif-search
-- heartmula
-- songsee
-- youtube-content
-
-### mlops (1)
-- huggingface-hub
-
-### mlops_evaluation (2)
-- lm-evaluation-harness
-- weights-and-biases
-
-### mlops_inference (4)
-- llama-cpp
+### mlops_inference (2)
 - obliteratus
 - outlines
-- vllm
-
-### mlops_models (2)
-- audiocraft
-- segment-anything
 
 ### mlops_research (1)
 - dspy
@@ -146,9 +79,8 @@
 - trl-fine-tuning
 - unsloth
 
-### note-taking (5)
+### note-taking (4)
 - note-restructure
-- obsidian
 - obsidian-webdav-jianguoyun
 - url-to-obsidian-note
 - web-article-recipes
@@ -157,55 +89,27 @@
 - english-pdf-wrong-ocr
 - math-pdf-wrong-ocr
 
-### productivity (10)
-- airtable
-- google-workspace
+### productivity (1)
 - linear
-- maps
-- nano-pdf
-- notion
-- ocr-and-documents
-- petdex
-- powerpoint
-- teams-meeting-pipeline
 
 ### red-teaming (1)
 - godmode
 
-### research (12)
+### research (7)
 - arena-leaderboard-scraping
-- arxiv
 - bing-news-search
-- blogwatcher
 - cron-news-report
 - llm-weekly-digest
-- llm-wiki
 - news-gathering-via-browser
-- polymarket
-- research-paper-writing
 - web-scraping-fallbacks
 - zhihu-article-fetch
 
 ### self-improving-agent-pro-plus-new (1)
 - self-improving-agent-pro-plus-new
 
-### smart-home (1)
-- openhue
-
-### social-media (1)
-- xurl
-
-### software-development (11)
-- hermes-agent-skill-authoring
-- node-inspect-debugger
+### software-development (3)
 - plan
-- python-debugpy
-- requesting-code-review
-- simplify-code
-- spike
 - subagent-driven-development
-- systematic-debugging
-- test-driven-development
 - writing-plans
 
 ### superpowers (14)
@@ -236,9 +140,6 @@
 ### web-composite-search (1)
 - web-composite-search
 
-### yuanbao (1)
-- yuanbao
-
 ## 四、Cron 定时任务
 
 - **上海松江每日天气** (`3e33eb3dff29`) — 计划: `0 6 * * *` — 启用: ✅ — 上次状态: ok
@@ -249,6 +150,6 @@
 ## 五、系统信息
 
 - **Config 文件:** 369 行
-- **Skills 总数:** 125 个 (37 分类)
+- **Skills 总数:** 54 个 (23 分类)
 - **Cron 任务数:** 4 个
-- **同步日期:** 2026-11-13
+- **同步日期:** 2026-11-14
