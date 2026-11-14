@@ -37,6 +37,16 @@ curl -s -m 60 "https://r.jina.ai/https://TARGET-SITE/path" -o /tmp/page.md
 - HF Space `lmarena-ai/arena-leaderboard` is stale (CSVs stop 2025-08) and its app.py just iframes the origin — never useful for current data. The static Space URL `lmarena-ai-arena-leaderboard.static.hf.space` also just iframes `lmarena.ai/leaderboard` (cross-origin, unreadable).
 - **Parsing LMArena webdev markdown+html (verified 2026-10-21)**: markdown rows are TWO lines each — a rank line `"<rank> <rank_spread>"` then a score line `"<spread> <ELO>+<ci>/-<ci> <votes>$<price> <ctx>"`. The FIRST number of the score line is rank spread, NOT the rank — pair names from the html JSON-LD ItemList by position, and FILTER OUT the BreadcrumbList entries (`"Leaderboard"`, `"Code"`, `"WebDev"` also carry position/name fields and pollute the ranking). Total-votes figure (`903,893 votes`) and data timestamp (`2026-10-19` date strings) are extractable from the html via regex.
 
+## TechCrunch specifics (verified 2026-11-14)
+- **Canonical date/slug URLs 404 on direct fetch**: the URLs TechCrunch itself links to (e.g. `https://techcrunch.com/2026-11-13/some-article/`) return "Page not found" when fetched with curl OR browser_navigate, even with a browser UA. Don't guess slug URLs and don't loop on clicks from the category page.
+- **Working form: post-ID URL `https://techcrunch.com/?p=NNNNN`.** Get IDs + full metadata from the RSS feed in ONE curl call — this replaces the browser listing scrape entirely:
+  ```bash
+  curl -sL "https://techcrunch.com/category/artificial-intelligence/feed/"
+  ```
+  Each `<item>` provides: `<title>`, `<link>` (the 404-ing canonical URL — ignore), `<guid>https://techcrunch.com/?p=NNNNN</guid>` (USE THIS), `<pubDate>` (exact UTC timestamp — better than relative "4 hours ago"), `<description>` (1-sentence summary, often enough to skip fetching the article), `<category>` tags, `<dc:creator>`.
+- Full article text: `curl -sL -A "Mozilla/5.0" "https://techcrunch.com/?p=NNNNN"` then regex-extract `<p>` tags with Python; keep paragraphs >80 chars, skip ones containing "AM PST"/"PM PST" (byline/timestamp noise). 4-6 paragraphs per article is plenty for a 2-3 sentence digest item.
+- The Verge (`https://www.theverge.com/ai-artificial-intelligence`) loads fine in browser with inline summaries + timestamps on the listing page; its article URLs work normally — no special handling needed.
+
 ## Technique 2: recover tables from embedded JSON-LD / Next.js flight data
 Rendered HTML (from jina or the site itself) often embeds the full dataset even when visible text extraction fails:
 
@@ -63,4 +73,4 @@ Rendered HTML (from jina or the site itself) often embeds the full dataset even 
 
 ## Real-world validation (2026-10-16, cron news report)
 - lmarena.ai + arena.ai: browser blocked by Cloudflare → `r.jina.ai` markdown worked for 6 of 7 boards (text/vision/t2i/t2v/i2v + overview); WebDev names missing in markdown → recovered full 143-model ranking from schema.org ItemList in `x-respond-with: html` output.
-- Google News CAPTCHA → TechCrunch category page via browser worked cleanly (fresh timestamps, article slugs); article detail via `r.jina.ai/<techcrunch-url>` for 2-3 sentence summaries.
+- Google News CAPTCHA → TechCrunch category page via browser worked cleanly (fresh timestamps, article slugs); article detail via `r.jina.ai/<techcrunch-url>` for 2-3 sentence summaries. (2026-11-14 update: prefer the RSS-feed + `?p=<postID>` curl workflow above — faster and no jina rate limits.)
