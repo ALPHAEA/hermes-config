@@ -4,7 +4,7 @@
 分类数: 23
 
 | 分类 | 数量 |
-|------|------|
+|---|---|
 | agently-mail | 1 |
 | autonomous-ai-agents | 1 |
 | creative | 2 |
