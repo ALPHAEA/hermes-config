@@ -1,12 +1,11 @@
 # Skills 统计
 
-总技能数: 54
-分类数: 23
+总技能数: 53
+分类数: 22
 
 | 分类 | 数量 |
 |---|---|
 | agently-mail | 1 |
-| autonomous-ai-agents | 1 |
 | creative | 2 |
 | devops | 2 |
 | find-skill-skillhub | 1 |

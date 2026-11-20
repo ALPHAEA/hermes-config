@@ -1,5 +1,4 @@
 agently-mail::agently-mail.md
-autonomous-ai-agents::hermes-agent.md
 creative::creative-ideation.md
 creative::pixel-art.md
 devops::hermes-config-github-sync.md
