@@ -1,3 +1,5 @@
+.jobs.lock
+.tick.lock
 executions.db
 jobs.json
 output
