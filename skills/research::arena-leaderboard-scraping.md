@@ -171,7 +171,7 @@ Config names = directory names: `agent`, `text`, `webdev`, `vision`, `text_to_im
 - Elo boards: `model_name, organization, rating, rating_lower/upper` (CI = ±(upper-lower)/2), `vote_count, rank, leaderboard_publish_date`
 - Filter `category == "overall"` for the main board.
 - `leaderboard_publish_date` varies per section (agent/text/webdev ~2 days old; video boards can be ~3 weeks stale) — ALWAYS report per-section dates.
-2. Parquet download via `resolve/main/<config>/latest-00000-of-00001.parquet` (needs pyarrow; the venv lacks it — path 1 is sufficient).
+2. Parquet download via `resolve/main/<config>/latest-00000-of-00001.parquet` (needs pyarrow; the venv lacks it — path 1 is sufficient). If you must use parquet: `uv venv /tmp/pqenv && VIRTUAL_ENV=/tmp/pqenv uv pip install pyarrow pandas`, download all configs in ONE sequential curl loop (terminal rejects `&` backgrounding in foreground mode), and run the parse script via `/tmp/pqenv/bin/python` explicitly — `execute_code` runs in the hermes venv without pyarrow and will ImportError (bit the 2026-11-23 run).
 
 Deep-rank lookup for Chinese models: fetch `length=100` and filter by organization ∈ {alibaba, moonshot, deepseek, zai, baidu, bytedance, minimax, kling, shengshu, tencent, xiaomi, stepfun} or name keywords (qwen/kimi/glm/ernie/seedance/wan/mimo/hy3/hy4).
 
@@ -189,6 +189,7 @@ Note: Xiaomi (MiMo) counts as Chinese for 🇨🇳 flags — was missing from th
 **Re-verified 2026-10-17**: datasets-server API still the only working path (browser + r.jina.ai + Wayback all still blocked/429; HF Space static page still re-embeds blocked lmarena.ai; GitHub repos lmarena/* are 404 — no public repo). All 7 configs returned fresh rows in one sequential execute_code loop (~3.5s total). Section publish dates lag differently: text=10-15, agent=10-14, webdev=10-13, vision=10-09, text_to_image=10-07, video boards=09-22 (~3.5 weeks stale — flag in report). TechCrunch AI RSS feed (`/category/artificial-intelligence/feed/`) gave 12 items with exact pubDate + description lead — sufficient for digest entries without opening articles.
 
 ## 🔴 2026-10-15 (same run): TechCrunch article URLs 404 from datacenter IPs; use tag/category RSS feeds instead
+- ⚠️ UPDATE (verified 2026-11-23): this is intermittent, NOT permanent — a full curl pipeline (listing snapshot → harvest real hrefs via browser_console `Array.from(document.querySelectorAll('h3 a')).map(a=>a.href)` → curl each URL + regex `<p>` tags, keep paragraphs >80 chars) fetched 5+ article bodies cleanly with exact datelines. 404s hit only SOME slugs. Try curl-article extraction first; fall back to RSS feed only if URLs 404.
 - Constructed article URLs (`techcrunch.com/YYYY/MM/DD/slug/`) now return "Page not found" for BOTH direct curl AND r.jina.ai AND browser from this IP — only listing pages load. The 404 page's "Latest News" sidebar is still useful (fresh headlines + relative ages).
 - **Working body-extraction path: WordPress RSS feeds via plain curl**:
   - `https://techcrunch.com/category/artificial-intelligence/feed/` → last 20 AI items with `<title>`, `<pubDate>`, `<description>` (1-2 sentence lead).
