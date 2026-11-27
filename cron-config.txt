@@ -1,7 +1,9 @@
-executions.db
-jobs.json
 .jobs.lock
+.tick.lock
+executions.db
+executions.db-shm
+executions.db-wal
+jobs.json
 output
 ticker_heartbeat
 ticker_last_success
-.tick.lock
